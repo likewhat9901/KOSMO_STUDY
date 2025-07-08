@@ -1,6 +1,23 @@
 // Flutter에서 Material 디자인 컴포넌트들을 사용하려면 반드시 import해야 함.
 import 'package:flutter/material.dart';
 
+/**
+ * Flutter 앱의 실행 흐름 (쉽게 정리)
+[ main() ]
+  ↓
+[ runApp(MyApp) ]
+  ↓
+[ MyApp extends StatelessWidget ]
+  ↓
+[ MaterialApp → home: MyHomePage ]
+  ↓
+[ MyHomePage extends StatefulWidget ]
+  ↓
+[ createState() → _MyHomePageState ]
+  ↓
+[ _MyHomePageState.build() → 화면 그림 ]
+ */
+
 /* 앱 실행의 시작점 (main() 함수)
 - runApp()은 Flutter에게 어떤 Widget을 화면에 그릴지 알려줌.
 - MyApp 위젯을 최상위로 실행. */
@@ -30,7 +47,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/* StatefulWidget (상태 변경 가능)
+/* StatefulWidget (상태 변경 가능) => **데이터(속성)**을 외부로부터 받아오는 틀
 - 화면에 동적인 동작(예: 버튼 클릭, 값 변경 등)이 필요한 경우 사용
 - title이라는 문자열을 외부에서 받음 (final String title) */
 class MyHomePage extends StatefulWidget {
@@ -39,6 +56,8 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
+  // State<T> => UI와 동작을 실제로 구현하는 클래스
+  // State 인스턴스를 만들어주는 함수
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
@@ -52,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('🔄 build() 호출됨!');
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
