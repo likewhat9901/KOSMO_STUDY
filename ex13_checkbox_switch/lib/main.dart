@@ -43,21 +43,65 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
+
+  // 체크박스와 스위치에서 체크여부 확인을 위한 변수
+  bool _chk1 = false;   // Non-nullable
+  bool? _chk2 = false;  // Nullable
+  bool _chk3 = false;   // Non-nullable
+
   @override
   Widget build(BuildContext context) {
-    print('🔄 build() 호출됨!');
-    
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('flutter 기본형1'),
+            // 체크박스1 : 필수사항만 설정한 기본상태로 표현
+            Checkbox(
+              activeColor: Colors.lightBlue,
+              // 체크박스에서 사용할 값 설정
+              value: _chk1,
+              // 체크박스에서 check/uncheck했을때 이벤트 처리
+              onChanged: (bool? value) {
+                /** 매개변수를 통해 null값이 들어올 수 있으므로 Nullable로 선언하고,
+                 * 변수할당 시 null check operator를 추가하여 null인 경우 런타임 에러 발생시킨다. */
+                setState(() {
+                  _chk1 = value!;
+                });
+                print('Checkbox1 : $_chk1');
+              }
+            ),
+            // 체크박스2 : 컬러지정
+            Checkbox(
+              value: _chk2,
+              // 체크 시 색깔
+              checkColor: Colors.pink,
+              // 체크 시 배경색
+              activeColor: Colors.green,
+              /** _chk2는 Nullable로 선언, null값이 허용되므로 별도처리 불필요 */
+              onChanged: (value) {
+                setState(() {
+                  _chk2 = value;
+                });
+                print('Checkbox2 : $_chk2');
+              }
+            ),
+            Switch(
+              value: _chk3,
+              activeColor: Colors.red,
+              activeTrackColor: Colors.cyan,
+              inactiveThumbColor: Colors.lightGreen,
+              inactiveTrackColor: Colors.lightGreen,
+              onChanged: (value) {
+                setState(() {
+                  _chk3 = value;
+                });
+                print('Switch : $_chk3');
+              }
+            )
           ],
         ),
       ),

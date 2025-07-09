@@ -57,10 +57,66 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('flutter 기본형1'),
+            ElevatedButton(
+              onPressed: () => _showProgressDialog('loading...'), 
+              child: const Text(
+                'Show ProgressDialog',
+                style: TextStyle(fontSize: 24),
+              )
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Future _showProgressDialog(String message) async {
+    await showDialog(
+      context: context,
+      // barrierDismissible: true
+      builder: (BuildContext context) {
+
+        //테스트할 때 3초 후 창닫기
+        Future.delayed(const Duration(seconds: 3), () {
+          Navigator.pop(context);
+        });
+
+        return Theme(
+          data: ThemeData(dialogTheme: DialogThemeData(backgroundColor: Colors.white)),
+          child: AlertDialog(
+            // 대화창의 모서리를 둥글게
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0)
+            ),
+            // 대화창의 외부크기
+            content: SizedBox(
+              // 높이를 변경해보세요
+              height: 200,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 50.0,
+                      width: 50.0,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.blue),
+                        strokeWidth: 5.0,
+                      ),
+                    ),
+                    const SizedBox(height: 20.0,),
+                    // 출력할 메세지
+                    Text(
+                      message,
+                      style: const TextStyle(fontSize: 24, height: 1.5)
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
