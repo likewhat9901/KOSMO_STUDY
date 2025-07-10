@@ -42,10 +42,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// 현재 시간 가져오기
+TimeOfDay _selectedTime = TimeOfDay.now();
+
 class _MyHomePageState extends State<MyHomePage> {
   
-  // 현재 시간 가져오기
-  TimeOfDay _selectedTime = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // 멤버변수에 설정된 시간객체
             Text(
-              '${_selectedTime.hour}:${_selectedTime.minute}',
+              formatKoreanTime(_selectedTime),
               style: TextStyle(fontSize: 30)
             ),
             ElevatedButton(
               child: const Text(
-                'Show DatePicker',
+                'Show TimePicker',
                 style: TextStyle(fontSize: 24),
               ),
               onPressed: () => selectTime(),
@@ -81,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     TimeOfDay? picked = await showTimePicker(
       context: context, 
       // 시간 초기화
-      initialTime: TimeOfDay.now(),
+      initialTime: _selectedTime,
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
@@ -109,5 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
         _selectedTime = picked;
       });
     }
+  }
+
+  // ✅ 시간 포맷 함수 추가
+  String formatKoreanTime(TimeOfDay time) {
+    final hour = time.hourOfPeriod == 0 ? 12 : time.hourOfPeriod;
+    final minute = time.minute.toString().padLeft(2, '0');
+    final period = time.period == DayPeriod.am ? '오전' : '오후';
+    return '$period $hour:$minute';
   }
 }
