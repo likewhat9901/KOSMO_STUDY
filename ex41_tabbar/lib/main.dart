@@ -68,21 +68,21 @@ class _MyHomePageState extends State<MyHomePage> {
       stateManagement: true,
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        // colorBehindNavBar: Colors.white,
+        colorBehindNavBar: Colors.white,
       ),
-      // confineInSafeArea: true,
-      // hideNavigationBarWhenKeyboardShows: true,
-      // popAllScreensOnTapOfSelectedTab: true,
-      // popActionScreens: PopActionScreensType.all,
-      // itemAnimationProperties: const ItemAnimationProperties(
-      //   duration: Duration(milliseconds: 200),
-      //   curve: Curves.ease,
-      // ),
-      // screenTransitionAnimation: const ScreenTransitionAnimation(
-      //   animateTabTransition: false,
-      //   curve: Curves.ease,
-      //   duration: Duration(milliseconds: 200),
-      // ),
+      confineInSafeArea: true,
+      hideNavigationBarWhenKeyboardShows: true,
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: const ItemAnimationProperties(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        animateTabTransition: false,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
       // 탭뷰의 스타일 지정(pub.dev 페이지 참조)
       navBarStyle: NavBarStyle.style3,
     );
