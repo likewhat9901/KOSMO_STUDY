@@ -3,7 +3,7 @@
   <!-- 프로젝트명 -->
   <display-name>JSPStudy</display-name>
   
-  <!-- 웹애플리케이션이 실행되었을때 제일 먼저 실행할 파일 지정 -->
+  <!-- 웹애플리케이션이 실행되었을때 제일 먼저 실행할 시작파일 목록 지정 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -22,6 +22,31 @@
 		<param-name>INIT_PARAM</param-name>
 		<param-value>web.xml에 저장한 초기화 매개변수</param-value>
   </context-param>
+  
+  <!-- 
+  오라클 데이터베이스 연결을 위한 접속정보를 컨텍스트 파라미터로 정의 -->
+  <context-param>
+    <param-name>OracleDriver</param-name>
+    <param-value>oracle.jdbc.OracleDriver</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>OracleURL</param-name>
+	    <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>OracleId</param-name>
+	    <param-value>musthave</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>OraclePwd</param-name>
+	    <param-value>1234</param-value>
+	</context-param>
+	
+	<!-- 세션 유지시간 설정(분단위) -->
+	<session-config>
+		<session-timeout>35</session-timeout>
+	</session-config>
+  
   
 </web-app>
 
