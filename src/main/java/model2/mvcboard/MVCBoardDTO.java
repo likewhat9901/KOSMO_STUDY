@@ -19,9 +19,11 @@ public class MVCBoardDTO {
 	 * name 칼럼도 추가한다.
 	 */
 	private String name;
+	private String ext;
 	
 	//생성자는 특별한 이유가 없다면 생략
 	//컴파일러에 의해 디폴트 생성자가 자동으로 생성되기 때문.
+	
 	
 	//게터/세터
 	public String getIdx() {
@@ -83,6 +85,12 @@ public class MVCBoardDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
 	}
 	
 }

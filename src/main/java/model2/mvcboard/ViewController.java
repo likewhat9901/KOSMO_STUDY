@@ -36,6 +36,12 @@ public class ViewController extends HttpServlet {
 		 */
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 		
+		
+		String fileName = dto.getOfile();
+		String ext = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+		dto.setExt(ext);
+		
+		
 		//request 영역에 dto로 저장한 후 View로 포워드한다.
 		req.setAttribute("dto", dto);
 		req.getRequestDispatcher("/14MVCBoard/View.jsp").forward(req, resp);

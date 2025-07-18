@@ -35,8 +35,21 @@
         	<%-- 첨부파일이 이미지인지 판단하는 로직 and isImage eq true --%>
         	<!-- 첨부파일이 있다면 img태그로 이미지 출력 -->
 <c:if test="${ not empty dto.ofile }">
-       		<br><img alt="첨부파일 이미지" src="../Uploads/${ dto.sfile }"
-       			style="max-width:400px;">
+	<c:choose>
+		<c:when test="${ dto.ext eq 'jpg' or dto.ext eq 'png' or dto.ext eq 'gif' }">
+		<br><img alt="첨부파일 이미지" src="../Uploads/${ dto.sfile }"
+      			style="max-width:400px;">
+		</c:when>
+		<c:when test="${ dto.ext eq 'mp3' or dto.ext eq 'wav' }">
+		<br><audio src="../Uploads/${ dto.sfile }" controls />
+		</c:when>
+		<c:when test="${ dto.ext eq 'mp4' or dto.ext eq 'avi' or dto.ext eq 'wmv' }">
+		<br><video src="../Uploads/${ dto.sfile }" controls width="400">
+			브라우저가 video태그를 지원하지 않습니다.
+		</video>
+		</c:when>
+		<c:otherwise></c:otherwise>
+	</c:choose>
 </c:if>
         </td>
     </tr> 

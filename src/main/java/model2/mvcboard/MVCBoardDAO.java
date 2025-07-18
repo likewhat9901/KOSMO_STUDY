@@ -206,4 +206,30 @@ public class MVCBoardDAO extends DBConnPool{
 		}
 		return result;
 	}
+	
+	public int updatePost(MVCBoardDTO dto) {
+		int result = 0;
+		try {
+			String query = "UPDATE mvcboard "
+					+ " SET title=?, content=?, ofile=?, sfile=?"
+					+ " WHERE idx=? and id=?";
+			
+			//쿼리문 준비
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getOfile());
+			psmt.setString(4, dto.getSfile());
+			psmt.setString(5, dto.getIdx());
+			psmt.setString(6, dto.getId());
+			
+			//쿼리문 실행
+			result = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

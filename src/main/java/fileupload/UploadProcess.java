@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @MultipartConfig(
 		maxFileSize = 1024 * 1024 * 10,
-		maxRequestSize = 1024 * 1024 * 10
+		maxRequestSize = 1024 * 1024 * 100
 )
 public class UploadProcess extends HttpServlet {
 	
