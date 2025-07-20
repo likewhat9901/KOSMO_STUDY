@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>새로운 브렌치 테스트</h2>
+	<h2>충돌 테스트</h2>
 </body>
 </html>
