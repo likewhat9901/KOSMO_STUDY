@@ -54,7 +54,7 @@ public class MainController {
 		/*
 		 * 컨트롤러에서 String을 반환하면 View의 경로로 포워드되지만,
 		 * redirect: 를 사용하면 설정한 요청명으로 이동한다.
-		 */
+		 */  
 		return "redirect:list.do";
 	}
 
