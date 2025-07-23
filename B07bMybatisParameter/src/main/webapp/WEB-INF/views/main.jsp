@@ -7,10 +7,14 @@
 <title>SpringBoot</title>
 </head>
 <body>
-	<h2>퀴즈] 로그인폼에서 전송된 값</h2>
+	<h2>스프링 부트 프로젝트</h2>
 	<ul>
-		<li>아이디 : ${ memberDTO.id }</li>
-		<li>비밀번호 : ${ memberDTO.passwd }</li>
+		<li><a href="/">루트</a></li>
+	</ul>
+	
+	<h2>Mybatis로 구현한 회원관리</h2>
+	<ul>
+		<li><a href="./list.do">회원목록</a></li>
 	</ul>
 </body>
 </html>

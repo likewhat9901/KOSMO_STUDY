@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/js/script.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- CSS 파일 링크 -->
 <link rel="stylesheet" type="text/css" href="./css/memberStyle.css"></link>
+<!-- JS 파일 링크 -->
+<script type="text/javascript" src="/js/script.js"></script>
+<!-- DAUM 우편번호 API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
     <form name="myform" action="registProcess.do" method="post" onsubmit="return formValidate(this);">

@@ -1,7 +1,10 @@
 package com.edu.springboot;
 
 public class MemberDTO {
+	//로그인폼
 	private String id;
+	private String passwd;
+	//회원가입폼
 	private String pass1;
 	private String name;
 	private String sex;
@@ -19,12 +22,22 @@ public class MemberDTO {
 	private String etc_no1;
 	private String etc_no2;
 	
+	//기본 생성자
+	public MemberDTO() {
+		super();
+	}
 	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 	public String getPass1() {
 		return pass1;

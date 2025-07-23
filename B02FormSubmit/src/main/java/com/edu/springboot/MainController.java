@@ -107,34 +107,5 @@ public class MainController {
 		return "form/submit4";
 	}
 	
-	/*
-	 * 퀴즈
-	 */
-	@RequestMapping("/memberLogin.do")
-	public String login() {	
-		return "member/login";
-	}
-	
-	@RequestMapping("/loginProcess.do")
-	public String loginProcess(@RequestParam("id") String id,
-			@RequestParam("passwd") String passwd, Model model) {
-		
-		model.addAttribute("id", id);
-		model.addAttribute("passwd", passwd);
-		
-		return "member/loginProcess";
-	}
-	
-	@RequestMapping("/memberRegist.do")
-	public String regist() {
-		return "member/regist";
-	}
-	
-	@RequestMapping("/registProcess.do")
-	public String registProcess(MemberDTO memberDTO) {
-
-		return "member/registProcess";
-	}
-
 
 }

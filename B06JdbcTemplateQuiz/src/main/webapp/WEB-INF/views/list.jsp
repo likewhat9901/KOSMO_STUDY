@@ -9,6 +9,21 @@
 </head>
 <body>
 	<h2>회원리스트</h2>
+	<form method="get" action="list.do">
+		<table border="1">
+			<tr>
+				<td>
+					<select name="searchField" id="searchField">
+						<option value="id">아이디</option>
+						<option value="name">이름</option>
+					</select>
+					<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요" />
+					<button type="submit">검색</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	
 	<table border="1">
 		<tr>
 			<th>아이디</th>

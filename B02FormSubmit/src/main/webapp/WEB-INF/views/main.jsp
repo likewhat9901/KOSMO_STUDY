@@ -33,10 +33,10 @@
 		<li><a href="form4/삼장법사/44">경로변수</a></li>
 	</ul>
 	
-	<h2>퀴즈</h2>
+	<h2>퀴즈: 회원가입폼</h2>
 	<ul>
-		<li><a href="memberLogin.do">MemberLogin</a></li>
-		<li><a href="memberRegist.do">RegiFormValidate</a></li>
+		<li><a href="memberRegist.do">회원가입</a></li>
+		<li><a href="memberLogin.do">로그인</a></li>
 	</ul>
 	
 </body>

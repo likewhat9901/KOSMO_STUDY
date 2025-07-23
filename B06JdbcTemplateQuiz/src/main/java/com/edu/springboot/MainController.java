@@ -1,5 +1,7 @@
 package com.edu.springboot;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +27,22 @@ public class MainController {
 	IMemberService dao;
 	
 	//회원목록
-	@RequestMapping("/list.do")
-	public String member2(Model model) {
-		// DAO의 select()메서드 호출 후 반환되는 List<MemberDTO>를
-		// 영역에 저장한다.
-		model.addAttribute("memberList", dao.select());
+	@GetMapping("/list.do")
+	public String member2(MemberDTO dto, Model model) {
+		System.out.println(dto);
+		
+		List<MemberDTO> list;
+		
+	    if (dto.getSearchField() != null && dto.getSearchKeyword() != null) {
+	        list = dao.search(dto); // 검색
+	    } else {
+	        list = dao.select(); // 전체
+	    }
+		
+		model.addAttribute("memberList", list);
 		return "list";
 	}
+	
 	
 	//회원등록
 	/*
