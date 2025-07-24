@@ -8,6 +8,33 @@
 </head>
 <body>
 	<h2>게시판 작성(Mybatis)</h2>
+	<script type="text/javascript">
+		const validateForm = (fm) => {
+			const name = fm.querySelector("input[name='name']");
+			const title = fm.querySelector("input[name='title']");
+			const content = fm.querySelector("textarea[name='content']");
+			
+			if(!name || name.value.trim() === "") {
+				alert("작성자를 입력하세요");
+				name.focus();
+				return false;
+			}
+			if(!title || title.value.trim() === "") {
+				alert("제목을 입력하세요");
+				title.focus();
+				return false;
+			}
+			if(!content || content.value.trim() === "") {
+				alert("내용을 입력하세요");
+				content.focus();
+				return false;
+			}
+			
+			console.log(name.value, title.value, content.value);
+			
+			return true;
+		}
+	</script>
 	<form name="writeFrm" method="post"
 		action="./write.do" onsubmit="return validateForm(this);">
 	<table border="1" width="90%">
