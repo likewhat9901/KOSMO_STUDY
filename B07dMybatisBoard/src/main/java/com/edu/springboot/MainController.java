@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,12 @@ public class MainController {
 	@Autowired
 	IBoardService dao;
 	
+	@Value("${board.pageSize}")
+	private int pageSize;
+	
+	@Value("${board.blockPage}")
+	private int blockPage;
+	
 	@RequestMapping("/")
 	public String main() {
 		return "main";
@@ -40,10 +47,6 @@ public class MainController {
 		
 		//게시물의 개수 카운트(검색어가 있는 경우 파라미터는 DTO에 자동으로 저장됨)
 		int totalCount = dao.getTotalCount(parameterDTO);
-		
-		//페이징을 위한 설정값(하드코딩)
-		int pageSize = 10;	// 페이지 당 출력할 게시물의 개수
-		int blockPage = 10;	// 한 블럭 당 출력할 페이지번호의 개수
 		
 		/*
 		 * 목록에 처음 진입할때는 페이지번호가 없으므로 1로 설정하고, 파라미터를 통해
@@ -78,6 +81,8 @@ public class MainController {
 						req.getContextPath() + "/list.do?");
 		model.addAttribute("pagingImg", pagingImg);
 		
+		System.out.println(lists);
+		
 		//View로 포워드
 		return "list";
 	}
@@ -108,5 +113,53 @@ public class MainController {
 		//글쓰기 완료 후 목록으로 이동
 		return "redirect:list.do";
 	}
+	
+	@GetMapping("/view.do")
+	public String boardView(Model model, BoardDTO boardDTO) {
+		
+		dao.updateVisitCount(boardDTO);
+		//DTO를 view함수 호출 시 전달
+		boardDTO = dao.view(boardDTO);
+		//줄바꿈 처리
+		boardDTO.setContent(boardDTO.getContent().replace("\r\n", "<br/>"));
+		model.addAttribute("boardDTO", boardDTO);
+		
+		System.out.println(boardDTO);
+		
+		return "view";
+	}
+	
+	//수정1 : 기존 내용을 읽어와서 수정폼에 설정
+	@GetMapping("/edit.do")
+	public String boardEditGet(Model model, BoardDTO boardDTO) {
+		System.out.println(boardDTO);
+		//열람에서 사용했던 메소드 그대로 사용.
+		boardDTO = dao.view(boardDTO);
+		model.addAttribute("boardDTO", boardDTO);
+		
+		return "edit";
+	}
+	
+	//수정2 : 사용자가 입력한 내용을 전송하여 update 처리
+	@PostMapping("/edit.do")
+	public String boardEditPost(BoardDTO boardDTO) {
+		System.out.println(boardDTO);
+		//수정 후 결과는 int형으로 반환
+		int result = dao.edit(boardDTO);
+		System.out.println(boardDTO);
+		System.out.println("글수정 결과:"+ result);
+		//수정이 완료되면 열람페이지 이동. 일련번호 파라미터로 전달
+		return "redirect:view.do?idx="+ boardDTO.getIdx();
+	}
+	
+	//삭제 : request 내장객체를 통해 폼값 받음
+	@PostMapping("/delete.do")
+	public String boardDeletePost(HttpServletRequest req) {
+		//단일값을 인수로 전달
+		int result = dao.delete(req.getParameter("idx"));
+		System.out.println("글삭제 결과:"+ result);
+		return "redirect:list.do";
+	}
+
 	
 }

@@ -21,10 +21,12 @@ public interface IBoardService {
 	public int write(@Param("_name") String name,
 			@Param("_title") String title,
 			@Param("_content") String content);
-	//열람
+	//열람 : 
 	public BoardDTO view(BoardDTO boardDTO);
 	//수정
 	public int edit(BoardDTO boardDTO);
+	//조회수
+	public int updateVisitCount(BoardDTO boardDTO);
 	//삭제
 	public int delete(String idx);
 	

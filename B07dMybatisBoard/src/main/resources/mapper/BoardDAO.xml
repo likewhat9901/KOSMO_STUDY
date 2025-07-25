@@ -56,5 +56,36 @@
 		(seq_board_num.nextval, #{_name}, #{_title}, #{_content})
 	</insert>
 	
+	<!-- 열람: 파라미터를 저장한 DTO를 통해 인파라미터를 설정한 후 인출한 결과를
+	DTO에 저장한 후 반환한다. -->
+	<select id="view"
+		parameterType="com.edu.springboot.jdbc.BoardDTO"
+		resultType="com.edu.springboot.jdbc.BoardDTO">
+		SELECT * FROM myboard WHERE idx=#{idx}
+	</select>
+	
+	<!-- 수정: update 쿼리문의 실행결과는 정수이므로 resultType은 생략한다.
+	폼값 전체를 저장한 DTO객체를 parameterType으로 설정한다. -->
+	<update id="edit"
+		parameterType="com.edu.springboot.jdbc.BoardDTO">
+		UPDATE myboard SET
+		name=#{name}, title=#{title}, content=#{content}
+		WHERE idx=#{idx}
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateVisitCount"
+		parameterType="com.edu.springboot.jdbc.BoardDTO">
+		UPDATE myboard SET
+		visitcount=visitcount+1
+		WHERE idx=#{idx}
+	</update>
+	
+	<!-- 삭제 : parameterType을 별도로 명시하지 않은 경우에는 파라미터의
+	순서대로 param1, 2..와 같이 인파라미터를 설정할 수 있다.
+	또한 인덱스 0,1.. 과 같이 설정할 수도 있다. -->
+	<delete id="delete">
+		DELETE FROM myboard WHERE idx=#{param1}
+	</delete>
 
 </mapper>
