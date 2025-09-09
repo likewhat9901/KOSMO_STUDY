@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- if, for문과 같은 제어문은 아래와 같이 %로 감싸서 기술한다. -->
+  {% if title %}
+  <title>{{ title }}</title>
+  {% endif %}
+</head>
+<body>
+  <!-- 변수 출력시에는 중괄호 2개를 겹쳐서 사용한다. -->
+  <h1>바인딩 문자열 : {{ home_str }}</h1>
+  <p>바인딩 리스트[2:4] : {{ home_list[2:4] }}</p>
+  <ul>
+    <!-- for문을 사용하면 HTML 태그를 물리적으로 반복해서 출력할 수 있다. -->
+    {% for idx in home_list %}
+    <li>{{ idx }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+<!-- 
+{{ ... }} : 변수나 표현식
+  - Flask에서 넘긴 변수나 계산 결과를 HTML에 출력할 때 사용
+  ex.
+    <p>이름: {{ name }}</p>
+    <p>점수: {{ score }}</p>
+    <p>합격 여부: {{ '합격' if score >= 60 else '불합격' }}</p>
+
+{% ... %} : if나 for같은 제어문
+  - 제어문, 블록 처리, 상속 등 구조 제어에 사용
+  - 파이썬의 if, for, extends, block 등을 지원
+  ex.
+    {% if user %}
+      <p>안녕하세요, {{ user }}님!</p>
+    {% else %}
+      <p>로그인 해주세요.</p>
+    {% endif %}
+  ex2.
+    <ul>
+    {% for item in items %}
+      <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+
+{# ... #} : 주석
+  - 템플릿 안에서 작성자만 보기 위한 주석
+  - 최종 HTML에는 출력되지 않음
+  - 브라우저 개발자도구에서 보면 주석은 아예 사라짐
+
+-->
