@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <style>
+    /* 문서 전체의 div에 테두리를 지정하여 영역을 확인한다. */
+    div{
+      border: 1px solid red;
+      box-sizing: border-box;
+    }
+    /* 좌측 메뉴와 우측 컨텐츠 영역을 수평방향으로 정렬하기 위해 float 속성을
+    사용하여 좌/우측으로 정렬한다. 단 이경우 border가 적용된 상태이므로 100%를
+    조금 넘어가 컨텐츠 영역이 아래로 떨어진다. 이경우 width의 %를 살짝 조정해준다. */
+    .left_menu{
+      width: 30%; float: left;
+    }
+    .contents{
+      float: right; width: 70%;
+    }
+    /* 앞에서 사용한 float 속성이 남아있는 경우 카피라이트 영역이 상단으로 파고
+    들어가기 때문에 clear를 통해 파괴해야 한다. */
+    .copyright{
+      clear: both;
+    }
+  </style> -->
+</head>
+<link rel="stylesheet" href="./style/div_layout.css">
+<body>
+  <div class="AllWrap">
+    <!-- 
+    GNB영역 : Global Navigation Bar. 일반적으로 상단 부분은 페이지를 이동하더라도
+      변하지 않는 메뉴로 구성된다. 즉 웹사이트 전체에서 사용할 수 있는 메뉴바라는 뜻.
+    -->
+    <div class="header">
+      <div class="logo">
+        <img src="./images/seoul_logo.png" alt="서울특별시">
+      </div>
+      <div class="top_menu">
+        <ul>
+          <li><a href="http://tjoeun.co.kr" 
+            class="top_link">HOME</a></li>
+          <li><a href="#login" class="top_link">로그인</a></li>
+          <li><a href="#regist" class="top_link">회원가입</a></li>
+          <li><a href="#notice" class="top_link">공지사항</a></li>
+          <li><a href="#board" class="top_link">게시판</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="body">
+      <!-- 
+      LNB영역 : Local Navigation Bar. 주로 대메뉴에 따른 서브메뉴를 출력한다.
+        즉, 특정 카테고리에 속하는 부분.
+      -->
+      <div class="left_menu">
+        <ul>
+          <li><a href="#Login" class="left_link">로긴</a></li>
+          <li><a href="#Regist" class="left_link">회원갑</a></li>
+          <li><a href="#Notice" class="left_link">공지글</a></li>
+          <li><a href="#Board" class="left_link">자유게시판</a></li>
+        </ul>
+      </div>
+      <!-- 컨텐츠 영역: 해당 페이지에서 가장 핵심이 되는 내용을 출력 -->
+      <div class="contents">
+        <h2>로렘 입숨 한글</h2>
+        국가는 평생교육을 진흥하여야 한다. 대통령의 선거에 관한 사항은 법률로 정한다. 국가는 주택개발정책등을 통하여 모든 국민이 쾌적한 주거생활을 할 수 있도록 노력하여야 한다. 국무회의는 정부의 권한에 속하는 중요한 정책을 심의한다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.
+        모든 국민은 종교의 자유를 가진다. 정부는 회계연도마다 예산안을 편성하여 회계연도 개시 90일전까지 국회에 제출하고, 국회는 회계연도 개시 30일전까지 이를 의결하여야 한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를 공고하여야 한다.
+      </div>
+    </div>
+    <hr>
+    <!-- 카피라이트 영역 : 주로 회사정보나 로고 등을 배치한다. -->
+    <div class="copyright">
+      <div class="copy_logo">
+        <img src="./images/seoul_copyright.png" alt="서울특별시">
+      </div>
+      <div class="copy_info">
+        서울특별시청 04524 서울특별시 중구 세종대로 110 <br>
+        대표전화: 02-120 또는 02-731-2120 (365일 24시간 운영/유료) <br>
+        &copy; Seoul Metropolitan Government all rights reserved
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>클래스와 상속</h2>
+  <script>
+    // 부모클래스
+    class Computer{
+      // 생성자 : 클래스명과 동일하게 정의하지 않는다.
+      constructor(b) {
+        // 멤버변수 선언 및 초기화.
+        this.brand = b;
+      }
+      // 멤버함수 : 화살표함수로 정의
+      computerInfo = () => {
+        return '제조사:' + this.brand;
+      }
+    }
+    // 자식클래스
+    class Notebook extends Computer {
+      // 부모클래스의 멤버변수까지 초기화해야 하므로, 2개의 변수를 받음.
+      constructor(b,n){
+        super(b);
+        this.name = n;
+      }
+      notebookInfo(){
+        return this.computerInfo() + ', 노트북명:' + this.name;
+      }
+    }
+    console.error("부모클래스로 객체 생성");
+    // 생성자를 통해 객체 생성
+    computer = new Computer("삼성");
+    console.log(computer.computerInfo());
+
+    console.error("자식클래스로 객체 생성");
+    notebook = new Notebook("Apple", "MacBook");
+    console.log(notebook.notebookInfo());
+
+    console.log('멤버변수(부모):'+ notebook.brand);
+    console.log('멤버변수(자식):'+ notebook.name);
+  </script>
+</body>
+</html>

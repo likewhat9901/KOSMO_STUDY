@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const products = [
+      { name: 'apple', price: 1000 },
+      { name: 'banana', price: 800 },
+      { name: 'notebook', price: 20000 }
+    ];
+
+    document.writeln('<h2>문자열 배열 목록</h2><hr>');
+    products.forEach(
+      arr => {
+        document.writeln(`이름: ${arr.name}, 가격: ${arr.price}<br>`);
+      }
+    );
+
+    const sum = products.reduce(
+      (pre, cur) => {
+        return pre + cur.price;
+      }
+    , 0);
+
+    document.writeln(`<hr>가격의 합계: ${sum}`);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function star(str, n){
+      document.write(`<h2>${str}</h2><hr>`);
+      
+      let output = "";
+
+      if(str.includes("역순")){
+        let dan = n;
+        for(let i=0 ; i<n ; i++){
+          for(let j=0 ; j<dan ; j++){
+            output += "*";
+          }
+          dan--;
+          output += "<br>";
+        }
+      }
+      else {
+        let dan = 1;
+        for(let i=0 ; i<n ; i++){
+          for(let j=0 ; j<dan ; j++){
+            output += "*";
+          }
+          dan++;
+          output += "<br>";
+        }
+      }
+
+      document.write(output);
+    }
+
+    const str1 = "*로 탑 만들기"
+    const str2 = "*로 역순으로 탑 만들기"
+
+    star(str1, 5);
+    star(str2, 5);
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

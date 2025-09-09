@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서브파일1</title>
+</head>
+<body>
+  <h2>서브파일1</h2>
+
+  <h3>상대경로로 링크걸기</h3>
+  <ul>
+    <!-- 상위경로로 이동할때는 ../로 시작하는 경로를 기술한다. -->
+    <li><a href="../H08A.html">H08A.html 바로가기</a></li>
+    <!-- 하위경로로 이동할때는 이동할 폴더명을 이용해서 전체 경로를 기술한다. -->
+    <li><a href="./SubFolder2/SubFile2.html">서브파일2 바로가기</a></li>
+  </ul>
+
+  <h3>절대경로로 링크걸기</h3>
+  <!-- /로 시작하고 현재위치에 따라 경로명이 바뀌지 않는다. -->
+  <ul>
+    <li><a href="/H08A.html">H08A.html 바로가기</a></li>
+    <li><a href="/SubFolder1/SubFolder2/SubFile2.html">서브파일2 바로가기</a></li>
+  </ul>
+</body>
+</html>

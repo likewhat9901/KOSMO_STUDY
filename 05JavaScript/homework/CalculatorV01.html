@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex; justify-content: center;
+    }
+    table{
+      border-spacing: 5px; border-radius: 10px;
+      background-color: #DDDDDD;
+    }
+    th, td{
+      padding: 7px; border-radius: 10px;
+    }
+    th{
+      padding: 10px; font-size: 25px; text-align: right; 
+      background-color: #70C738;
+    }
+    caption{
+      margin-bottom: 10px; line-height: 30px;
+      font-size: 20px; font-weight: bold;
+    }
+    td{
+      width: 60px; color: white; text-align: center;
+      background-color: #373737; 
+    }
+    td:hover{
+      opacity: 0.5; cursor: pointer;
+    }
+    td:nth-child(4){
+      background-color: #FA960A;
+    }
+    .function td{
+      background-color: gray;
+    }
+  </style>
+  <script>
+    window.addEventListener("load", () => {
+      /* 계산기 화면 */
+      const screen = document.getElementById("screen");
+      // 계산식 저장 Str
+      let CalculStr = "";
+
+      /* 숫자, 연산자 버튼 */
+      // input버튼 DOM을 가져옴
+      const inputList = document.querySelectorAll(".inputBt");
+      // input버튼 함수 정의
+      let inputStr = function(obj){
+        // input 값 Str로 저장.
+        let inputValue = obj.dataset.value;
+        CalculStr += inputValue;
+        // screen에 띄우기
+        screen.textContent = CalculStr;
+        console.log(inputValue, CalculStr);
+      };
+      // click 이벤트 input버튼마다 적용
+      inputList.forEach(e => {
+        e.addEventListener("click", function(){
+          inputStr(e);
+        });
+      });
+      // = 버튼 
+      const resultBt = document.querySelector(".resultBt");
+      resultBt.addEventListener("click", () => {
+        let result = eval(CalculStr);
+        
+        screen.textContent = result;
+        CalculStr = String(result);
+      });
+
+      /* Backspace 버튼 */
+      const backBt = document.querySelector(".backspace");
+      backBt.addEventListener("click", ()=>{
+        if(CalculStr.length < 2){
+          CalculStr = "";
+          screen.textContent = 0;
+          return;
+        }
+        CalculStr = CalculStr.substring(0, CalculStr.length-1);
+        screen.textContent = CalculStr;
+      })
+      /* C 버튼 */
+      const resetBt = document.querySelector(".reset");
+      resetBt.addEventListener("click", ()=>{
+        CalculStr = "";
+        screen.textContent = 0;
+      })
+
+    });
+
+  </script>
+</head>
+<body>
+  <table>
+    <caption>계산기 Ver1.0</caption>
+    <thead>
+      <tr>
+        <th colspan="4" id="screen">0</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="function">
+        <td colspan="2" class="backspace">BackSpace</td>
+        <td colspan="2" class="reset">C</td>
+      </tr>
+      <tr>
+        <td class="inputBt" data-value="1">1</td>
+        <td class="inputBt" data-value="2">2</td>
+        <td class="inputBt" data-value="3">3</td>
+        <td class="inputBt" data-value="+">＋</td>
+      </tr>
+      <tr>
+        <td class="inputBt" data-value="4">4</td>
+        <td class="inputBt" data-value="5">5</td>
+        <td class="inputBt" data-value="6">6</td>
+        <td class="inputBt" data-value="-">－</td>
+      </tr>
+      <tr>
+        <td class="inputBt" data-value="7">7</td>
+        <td class="inputBt" data-value="8">8</td>
+        <td class="inputBt" data-value="9">9</td>
+        <td class="inputBt" data-value="*">×</td>
+      </tr>
+      <tr>
+        <td class="resultBt">=</td>
+        <td class="inputBt" data-value="0">0</td>
+        <td class="inputBt" data-value=".">.</td>
+        <td class="inputBt" data-value="/">÷</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

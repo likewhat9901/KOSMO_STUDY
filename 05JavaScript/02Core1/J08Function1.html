@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>함수</h2>
+  <script>
+    /*
+    함수정의1 : 이름이 있는 함수(유기명 함수)
+      function 함수명(매개변수1, 2, ...){
+        실행부;
+        return 값; (생략가능)
+      }
+    ※ JS에서는 매개변수에 var, let과 같은 키워드를 사용하지 않는다.
+    */
+    function fx1(start, end){
+      let sum = 0;
+      // start부터 end까지의 누적합을 계산하는 반복문
+      for(let i=start ; i<=end ; i++){
+        sum += i;
+      }
+      console.log(start + "부터 " + end + "까지의합: " + sum);
+    }
+    console.error("fx1() 호출")
+    fx1(1, 100);
+
+    /*
+    함수정의2 : 이름이 없는 함수(익명함수 or 무기명함수)
+      let 호출할 변수명 = function(매개변수1, 2, ...){
+        실행부;
+      }
+    */
+    
+    let fx2 = function(){
+      let name = prompt("이름을 입력하세요", "");
+      let age = prompt("나이를 입력하세요", "20");
+
+      return name + "은(는) " + age + "살입니다.";
+      /*
+      Java에서는 return 이후의 문장은 실행X. 에러가 발생한다.
+      js에서는 실행만 안되고 에러는 발생하지 않는다.*/
+      console.log("return문 이후 출력문"); 
+    }
+    console.error("fx2() 호출")
+    // string이 반환되므로 log()안에서 호출할 수 있다.
+    console.log(fx2());
+
+    /*
+    함수정의3 : 화살표함수(Arrow Function)
+      let 호출할 변수명 = (매개변수1, 2, ...) => {
+        실행부;
+      }
+    익명함수에서 function 키워드를 제거하고 괄호사이의 화살표(=>)를 추가한다.
+    */
+    let fx3 = (num1, num2) => {
+      // 삼항연산자를 통해 큰 값을 판단 후 반환
+      return num1 > num2 ? num1 : num2;
+    }
+    console.error("fx3() 호출")
+    console.log("큰수는?", fx3(10,20));
+
+    /* 
+    화살표 함수에서 매개변수가 1개라면 소괄호를 생략할 수 있고,
+    실행부가 하나의 return 문장이면 중괄호를 생략할 수 있다.
+    즉, 매개변수 v로 값을 받고 "Hello 길동"과 같이 반환.
+    */
+    let fx4 = v => "Hello " + v;
+    console.error("fx4() 호출")
+    console.log(fx4('Javascript'));
+  </script>
+</body>
+</html>

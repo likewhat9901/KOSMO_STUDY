@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+프레임은 하나의 페이지를 여러개의 구역으로 나눠서 서로 다른 페이지를 배치한다.
+형식]
+  <frameset rows="세로방향분할" cols="가로방향분할">
+    <frame src="경로1" name="프레임 이름1">
+    <frameset src="경로2" name="프레임 이름2">
+  </frameset>
+-->
+<!-- rows로 3분할 후 각 프레임의 높이는 px 혹은 *로 지정한다. -->
+<frameset rows="100px, *, 50px" border="5" frameborder="1">
+  <!-- 1구역 : noresize가 지정되어 프레임의 크기를 변경할 수 없다.-->
+  <frame src="./frame/topFrame.html" name="topFrame"
+    scrolling="no" marginwidth="0" marginheight="0" noresize>
+  <!-- 2구역: cols로 다시 2분할 -->
+  <frameset cols="300px, *" border="5" frameborder="1">
+    <!-- 2-1구역 : 좌측영역 -->
+    <frame src="./frame/leftFrame.html" name="leftFrame">
+      <!-- 2-1구역 : 컨텐츠영역 -->
+    <frame src="./frame/contentFrame.html" name="contentFrame">
+  </frameset>
+  <!-- 3구역 -->
+  <frame src="./frame/bottomFrame.html" name="bottomFrame"
+    scrolling="no" marginwidth="0" marginheight="0">
+</frameset>
+<noframes>이 브라우저는 프레임을 지원하지 않습니다.</noframes>
+<body>
+  프레임은 body태그 안으로 들어가면 안됩니다.
+</body>
+</html>

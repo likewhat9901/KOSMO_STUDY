@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>ES6 이전의 문제점</h2>
+  <script>
+    /* 
+    var의 문제점 : 지역의 불확실성
+    myFunc1에서 선언한 변수는 지역변수로 선언된다. 따라서 전역지역에서
+    사용하면 에러가 발생한다.
+    */
+    function myFunc1(){
+      /* 
+      var는 함수의 스코프(범위)를 가지므로 지역변수로 선언되어
+      이 함수 지역을 벗어나면 메모리에서 소멸된다.
+      */
+      var num1 = 1;
+    }
+    /* 
+    var 키워드 없이 변수를 선언하면 묵시적인 전역변수가 된다.
+    따라서 script 영역 전체에서 접근 가능. */
+    function myFunc2(){
+      num2 = 2;
+    }
+
+    /* 
+    변수 num2에 대한 선언이나 전달없이 함수 내에서 사용한다. */
+    function myFunc3(){
+      console.log("myFunc3()메소드 안의 num2="+ num2);
+    }
+
+    /* 
+    num1은 myFunc1함수의 지역변수이므로 함수 외부에서는 사용불가.
+    따라서 출력문장에서 에러가 발생한다.
+    */
+    myFunc1();
+    // console.log("전역지역 num1="+ num1);
+
+    /* 
+    myFunc2 함수 내부에서 var없이 변수가 선언되어 전역변수가 되므로
+    아래는 정상적으로 출력된다. */
+    myFunc2();
+    console.log("전역지역 num2="+ num2); //정상출력됨.
+    myFunc3(); //정상출력됨.
+
+    /* 
+    for문 혹은 if문의 블럭을 벗어나도 var로 선언한 변수는 소멸되지 않는다.
+    var는 블럭 스코프가 아니기 때문이다.
+    var는 블럭 범위를 무시하고 함수 범위로 동작하는 특징이 있다.
+    */
+    for(var i=0 ; i<=10 ; i++){
+      console.log("for루프안 i="+ i);
+    }
+    // for문을 벗어나도 변수가 소멸되지 않아 11이 출력된다.
+    console.log("for루프밖 i="+ i);
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 700px; height: 400px;
+      box-sizing: border-box;
+      border: 1px solid gray;
+    }
+
+    .logo{
+      text-align: center;
+      padding-top: 50px;
+    }
+    .logo img{
+    }
+
+    main{
+      height: 200px;
+      justify-items: center;
+    }
+    .input{
+      width: 490px; height: 200px;
+      justify-items: center;
+      box-sizing: border-box;
+    }
+    .input table{
+      border-spacing: 5px;
+    }
+    .input table td input[type="text"],input[type="password"]{
+      width: 350px; height: 50px;
+      font-size: 20px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    footer{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="logo"><img src="/04CSS/images/login_logo.gif"></header>
+    <main>
+      <section class="input">
+        <table>
+          <tr>
+            <td><input type="text" placeholder="아이디"></td>
+            <td rowspan="2"><input type="image" src="/04CSS/images/login_bt.gif"></td>
+          </tr>
+          <tr>
+            <td><input type="password" placeholder="●●●●"></td>
+          </tr>
+        </table>
+        <footer>
+          <img src="/04CSS/images/login_member.gif" alt="">
+          <img src="/04CSS/images/login_idpw.gif" alt="">
+        </footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

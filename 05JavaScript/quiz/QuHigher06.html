@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const numbers = [10, 25, 35, 40, 5];
+
+    document.writeln('<h2>숫자 배열 목록</h2><hr>');
+    numbers.forEach(
+      num => {
+        document.writeln(num);
+      }
+    );
+
+    document.writeln('<h2>30 이상인 숫자만 추출</h2><hr>');
+    
+    const newNum = numbers.filter(
+      num => {
+        return num >= 30;
+      }
+    );
+
+    newNum.forEach(
+      num => {
+        document.writeln(num);
+      }
+    );
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

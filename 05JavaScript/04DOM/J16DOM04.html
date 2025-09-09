@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    var myColor = ['red', 'green', 'blue', 'violet'];
+    var cnt = 0;
+    function createDOM() {
+      // body 태그의 DOM을 가져옴
+      var myBody = document.getElementById("myBody");
+      // div 엘리먼트를 동적 생성
+      var newDiv = document.createElement("div");
+      // 태그 사이에 컨텐츠 추가
+      newDiv.innerHTML = "새로 생성된 div입니다.";
+      /* 
+      JavaScript에서 CSS스타일을 부여할때 규칙
+        color와 같은 경우는 그대로 사용
+        background-color와 같은 경우에는 하이픈을 제거하고 첫글자를 대문자로 변경 후 사용 */
+      newDiv.setAttribute("id","myDiv");
+      /* 배경색 지정시 증가연산자가 전위에 있으므로 cnt의 값이 먼저 증가한 후 4로 %연산을 한다.
+      즉, 0~3까지의 값이 토글된다. */
+      newDiv.style.backgroundColor = myColor[cnt++%4];
+      newDiv.style.cursor = "pointer";
+      // 생성된 div태그에 click 이벤트헨들러(리스너) 추가
+      newDiv.onclick = function() {
+        // 클릭한 요소의 부모요소를 얻어와서 변수에 저장. 즉 body태그임.
+        var pe = this.parentElement;
+        // pe의 자식요소를 제거한다.
+        pe.removeChild(this);
+        // 따라서 클릭한 div 태그를 동적으로 삭제한다.
+      };
+      // body 태그 하위에 자식요소로 div를 추가한다.
+      myBody.appendChild(newDiv);
+    }
+  </script>
+</head>
+<body id="myBody">
+  <h3>DOM 동적 추가/삭제</h3>
+  <a href="javascript:createDOM();">동적생성</a>
+</body>
+</html>

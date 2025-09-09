@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>img 태그</h2>
+
+  <h3>이미지를 원본크기대로 표시하기</h3>
+  <!-- width, height 속성을 부여하지 않으면 원본크기 그대로 표시됨 -->
+  <img src="./images/1.png" alt="스펀지밥">
+
+  <h2>이미지 크기설정</h2>
+  <!-- 가로사이즈만 지정하면 세로는 비율에 맞게 크기가 조정된다. -->
+  <img src="./images/1.png" width="100" alt="스폰지밥">
+  <!-- 가로, 세로 사이즈를 동시에 지정하면 비율에 맞지않아 왜곡현상이 생길 수 있다. -->
+  <img src="./images/2.png" width="100" height="200" alt="징징이">
+  <!-- 따라서 대부분의 경우 이미지 사이즈는 지정하지 않는다. -->
+  <img src="./images/2.png" alt="징징이">
+
+  <h2>이미지에 링크걸기</h2> 
+
+  <!-- 외부이미지를 사용할 경우 http를 포함한 절대경로를 사용해야 한다. -->
+  <a href="http://koreavc.or.kr/" target="_blank">
+    <img src="./images/logo.png" alt="로고">
+  </a>
+
+  <h2>외부에 있는 이미지 가져오기</h2> 
+  <a href="http://ikosmo.co.kr/" target="_blank">
+    <img src="https://www.ikosmo.co.kr/html/_skin/img/common/logo.png" alt="한국직업전문학교">
+  </a>
+  
+  <br>
+
+  <img src="images/sherlock1.png" alt="" height="400">
+  <img src="images/sher.jpg" alt="" height="400">
+
+  <!--
+  이미지맵의 shape속성
+    rectangle => rect(사각형)
+    circle => circ(원)
+    polygon => poly(다각형) 이와 같이 줄여서 기술할 수 있다.
+  map의 name속성값과 img의 usemap의 속성값이 일치하는 경우 이미지를
+  지도처럼 나눠서 링크를 여러개 추가할 수 있다.
+  사각형과 원을 제외한 모든 도형은 다각형으로 표현한다.
+  좌표값은 윈도우 기본 프로그램인 그림판을 참조하면 된다.
+  -->
+  <h2>이미지맵 사용하기</h2> 
+  <img src="./images/Map01.png" alt="이미지맵 사용" usemap="#MyImage">
+
+	<map name="MyImage">
+    <!-- 사각형의 경우 좌상단, 우하단 꼭지점의 좌표값을 기술한다. -->
+		<area shape="rect" coords="72,127,173,229" 
+			href="https://www.tjoeun.co.kr" alt="더조은IT">
+    <!-- 원의 경우 중심점, 반지름을 기술한다. -->
+		<area shape="circ" coords="248,180,55" 
+			href="https://naver.com" alt="네이버">
+    <!-- 다각형은 모든 꼭지점을 하나씩 명시한다. -->
+		<area shape="poly" coords="373,129,303,236,439,228" 
+			href="https://daum.net" alt="다음">
+		<area shape="poly" coords="497,128,483,164,446,179,480,195,499,230,512,192,552,179,512,165" 
+			href="https://google.com" alt="구글">
+	</map>
+
+
+
+</body>
+</html>

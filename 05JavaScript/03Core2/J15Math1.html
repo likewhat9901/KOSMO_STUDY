@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Math()객체 : 수학관련 함수를 제공하는 객체. 
+            난수, 소수점처리, 삼각함수 등 
+        */
+        console.error("JS의 core객체 - Math");
+        
+        console.log("-10의 절대값 : "+ Math.abs(-10));
+        console.log("2의 3승:"+ Math.pow(2,3));
+        console.log("3.159의 반올림:"+ Math.round(3.159));
+        console.log("3.159의 올림:"+ Math.ceil(3.159));
+        console.log("3.159의 내림:"+ Math.floor(3.159));
+        
+        //0~1사이의 실수를 랜덤하게 생성 
+        console.log("난수발생1:"+ Math.random());
+        //범위를 지정하여 생성할때는 아래와 같은 수식을 응용 
+        console.log("난수발생2(1~10):"+parseInt((Math.random()*10)+1));
+        
+        console.log("최소값:"+ Math.min(1, 10, -100, -10, 1000, 0) );
+        console.log("최대값:"+ Math.max(1, 10, -100, -10, 1000, 0) );
+    </script>        
+</body>
+</html>

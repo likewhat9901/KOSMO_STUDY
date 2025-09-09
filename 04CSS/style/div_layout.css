@@ -1,0 +1,108 @@
+/* 전체선택자로 문서 전체의 패딩, 마진을 설정 */
+*{
+  margin: 0; padding: 0; font-family: Verdana;
+}
+/* 
+페이지 전체를 감싸는 div 태그로 블럭엘리먼트 자체를 가운데 정렬하기 위해
+margin속성을 사용한다.
+*/
+.AllWrap{
+  width: 90%; margin: 0 auto; text-align: center;
+}
+/* 헤더 부분에서는 기본정렬을 다시 left로 변경 */
+.header{
+  width: 100%; text-align: left;
+}
+/* 헤더 부분에 로고는 float 속성으로 좌측을 정렬 */
+.header .logo{
+  float: left; width: 20%; text-align: center;
+}
+/* 탑메뉴는 높이와 줄간격을 동일하게 설정하여 수직에서 가운데 정렬한다. */
+.header .top_menu{
+  text-align: right; height: 60px; line-height: 60px;
+}
+/* 블럭엘리먼트인 li 태그를 인라인 속성으로 변경한 후 우측 테두리와 패딩을 지정한다.
+  그러면 수평으로 정렬되고, 구분선이 생긴다. */
+.header .top_menu ul li{
+  display: inline; border-right: 1px solid gray; padding-right: 5px;
+}
+/* 메뉴 우측의 테두리는 제거한다. */
+.header .top_menu ul li:last-child{
+  border: none; margin: 0 20px 0 0;
+}
+a.top_link{
+  text-decoration: none; color: black;
+}
+a.top_link:hover{
+  text-decoration: underline; color: pink; font-weight: bold;
+}
+/* 클릭 시 */
+a.top_link:active{
+  color: red; background-color: yellow;
+}
+/* 방문이력 있을때 */
+a.top_link:visited{
+  color: blue;
+}
+/* GNB에서 사용한 float 속성을 파괴 */
+.body{
+  clear: both;
+}
+/* 좌측메뉴와 컨텐츠영역의 배치를 위해 float속성을 사용 */
+.body .left_menu{
+  float: left;
+  width: 20%;
+  text-align: left;
+}
+/* 좌측메뉴 영역에서 블릿 제거 */
+.body .left_menu ul{
+  list-style-type: none;
+  margin: 20px 0 0 20px;
+}
+.body .left_menu ul li{
+  padding: 3px;
+}
+/* 좌측메뉴 영역에 마우스를 올렸을때 박스 자체에 hover효과 적용 */
+.body .left_menu ul li:hover{
+  background-color: bisque;
+}
+a.left_link{
+  text-decoration: none; color: black;
+}
+a.left_link:hover{
+  text-decoration: underline; color: gray;
+  font-weight: normal;
+}
+a.left_link:active{
+  color: white; background-color: #000000;
+}
+a.left_link:visited{
+  color: blue;
+}
+/* box-sizing : 박스를 기본값으로 세팅한 크기를 유지할지 결정하는 속성으로
+  border-box로 설정하면 패딩과 보더를 모두 포함하여 설정한 크기대로 지정된다.
+  즉, 패딩과 보더가 박스 크기에 영향을 미치지 않는다. */
+.body .contents{
+  text-align: left; width: 80%; padding: 20px; float: left;
+  /* 이 부분 제거하면 컨텐츠 영역이 아래로 떨어짐. */
+  box-sizing: border-box;
+}
+.body .contents > h2{
+  padding-bottom: 20px;
+}
+.copyright{
+  clear: both; margin-top: 10px;
+}
+.copyright .copy_logo{
+  float: left; width: 20%; height: 100px;
+}
+.copyright .copy_info{
+  float: left; width: 70%; height: 100px; font-size: 14px;
+  text-align: center; padding-top: 7px;
+}
+
+
+
+
+
+

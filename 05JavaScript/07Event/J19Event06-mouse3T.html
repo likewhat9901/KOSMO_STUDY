@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  퀴즈] 아래 트럼프 이미지에 마우스를 
+    오버했을때 2.jpg로 교체한다. ⇒ mouseoverFunc()
+    아웃했을때 1.jpg로 교체한다. ⇒ mouseoutFunc()
+
+    다운했을때 이미지크기를 2배로 늘린다. ⇒ mousedownFunc()
+    업했을때 이미지크기를 원래대로 돌린다. ⇒ mouseupFunc()
+
+  오버와 아웃은 <img> 태그에 이벤트 리스너가 부착되어 있다. 
+  다운과 업은 getElementById()와 addEventListener()를 이용해서 구현한다. 
+  -->
+  <script>
+    // 일반함수로 정의
+    function mouseoverFunc(obj){
+      // img태그에서 this를 통해 DOM요소를 전달하므로 즉시 사용가능하다.
+      obj.src = './images/2.jpg';
+    }
+    // 익명함수로 정의
+    let mouseoutFunc = function(){
+      /* 태그명을 통해 DOM을 얻어오는 경우가 2개 이상일 수 있으므로 배열로 가져오게 된다.
+      따라서 인덱스를 통해 이미지를 특정해야 한다. */
+      document.getElementsByTagName("img")[0].src = './images/1.jpg';
+    }
+
+    let trumpImg;
+
+    window.onload = function(){
+      // 문서의 로드가 완료된 후 이미지의 DOM요소를 얻어온다.
+      trumpImg = document.getElementById("trumpImg");
+      // 이미지에 이벤트 추가.
+      trumpImg.addEventListener('mousedown', mousedownFunc);
+      trumpImg.addEventListener('mouseup', mouseupFunc);
+    }
+    // 화살표함수로 정의
+    const mousedownFunc = () => {
+      // 트럼프 이미지의 가로, 세로 크기를 DOM의 style을 통해 읽어온다.
+      let wSize = parseInt(trumpImg.style.width) * 2;
+      let hSize = parseInt(trumpImg.style.height) * 2;
+      // 이미지에 적용.
+      trumpImg.style.width = wSize + 'px';
+      trumpImg.style.height = hSize + 'px';
+    }
+    const mouseupFunc = () => {
+      let wSize = parseInt(trumpImg.style.width) / 2;
+      let hSize = parseInt(trumpImg.style.height) / 2;
+      // 이미지에 적용.
+      trumpImg.style.width = wSize + 'px';
+      trumpImg.style.height = hSize + 'px';
+    }
+  </script>
+  <h3>이미지에 마우스 이벤트 적용하기</h3>
+  <img src="./images/1.jpg" alt="하트" style="width:225px;height:313px;" 
+    onmouseover="mouseoverFunc(this);" onmouseout="mouseoutFunc();"
+    id="trumpImg" />
+
+</body>
+</html>

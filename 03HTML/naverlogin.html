@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #03c75a;
+    }
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 91.5%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-box input[type="submit"] {
+      width: 100%;
+      background-color: #03c75a;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-box input[type="submit"]:hover {
+      background-color: #02b14f;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .options a {
+      color: #555;
+      text-decoration: none;
+    }
+    .options a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>NAVER</h2>
+    <form action="#" method="post">
+      <input type="text" name="userid" placeholder="아이디">
+      <input type="password" name="password" placeholder="비밀번호">
+      <input type="submit" value="로그인">
+    </form>
+    <div class="options">
+      <a href="#">아이디 찾기</a>
+      <a href="#">비밀번호 찾기</a>
+      <a href="#">회원가입</a>
+    </div>
+  </div>
+</body>
+</html>

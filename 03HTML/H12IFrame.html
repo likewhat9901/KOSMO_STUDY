@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  iframe 태그 : Inline frame으로 페이지내에 또 다른 페이지를 삽입할 때 사용한다.
+    src : 프레임 안의 내용을 구성할 문서의 경로 혹은 URL이 삽입된다.
+    scrolling : 프레임의 내용에 따라 스크롤바 생성 여부를 결정한다.
+      속성값은 yes, no, auto가 있다.
+    ※ 인라인 엘리먼트로 가로형배치가 된다.
+  -->
+  <h4>iframe의 이름 : topWin</h4>
+  <!-- 상대경로로 내부 페이지를 iframe으로 포함한다. 스크롤바는 auto이므로
+    삽입된 페이지의 크기에 따라 자동으로 생성된다. -->
+  <iframe src="./iframe/innerFrame01.html" name="topWin" frameborder="1" scrolling="auto" 
+    width="500" height="500"></iframe>
+
+  <h2>iframe Bottom(하단)</h2>
+  <!-- 부모페이지에서 자식페이지로 링크를 걸때 target을 지정해야 한다면
+    프레임의 이름(name)을 사용하면된다. -->
+  <p>
+      <a href="http://daum.net" target="topWin">
+        topWin에서 이동함
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <!-- 만약 target에 지정한 프레임명이 없거나 잘못 기술되었다면
+        새탭에서 링크가 열리게 된다. -->
+      <a href="http://nate.com" target="innerWin01">
+        innerWin01에서 이동함
+      </a>
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>기본 Video 태그</h2>
+  <!-- 
+  controls속성 : 동영상을 플레이할 때 컨트롤바의 보임 여부를 지정하는 속성으로
+    볼륨, 프로그래스바, 전체화면보기 등의 버튼이 있다. 웹브라우저에 따라
+    조금씩 다르게 표현된다.
+  autoplay속성 : 자동재생 옵션. 하지만 현재는 사용자가 원할때만 재생되도록
+    하기위해 지원되지 않는다.
+  -->
+  <video src="media/video.mp4" autoplay controls
+    width="300" height="200">
+  </video>
+  해당브라우저가 video태그를 지원하지 않는 경우
+  <a href="media/video.mp4">여기</a>를 클릭하세요.
+
+  <!-- source : video의 하위태그로 웹브라우저는 모든 동영상 포맷을
+    지원하지 못하기 때문에 여러 항목 중 해당 브라우저가 지원하는 포맷의 파일을
+    찾아 플레이할 수 있도록 한다. 즉 미디어 파일을 여러개 설정할때 사용하는 태그이다. -->
+  <h2>video의 하위태그 source</h2>
+  <video autoplay controls width="300" height="200">
+
+    <source src="media/video.3gp">
+    <source src="media/video.mp4">
+
+    해당 브라우저가 video태그를 지원하지 않는 경우
+    <a href="media/video.mp4">여기</a>를 클릭하세요.
+  </video>
+  
+</body>
+</html>

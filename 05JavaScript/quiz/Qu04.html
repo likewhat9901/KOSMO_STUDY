@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.write("<h2>document.write()로 표만들기</h2><hr>");
+    let table = "";
+    
+    table += '<table border="1"><tr>';
+    table += "<th>n</th>";
+    for(let i=0 ; i<10 ; i++){
+      table += `<td>${i}</td>`;
+    }
+    table += "</tr>";
+
+    table += "<th>n<sup>2</sup></th>";
+    for(let i=0 ; i<10 ; i++){
+      table += `<td>${i*i}</td>`;
+    }
+    table += "</tr>";
+    table += "</table>";
+
+    document.writeln(table);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

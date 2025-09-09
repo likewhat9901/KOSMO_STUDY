@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Object(객체)</h2>
+  <script>
+    /* 객체선언1 : JS의 내장객체인 Object를 이용한다. 멤버함수는 일반적인 함수를
+    선언한 후 객체의 참조변수를 통해 등록하는 방식을 사용한다. */
+    console.error("방법1");
+    // 객체 생성
+    let person = new Object();
+    // 멤버변수 생성 및 초기화
+    person.name = "홍길동";
+    person.age = 10;
+    // 멤버함수 생성
+    function myInfo(){
+      // 멤버변수 접근 시 this 사용.
+      return `이름:${this.name}, 나이:${this.age}`;
+    }
+    // 멤버함수 등록. 소괄호는 생략함.
+    person.info = myInfo;
+    console.log(person.info());
+  </script>
+
+  <script>
+    /* 객체선언2 : 생성자를 이용한 선언. 멤버변수와 멤버함수에 반드시 this 추가해야 함. */
+    console.error("방법2");
+    let Account = function(owner, balance){
+      // 멤버변수
+      this.owner = owner;
+      this.balance = balance;
+      
+      // 멤버함수
+      this.accInfo = function(){
+        console.log(`예금주:${this.owner}, 잔고:${this.balance}`);
+      }
+    }
+    // 생성자를 통해 객체 생성 및 초기화
+    var account = new Account('손오공', 25000);
+    account.accInfo();
+  </script>
+
+  <script>
+    /* 객체선언3 : 리터럴 표기법을 이용한 선언.
+      리터럴 표기법은 정규화되지 않은 방법처럼 보이지만,
+      표현이 간소하고, 웹브라우저의 해석속도가 빠르다는 장점이 있다.
+      API 통신을 위한 JSON 객체를 표현할 때 주로 사용된다.
+    */
+    console.error("방법3");
+    const car = {
+      // 멤버변수
+      name : '테슬라',
+      price : 50000,
+      /* 멤버함수1 : 일반함수를 사용하면 객체 내에서 this를 통해 멤버변수 접근가능. */
+      carInfo1 : function(){
+        return `자동차명:${this.name}`;
+      },
+      /* 멤버함수2 : 화살표 함수에서는 this 사용하지 않음. this 대신 객체명 사용하여
+      멤버변수에 접근. */
+      carInfo2 : () => {
+        return `가격:${car.price}`;
+      }
+    };
+    console.log(car.carInfo1());
+    console.log(car.carInfo2());
+  </script>
+</body>
+</html>

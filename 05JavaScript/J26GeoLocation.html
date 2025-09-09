@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript">
+    /* 
+    geolocation : 위치정보 서비스로써 웹브라우저가 현재 위치의 위도, 경도를
+      JS에게 제공하는 서비스. PC, Mobile 모두 지원된다. */
+    var span;
+    window.onload = function(){
+      span = document.getElementById("result");
+      /* 
+      geolocation 객체를 통해 현재 접속한 웹브라우저의 지원여부를 확인한다.
+      지원되지 않는다면 false를 반환한다. */
+      if(navigator.geolocation){
+        span.innerHTML = "Geolocation API를 지원합니다.";
+        /* 
+        옵션설정 : 순서대로 정확도, 대기시간, 캐시된 위치값을 받을 시간을 설정한다.
+        maximumAge를 0으로 설정하면 항상 최신의 현재위치를 수집한다. */
+        var options = {
+          enableHighAccurcy : true,
+          timeout : 5000,
+          maximumAge : 3000
+        };
+        /* 
+        현재위치의 위/경도를 얻어오는 함수
+        showPosition : 위치 얻기에 성공했을때의 콜백함수
+        showError : 위치 얻기에 실패했을때의 콜백함수
+        options : 옵션
+         */
+        navigator.geolocation.getCurrentPosition(showPosition, showError, options);
+      }
+      else {
+        span.innerHTML = "이 브라우저는 Geolocation API를 지원하지 않습니다.";
+      }
+    }
+    var showPosition = function(position) {
+      // 위도
+      var latitude = position.coords.latitude;
+      // 경도
+      var longitude = position.coords.longitude;
+      // 웹브라우저에 삽입
+      span.innerHTML = "위도:" + latitude + ", 경도:" + longitude;
+      // input 태그에 삽입
+      document.getElementById("lat").value = latitude;
+      document.getElementById("lng").value = longitude;
+    }
+    var showError = function(error) {
+      switch(error.code) {
+        case error.UNKNOWN_ERROR:
+          span.innerHTML = "알수없는 오류발생"; break;
+        case error.PERMISSION_DENIED:
+          span.innerHTML = "권한이 없습니다"; break;
+        case error.POSITION_UNAVAILABLE:
+          span.innerHTML = "위치 확인불가"; break;
+        case error.TIMEOUT:
+          span.innerHTML = "시간초과"; break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Geolocation - 현재위치의 위도, 경도 알아내기</h2>
+  <fieldset>
+    <legend>현재위치 - 위도, 경도</legend>
+    <span id="result" style="color:red; font-size: 1.5em; font-weight: bold;"></span>
+  </fieldset>
+
+  위도 : <input type="text" id="lat">
+  경도 : <input type="text" id="lng">
+</body>
+</html>

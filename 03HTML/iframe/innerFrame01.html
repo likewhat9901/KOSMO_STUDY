@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>innerFrame01 페이지</h2>
+  <!-- 상위 부모페이지가 1개밖에 없을때는 _top, _parent는 동일한 페이지를
+    가리키게 된다. -->
+  <h4>창의이름 : innerWin01</h4>
+  <!-- 자식창에서 다시 iframe으로 자식페이지를 추가한다.
+    scrolling이 no이므로 내부 페이지의 크기에 상관없이 스크롤바가 생기지 않는다. -->
+  <iframe src="innerFrame02.html" name="innerWin01" 
+    width="300" height="200" frameborder="1" scrolling="no"></iframe>
+
+    <p>
+      <a href="http://daum.net" target="_self">
+        _self에서 이동함
+      </a>
+      <br>
+      <a href="http://daum.net" target="_parent">
+        _parent에서 이동함
+      </a>
+      <br>
+      <a href="http://daum.net" target="_top">
+        _top에서 이동함
+      </a>
+  </p>
+
+</body>
+</html>

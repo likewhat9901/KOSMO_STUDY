@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  form 태그 : 클라이언트가 입력한 값을 서버로 전송할 때 사용하는 태그로
+    하위태그에는 input, select, textarea, button이 있다.
+  input 태그
+    : form태그의 하위요소로 type속성에 따라 다양한 형태로 만들어져
+      사용자로부터 입력이나 선택을 받을 수 있는 태그이다.
+    -text : 한줄 입력상자. 줄바꿈은 할 수 없음.
+    -password : 패스워드 입력시 입력값이 hidden처리되어 노출되지 않음.
+    -checkbox : 여러 항목중 2개 이상의 값을 선택할 수 있음.
+    -radio : 여러 항목 중 1개만 선택할 수 있음.
+    -hidden : 웹브라우저에는 노출되지 않지만 입력된 값은 서버로 전송할 수
+      있는 입력상자로 기존의 값을 수정하거나 볼수는 없음.
+  -->
+  <h2>form태그의 하위요소가 되는 태그들</h2>
+  <h3>input 계열의 type="text"</h3>
+  <!-- 
+  size : 입력상자의 가로크기 설정
+  value : 미리 입력된 값을 설정하거나 사용자가 입력한 값을 가지는 속성
+  maxlength : 입력할 수 있는 문자의 최대길이 설정
+  disabled : 비활성화 하기 위한 속성으로 입력, 수정을 할 수 없다.
+    또한 서버로 값도 전송되지 않는다. 즉 출력용으로만 사용한다.
+  readonly : 값을 입력, 수정은 할 수 없지만 서버로 전송은 할 수 있다. -->
+  <form action="">
+    readonly속성 : 
+    <input type="text" name="userid" value="korea" readonly> <br>
+    기본텍스트상자 :
+    <input type="text" name="name" size="40" value=""> <br>
+    disabled속성 :
+    <input type="text" name="dis" value="속성추가" disabled> <br>
+    maxlength속성 :
+      <input type="text" name="jumin1" maxlength="6"> - 
+      <input type="password" name="jumin2" maxlength="7"> <br>
+    <input type="submit" value="전송하기">
+  </form>
+
+  <!-- 
+  <form> 태그에 action, method 속성을 부여하지 않으면 디폴트로
+    '현재페이지'와 'get'이 부여된다. 즉, 입력한 폼값이 현재페이지로 전송된다.
+  -->
+  <br><br>
+
+  <h3>input태그의 type속성 보기</h3>
+  <!-- 
+  form의 하위태그인 input을 통해 입력값을 서버로 전송하려면 반드시 name속성을 지정해야 한다.
+  현재 text,password 타입의 상자에는 name속성이 없는데 이경우 값이 서버로 전송되지 않는다. -->
+  <form action="">
+    text : <input type="text" size="6"> <br>
+    password : <input type="password" size="6"> <br>
+    checkbox : <input type="checkbox" name="ch" size="6"> <br>
+    radio : <input type="radio" name="ra" size="6"> <br>
+    hidden : 화면에 노출되지 않지만 값은 전송됨
+    <input type="hidden" name="hi" value="값이존재하고전송됨"> <br>
+    <input type="submit" value="전송하기">
+  </form>
+</body>
+</html>

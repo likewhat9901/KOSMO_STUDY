@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.writeln("<h2>숫자의 첫째자리와 마지막자리가 같은지 비교</h2><hr>");
+    
+    let num = prompt('숫자를 입력하세요.');
+    document.writeln(`${num}=>`);
+
+    const lastNum = num % 10;//숫자의 마지막자리 구함
+
+    //숫자의 첫번째자리 구하기 위한 while문   
+    while (num>=10) {
+        num = Math.floor(num / 10);//Math.floor(5678/10) = 567
+    }
+
+    if(lastNum === num){
+      document.writeln('처음과 끝이 같음');
+    } else {
+      document.writeln('처음과 끝이 다름');
+    }
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

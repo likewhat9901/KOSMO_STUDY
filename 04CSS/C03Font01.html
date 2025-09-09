@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      /* 기본폰트 사이즈를 지정하지 않으면 16px(12pt)가 기본사이즈가 된다.
+      이때 1em은 16px과 동일한 크기가 된다. 만약 아래와 같이 지정한다면
+      12px이 기본사이즈가 된다. */
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>기본상태의 텍스트 크기</h2>
+  <!-- 아래는 모두 동일한 크기로 출력된다. 기본폰트 사이즈를 지정하지 않으면
+    16px이 기본크기가 된다. -->
+  기본폰트<br>
+  <span style="font-size: 16px;">폰트크기16px</span>
+  <span style="font-size: 12px;">폰트크기12px</span>
+  <span style="font-size: 1em;">폰트크기1em</span>
+
+  <h2>텍스트를 2배로 확대</h2>
+  <span style="font-size: 32px;">폰트크기32px</span>
+  <span style="font-size: 24px;">폰트크기24px</span>
+  <span style="font-size: 2em;">폰트크기2em</span>
+
+  <h2>텍스트를 1/2로 축소하기</h2>
+  <span style="font-size: 8px;">폰트크기8px</span>
+  <span style="font-size: 6px;">폰트크기6px</span>
+  <span style="font-size: .5em;">폰트크기.5em</span>
+
+  <!-- 
+  font-size : 텍스트 크기
+  font-family : 글꼴(폰트) 지정 -->
+  <h3>텍스트 모양에 관련된 속성</h3>
+  <span style="font-size: 1.8em; font-family: HYPMokGak;">
+    텍스트크기, 글꼴 HYPMokGak
+  </span>
+  <br>
+  <span style="font-size: 1.8em; font-family: Bauhaus 93;">
+    텍스트크기, 글꼴 Bauhaus 93
+  </span>
+  <br>
+  <span style="font-size: 1.8em; font-family: d2coding;">
+    텍스트크기, 글꼴 d2coding
+  </span>
+
+  <!-- 
+  font-weight : 텍스트의 두께
+    bold : 두껍게
+    normal : 기본상태
+    lighter : 얇게
+  font-style : 텍스트 스타일 지정(이텔릭체 등)
+  -->
+  <h3>텍스트의 두께 및 스타일</h3>
+  <span style="font-weight: bold; font-style: italic;">
+    두껍게 씁니다. 그리고 이텔릭체로 표현할게요.
+  </span>
+
+  <h3>텍스트의 사이의 간격(자간)</h3>
+  <span style="letter-spacing: 1.5em; border: 1px solid red;">
+    더조은아이티아카데미
+  </span>
+
+  <h3>단어 사이의 간격</h3>
+  <span style="word-spacing: 2em; border: 1px solid red;">
+    더조은 아이티 아카데미
+  </span>
+</body>
+</html>

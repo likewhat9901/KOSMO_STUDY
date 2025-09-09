@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.writeln('<h2>정수 5개 입력받아 역순으로 출력</h2><hr>');
+
+    let arr = [];
+
+    document.writeln('입력된 수의 배열<br>');
+    for(let i=0 ; i<5 ; i++){
+      const int = prompt("정수를 입력하세요.");
+      arr.push(int);
+      document.writeln(int);
+    }
+    document.writeln('<hr>역순으로 재정렬된 배열<br>');
+
+    for(let i=0 ; i<arr.length ; i++){
+      document.writeln(arr[arr.length-i-1]);
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

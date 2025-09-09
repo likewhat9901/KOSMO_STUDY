@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    th, td{
+      border: 1px solid red;
+      width: 200px;  
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h3>웹접근성(웹표준)을 고려한 테이블 속성</h3>
+  <!-- 
+  테이블의 크기
+  -절대크기 : px(픽셀)로 지정한다. 크기가 변하지 않는다.
+  -상대크기 : %로 지정한다. 웹브라우저의 크기에 따라 상대적으로 크기가 조절된다.
+  ※ 해당크기는 이미지, 레이아웃도 동일하게 적용된다.
+  -->
+  <!-- 
+  summary: 테이블의 내용을 요약한다. 웹브라우저에서 출력되진 않지만
+    스크린 리더기를 통해 읽을 수 있다. -->
+  <table summary="회사 임직원들의 연봉표입니다.(테이블의 요약 설명)"
+    style="text-align: center; width: 50%; background-color: blue; 
+    border-spacing: 1px;" >
+    <!-- 테이블의 제목표시 -->
+    <caption>직원연봉표</caption>
+    <!-- 
+    td, th와 같은 태그에서는 실제 출력할 내용을 입력하는 부분이므로 스타일과 관련된 속성들을
+    colgroup에서 설정하는 것이 좋다.
+    와일드카드(*)를 사용하면 지정된 나머지의 전체사이즈를 의미한다. -->
+    <colgroup>
+      <col width="15%">
+      <col width="*">
+      <col width="30%">
+    </colgroup>
+    <!-- 
+    의미상 테이블의 타이틀, 본문, 요약정보 등을 표현하기 위해 thead, tbody, tfoot을 사용한다.
+    이런 태그들에 의해 테이블의 모양이 달라지진 않는다. -->
+    <thead>
+      <!-- tr태그에 스타일을 적용하면 하위태그인 td(th)에 일괄적으로 적용된다. -->
+      <tr style="background-color: white; height: 50px;">
+        <th>번호</th>
+        <th>이름</th>
+        <th>연봉</th>
+      </tr>
+    </thead>
+    <!-- 테이블에 주력으로 표현할 내용을 의미 -->
+    <tbody>
+      <tr style="background-color: white; height: 50px;">
+        <td>1</td>
+        <td>김길동</td>
+        <td>3000만원</td>
+      </tr>
+      <tr style="background-color: white; height: 50px;">
+        <td>2</td>
+        <td>박길동</td>
+        <td>5000만원</td>
+      </tr>
+    </tbody>
+    <!-- 결과가 요약된 정보들을 출력 -->
+    <tfoot>
+      <tr style="background-color: white; height: 50px;">
+        <th>총급여</th>
+        <td colspan="2">1억500만원</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <h2>테이블연습 - 오늘의 수입/지출</h2>
+  <table style="border: 1px solid red; border-collapse: collapse;">
+    <caption style="border: 1px solid red; background-color: yellow; text-align: left; 
+    border-bottom: 0px;">오늘의 수입/지출</caption>
+    <tr style="background-color: pink; font-size: 20px;">
+      <th>내용</th>
+      <th>수입</th>
+      <th>지출</th>
+    </tr>
+    <tr>
+      <td>월급</td>
+      <td>1,000,000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>점심값</td>
+      <td></td>
+      <td style="text-align: left;">8,000</td>
+    </tr>
+    <tr>
+      <td>부모님선물</td>
+      <td></td>
+      <td style="text-align: left;">100,000</td>
+    </tr>
+    <tr>
+      <td rowspan="3" style="background-color: pink;"><b>총계</b></td>
+      <td style="text-align: left;">수입</td>
+      <td style="text-align: left;">지출</td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">1,000,000</td>
+      <td style="text-align: left;">108,000</td>
+    </tr>
+    <tr>
+      <td style="text-align: left;">남은돈</td>
+      <td style="text-align: left;">892,000</td>
+    </tr>
+  </table>
+
+  <br><br>
+  <table style="border-collapse: collapse; border: 1px solid;">
+    <caption style="background-color: yellow;">오늘의 수입/지출</caption>
+    <thead>
+      <tr style="background-color: pink; font-size: large;">
+        <th>내용</th>
+        <th>수입</th>
+        <th>지출</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>월급</td>
+        <td>1,000,000</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>점심값</td>
+        <td></td>
+        <td>8,000</td>
+      </tr>     
+        <td>부모님선물</td>
+        <td></td>
+        <td>100,000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td rowspan="3">총계</td>
+        <td>수입</td>
+        <td>지출</td>
+      </tr>
+      <tr>
+        <td>1,000,000</td>
+        <td>108,000</td>
+      </tr>
+      <tr>
+        <td>남은돈</td>
+        <td>892,000</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>스프레드 연산자(Spread operator)</h2>
+  <script>
+    /* 함수에서 스프레드 연산자 사용하기
+    - Rest Parameter : 함수를 호출할때 매개변수를 스프레드 연산자로 작성한
+      형태로, 전달되는 모든 인수를 한꺼번에 받아 '배열'로 저장한다. */
+    function add(...rest) {
+      let sum = 0;
+      // 전달된 인수의 개수만큼 반복해서 누적합 계산
+      for (let item of rest) {
+        sum += item;
+      }
+      return sum;
+    }
+    console.log('결과1-1', add(1)); // 1
+    console.log('결과1-2', add(1,2)); // 3
+    console.log('결과1-3', add(1,2,3)); //6
+
+    /* 
+    일반 매개변수와 혼용해서 사용할 수 있다. 단, Rest 파라미터는 반드시
+    제일 마지막에 위치해야 한다. 매개변수의 위치를 변경하면 즉시 에러가 발생. */
+    let addMul = (method, ...rest) => {
+      if (method==='add'){
+        let sum = 0;
+        // 누적합을 계산해서 반환.
+        for (let item of rest){
+          sum += item;
+        }
+        return sum;
+      }
+      else if (method === 'multiply'){
+        let mul = 1;
+        // 누적곱을 계산해서 반환.
+        for (let item of rest) {
+          mul *= item;
+        }
+        return mul;
+      }
+    }
+    console.log('결과2-1', addMul('add', 1,2,3,4)); //10
+    console.log('결과2-2', addMul('multiply', 1,2,3,4)); //24
+  </script>
+</body>
+</html>

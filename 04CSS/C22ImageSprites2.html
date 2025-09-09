@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>    
+    li#Trump{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: absolute;
+        top: 0;
+    }
+    li#Trump a{
+        width:82px;height:118px;
+        display:block;
+    }
+    li#Trump {
+        position: relative;
+        width:82px;height:118px;
+        background: url('images/trump.gif') -971px 0;
+    }
+    li#Trump a:hover{        
+        background: url('images/trump.gif') -404px 0;
+    }
+    li#Trump a:active{ 
+      background: url('images/trump.gif') -890px 0;
+    }
+    </style>
+    <!--
+    연습문제] 이미지 스프라이트 기능을 이용해서 다음과 같은 효과를 만드시오.
+        -기본상태 : A
+        -마우스오버 : 7
+        -마우스클릭 : K
+    하트, 다이아몬드, 스페이드, 클로바 중 하나를 선택한 후 작성하면 됩니다.
+    -->
+    <div>
+        <li id="Trump"><a href="#"></a></li>
+    </div>
+</body>
+</html>

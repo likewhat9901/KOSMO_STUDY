@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.writeln('<h2>특수기호를 인자갯수만큼 출력하기</h2>');
+    document.writeln('<hr>'); 
+    function pr(str, repeat){
+      for(let i=0 ; i<repeat ; i++){
+        document.write(str);
+      }
+      document.write('<br>');
+    }
+    pr('%', 5);
+    pr('*', 10);
+    pr('#', 15);
+  </script>
+</head>
+<body>
+  <br><br><br>
+  <h2>특수기호를 인자갯수만큼 출력하기</h2>
+  <hr>
+  <div id="output"></div> <!-- 결과를 출력할 영역 -->
+
+  <script>
+    function pr(str, repeat) {
+      const output = document.getElementById("output"); // 출력 영역을 가져옴
+      let line = "";
+      for(let i = 0; i < repeat; i++) {
+        line += str; // str을 repeat만큼 이어 붙이기
+      }
+      const p = document.createElement("p"); // <p> 태그를 새로 만듦
+      p.textContent = line; // <p> 태그 안에 문자 넣기
+      output.appendChild(p); // 출력 영역에 <p> 추가
+    }
+
+    // 함수 호출 예시
+    pr('%', 5);   // %%%%%
+    pr('*', 10);  // **********
+    pr('#', 15);  // ###############
+  </script>
+</body>
+</html>

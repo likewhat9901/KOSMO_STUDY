@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const products = [
+      { name: 'apple', category: 'fruit' },
+      { name: 'notebook', category: 'electronics' },
+      { name: 'banana', category: 'fruit' },
+      { name: 'mouse', category: 'electronics' }
+    ];
+
+    document.writeln('<h2>문자열 배열 목록</h2><hr>');
+    products.forEach(
+      arr => {
+        document.writeln(`이름: ${arr.name}, 종류: ${arr.category}<br>`);
+      }
+    );
+
+    const fruits = products.filter(
+      arr => {
+        return arr.category == 'fruit';
+      }
+    );
+    document.writeln("<h2>'fruit' 카테고리의 상품목록</h2><hr>");
+    fruits.forEach(
+      arr => {
+        document.writeln(`이름: ${arr.name}, 종류: ${arr.category}<br>`);
+      }
+    );
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

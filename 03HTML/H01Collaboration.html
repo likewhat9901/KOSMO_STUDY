@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5+CSS3+JavaScript</title>
+  <!-- HTML문서에 CSS선언. 문서내의 여러 컨텐츠에 스타일을 지정할 수 있다. -->
+  <style>
+    body {
+      background-color: linen; color: green;
+    }
+    h2 {
+      text-align: center; color: darkred; 
+    }
+    hr {
+      height: 5px; border: solid grey; background-color: grey;
+    }
+    span {
+      color: red; font-size: 20px; 
+    }
+  </style>
+  <!-- 문서에 JavaScript를 선언할 때 사용한다. 텍스트나 이미지와 같은 요소에 
+   동적인 효과를 부여한다. -->
+  <script>
+    function show() {
+      //id속성값이 singer인 요소에 이미지를 지정한다.
+      document.getElementById('singer').src = './images/ElvisPresley.png';
+    }
+    function hide() {
+      //이미지를 제거한다.
+      document.getElementById('singer').src = '';
+    }
+  </script>
+</head>
+<body>
+  <!-- 제목에 마우스를 올리면 show()함수를 호출하고, 마우스를 내리면
+   hide()함수를 호출해서 이미지를 보임/숨김 처리한다. -->
+  <h2 onmouseover="show();" onmouseout="hide();">엘비스 프레슬리</h2>
+  <hr>
+  <div class="">
+    <img src="./images/banana.png" id="singer">
+  </div>
+  그는 미국의 가수이자 배우였습니다.
+  영화 <span>러브미텐더</span>로 데뷔했습니다. 
+  그는 <span>"로큰롤의 왕"</span>으로 불립니다. 
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 아이템의 개별 속성을 조정(order, flex-grow, align-self)
+    각 아이템마다 개별적으로 정렬순서, 크기비율, 정렬위치를 다르게 지정할 수 있다. */
+    .container{
+      display: flex;
+      /* 컨테이너 내부 아이템 교차축 기준 중앙정렬 */
+      align-items: center;
+      height: 100px;
+      border: 2px solid #333;
+      padding: 10px;
+    }
+    .item{
+      width: 60px;
+      height: 60px;
+      background-color: lightsteelblue;
+      margin: 5px;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+    }
+    .grow{
+      /* 아이템을 가로로 확장. 남은 공간을 다 채움. 비율임.
+        0은 기본크기 유지. 1이면 확장. 1:2:1 이면 25:50:25*/
+      flex-grow: 1;
+      background-color: rebeccapurple;
+    }
+    .order1{
+      /* 순서 결정. 높을수록 뒤로. 기본은 0 */
+      order: 2;
+      /* align-self를 이용하면 개별적인 정렬가능 */
+      align-self: flex-end;
+      background-color: deepskyblue;
+    }
+    .order2{
+      order: 1;
+      align-self: flex-end;
+      background-color: saddlebrown;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flexbox-아이템 확장 및 배치</h2>
+  <div class="container">
+    <div class="item">A</div>
+    <div class="item grow">B</div>
+    <div class="item order1">C</div>
+    <div class="item order2">D</div>
+    <div class="item">E</div>
+  </div>
+</body>
+</html>

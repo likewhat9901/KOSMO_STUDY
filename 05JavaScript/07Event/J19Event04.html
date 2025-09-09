@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* div태그에 스타일 설정 */
+    #myBox{
+      background-color: aquamarine;
+      padding: 10px; text-align: center;
+      width: 250px; height: 50px; line-height: 25px;
+    }
+  </style>
+  <script>
+    // 전역변수 생성
+    let globalNum = 0;
+    let mBox;
+    // load 이벤트 리스너를 통해 문서의 로드가 끝난 후 익명함수 호출
+    window.onload = function(){
+      // DOM(id: myBox) 요소 얻어옴.
+      mBox = document.getElementById("myBox");
+      // DOM 요소에 click 이벤트 리스너를 부착 후 함수 연결.
+      // 함수연결 시 소괄호를 제거해야 한다.
+      mBox.onclick = clickFunc; // => 함수 자체를 연결(참조)
+      // mBox.onclick = clickFunc(); => 함수를 즉시 실행하고, 반환값을 연결.
+      /* contextmenu 이벤트는 마우스 우클릭 시 발생된다. 이때도 함수는 소괄호를
+      제거해야 한다. */
+      mBox.addEventListener("contextmenu", rClickFunc);
+    }
+    // 마우스 (좌)클릭시 실행할 함수 정의
+    function clickFunc(){
+      mBox.innerText = globalNum++;
+      mBox.style.color = 'red';
+      mBox.style.fontSize = "1.8em";
+    }
+    // 마우스 우클릭시 실행할 함수
+    function rClickFunc(){
+      // 우클릭시 나오는 컨텍스트메뉴(팝업메뉴)를 차단한다.
+      event.preventDefault();
+      mBox.innerText = globalNum--;
+      mBox.style.color = 'blue';
+      mBox.style.fontSize = "1.2em";
+    }
+  </script>
+</head>
+<body>
+  <h2>이벤트 - load 네번째</h2>
+  <div id="myBox" style="cursor: pointer;">
+    좌클릭하면 숫자가 증가<br>
+    우클릭하면 숫자가 감소
+  </div>
+</body>
+</html>

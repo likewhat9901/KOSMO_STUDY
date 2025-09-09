@@ -1,0 +1,49 @@
+/* AccountImportPage.module.css */
+.container {
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+
+}
+
+.title span {
+  margin-left: 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+.nav a{
+  text-decoration: none;
+  padding: 8px 14px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  color: #333;
+  font-size: 1.6rem;
+  transition: background 0.2s ease;
+}
+.nav a:hover {
+  background: #dbeafe;
+}
+
+.uploadSection {
+  border: 2px dashed #ccc;
+  padding: 2rem;
+  text-align: center;
+  background: #fafafa;
+}
+
+.resultSection {
+  margin-top: 2rem;
+}
+

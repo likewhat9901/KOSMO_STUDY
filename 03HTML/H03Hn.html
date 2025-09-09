@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* h1, h2는 태그선택자로 테두리에 대한 설정을 하고 있다. */
+    h1 { border: 5px solid red; }
+    h2 { border: 2px solid green; }
+    /* #은 아이디선택자로 id로 부여한 엘리먼트를 선택한다. 텍스트 컬러를 지정했다. */
+    #mySpan1 { color: blueviolet;}
+    /* .은 클래스선택자로 class로 부여한 엘리먼트를 선택한다. 텍스트의 두께와 사이즈를 지정했다. */
+    .mySpan2 { font-weight: bold; font-size: 25px;}
+    
+  </style>
+</head>
+<body>
+  <!-- 
+  Hn태그
+  - 제목(헤드라인)을 표시할때 사용하는 태그
+  - 블럭엘리먼트(Block element)로 세로형 배치가 된다.
+  - 컨텐츠의 크기에 상관없이 무조건 하나의 블럭을 차지한다.
+  - h1~6까지 있고 숫자가 작을수록 텍스트를 크게 표현한다.
+  -->
+  <h1>블럭 엘리먼트1</h1>
+
+  <!-- 
+  span태그
+  - 대표적인 인라인 엘리먼트(Inline element)로 가로형 배치가 된다
+  - 별도의 마크업 기능이 없어, 주로 id, class속성을 부여한 후 CSS에서 스타일을 부여한다. 
+  -->
+  <span>인라인 엘리먼트1</span>
+  <span>인라인 엘리먼트2</span>
+  <span>인라인 엘리먼트3</span>
+  <span id="mySpan1">인라인 엘리먼트4</span>
+  <span class="mySpan2">인라인 엘리먼트5</span>
+
+  <hr>
+
+  <!-- 
+  박스모델의 테두리의 스타일을 지정하는 border에는
+    solid : 직선
+    dotted : 점선
+    double : 이중실선
+  두께는 px(픽셀) 단위로 주로 표현한다.
+  -->
+  <h1 title="title 속성으로 툴팁을 출력합니다.">제목1입니다.</h1>
+  <h2>제목2입니다.</h2>
+  <h3 style="border: 1px dotted purple;">제목3입니다.</h3>
+  <h4 style="text-align: right;">제목4입니다.</h4> 
+  <h5 style="text-align: center;">제목5입니다.</h5>
+  <h6 style="border: 2px double black; width: 500px; height: 300px;
+    background: yellow;">제목6입니다.</h6>
+
+</body>
+</html>

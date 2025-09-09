@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fnGetElementsByName() {
+      // input 태그의 name 속성을 통해 DOM을 얻어온다.
+      var names = document.getElementsByName("inter"); // 유사배열
+      /* checkbox를
+        체크할때는 true 혹은 checked를 사용
+        언체크할때는 false 혹은 null을 사용  
+      */
+      for(var i=0 ; i<names.length ; i++){
+        if(names[i].checked == true){
+          // names[i].checked = null;
+          // 체크가 된 상태라면 언체크한다.
+          names[i].checked = false;
+        }
+        else if(naems[i].checked == false){
+          // 언체크된 상태라면 체크로 변경한다.
+          // names[i].checked = "checked";
+          names[i].checked = true;
+        }
+      }
+    }
+
+    function fnGetElementsClass(){
+      // class명을 통해 DOM을 얻어온 후 배열변수에 저장
+      var portals = document.getElementsByClassName("portal");
+      /* 
+      innerHTML : 시작태그와 종료태그 사이의 컨텐츠를 읽어오거나 설정할때 사용하는 속성으로
+        HTML의 마크업 기능까지 함께 부여할 수 있다. 순수한 Text만 사용하고 싶다면
+        innerText속성을 사용하면 된다.
+      */
+      for(var i=0 ; i<portals.length ; i++){
+        alert(portals[i].innerHTML);
+      }
+    }
+  </script>
+
+  <h3>이름으로 얻어오기</h3>
+  <input type="checkbox" name="inter" value="POL" checked="checked">정치
+  <input type="checkbox" name="inter" value="ECO">경제
+  <input type="checkbox" name="inter" value="ENT" checked="checked">연예
+  <input type="button" value="name속성에 지정한 값으로 DOM객체 얻기"
+    onclick="fnGetElementsByName();">
+
+  <h2>클래스명으로 객체얻기</h2>
+  <ul>
+    <li><a href="#" class="portal">네<b>이</b>버</a></li>
+    <li><a href="#" class="portal">다음</a></li>
+    <li><a href="#" class="portal">네이트</a></li>
+  </ul>
+  <button onclick="fnGetElementsClass();">
+    클래스명으로 DOM객체 얻어오기
+  </button>
+
+  <script>
+    function fnChangeImg(imgNum){
+      // id속성을 통해 img태그의 DOM을 얻어온다.
+      var img_tag = document.getElementById("trump");
+      // img 태그의 src속성값을 지정한다.
+      img_tag.src = "../images/"+ imgNum +".jpg";
+      // 가로크기 지정
+      img_tag.width = parseInt(imgNum * 50);
+    }
+  </script>
+
+  <h2>동적으로 이미지 교체하기(ID로 DOM객체얻기)</h2>
+  <fieldset>
+    <legend>이미지 동적교체</legend>
+    <!-- 
+    a태그에서 JS함수를 호출하는 경우에는
+      href속성 : 'javascript:함수명'과 같이 작성해야 한다.
+      이벤트핸들러 : JS함수를 호출하는게 목적이므로 javascript: 을
+        생략해도 된다.
+    -->
+    <a href="#" onclick="fnChangeImg(1);">1번이미지</a>
+    <a href="fnChangeImg(2);">2번이미지(오류)</a>
+    <a href="javascript:fnChangeImg(3);">3번이미지</a>
+    <a href="javascript:fnChangeImg(4);">4번이미지</a>
+    <a href="javascript:fnChangeImg(5);">5번이미지</a>
+    <a href="javascript:fnChangeImg(6);">6번이미지</a>
+    <a href="javascript:fnChangeImg(7);">7번이미지</a>
+    <a href="javascript:fnChangeImg(8);">8번이미지</a>
+    <a href="javascript:fnChangeImg(9);">9번이미지</a>
+    <a href="javascript:fnChangeImg(10);">10번이미지</a>
+    <hr>
+    <img id="trump" src="" width="100" alt="이미지교체하기">
+  </fieldset>
+</body>
+</html>

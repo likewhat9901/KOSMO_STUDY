@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex; justify-content: center;
+    }
+    table{
+      border-spacing: 5px; border-radius: 10px;
+      background-color: #DDDDDD;
+    }
+    th, td{
+      padding: 7px; border-radius: 10px;
+    }
+    th{
+      padding: 10px; font-size: 25px; text-align: right; 
+      background-color: #70C738;
+    }
+    caption{
+      margin-bottom: 10px; line-height: 30px;
+      font-size: 20px; font-weight: bold;
+    }
+    td{
+      width: 60px; color: white; text-align: center;
+      background-color: #373737;
+    }
+    td:hover{
+      opacity: 0.5; cursor: pointer;
+    }
+    td:nth-child(4){
+      background-color: #FA960A;
+    }
+    .function td{
+      background-color: gray;
+    }
+  </style>
+  <script>
+    window.addEventListener("load", () => {
+      /* 계산기 화면 */
+      const screen = document.getElementById("screen");
+      // 계산식 저장 Str
+      let CalculStr = "";
+      let screenStr = "";
+
+      /* 숫자 버튼 */
+      const numBt_list = document.querySelectorAll(".numberBt");
+      const numBt_func = function(obj){
+        // if(screenStr!="") return;
+
+        // 내가 누른값 가져오기
+        const number = obj.dataset.value;
+
+        CalculStr += number;
+        screenStr += number;
+        // 보여주는건 숫자만
+        screen.textContent = screenStr;
+        console.log(CalculStr);
+      };
+      // click 이벤트 input버튼마다 적용
+      numBt_list.forEach(e => {
+        e.addEventListener("click", function(){
+          numBt_func(e);
+        });
+      });
+
+      /* . 버튼 */
+      const dotBt = document.querySelector(".dotBt");
+      dotBt.addEventListener("click", function(e){
+        const dot = e.target.dataset.value;
+        const lastNumber = CalculStr.split(/[\+\-\*\/]/).pop();
+
+        if (lastNumber.includes(".")) return;
+
+        const lastStr = CalculStr.charAt(CalculStr.length - 1);
+        if (["+", "-", "*", "/", ""].includes(lastStr)) {
+          CalculStr += "0" + dot;
+          screenStr += "0" + dot;
+        } else {
+          CalculStr += dot;
+          screenStr += dot;
+        };
+
+        screen.textContent = screenStr;
+        console.log(CalculStr);
+      });
+
+      /* 연산자 버튼 */
+      const operator_list = document.querySelectorAll(".operatorBt");
+      const optBt_func = function(obj){
+        const operator = obj.dataset.value;
+
+        if(CalculStr == ""){
+            return;
+        }
+
+        const calculateBt_list = ["+", "-", "*", "/"];
+        const lastStr = CalculStr[CalculStr.length-1];
+
+        if(calculateBt_list.includes(lastStr)){
+            CalculStr = CalculStr.substring(0, CalculStr.length-1);
+        }
+        
+        CalculStr += operator;
+        screenStr = "";
+        console.log(CalculStr);
+      }
+      operator_list.forEach(e => {
+        e.addEventListener("click", function(){
+          optBt_func(e);
+        });
+      });
+
+      /* = 버튼 */
+      const resultBt = document.querySelector(".resultBt");
+      resultBt.addEventListener("click", () => {
+        let result;
+        try {
+          result = eval(CalculStr);
+
+          if(result == null){
+            screen.textContent = 0;
+            console.log(CalculStr);
+            return;
+          }
+          CalculStr = String(result);
+
+          screenStr = result.toFixed(4);
+          screen.textContent = screenStr;
+          console.log(CalculStr);
+        } catch (error) {
+          result = null;
+          console.log("result에러발생");
+        }
+      });
+
+      /* Backspace 버튼 */
+      const backBt = document.querySelector(".backspace");
+      backBt.addEventListener("click", ()=>{
+        if(screenStr.length <= 1){
+          reset();
+          return;
+        }
+        CalculStr = CalculStr.substring(0, CalculStr.length-1);
+        screenStr = screenStr.substring(0, screenStr.length-1);
+        screen.textContent = screenStr;
+        console.log(CalculStr);
+      })
+
+      /* C 버튼 */
+      const resetBt = document.querySelector(".reset");
+      // 계산문자열, 스크린문자열, 스크린 0으로 만들기
+      function reset(){
+        CalculStr = "";
+        screenStr = "";
+        screen.textContent = 0;
+        console.log(CalculStr);
+      }
+      resetBt.addEventListener("click", reset);
+
+    });
+
+  </script>
+</head>
+<body>
+  <table>
+    <caption>계산기 Ver1.0</caption>
+    <thead>
+      <tr>
+        <th colspan="4" id="screen">0</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="function">
+        <td colspan="2" class="backspace">BackSpace</td>
+        <td colspan="2" class="reset">C</td>
+      </tr>
+      <tr>
+        <td class="numberBt" data-value="1">1</td>
+        <td class="numberBt" data-value="2">2</td>
+        <td class="numberBt" data-value="3">3</td>
+        <td class="operatorBt" data-value="+">＋</td>
+      </tr>
+      <tr>
+        <td class="numberBt" data-value="4">4</td>
+        <td class="numberBt" data-value="5">5</td>
+        <td class="numberBt" data-value="6">6</td>
+        <td class="operatorBt" data-value="-">－</td>
+      </tr>
+      <tr>
+        <td class="numberBt" data-value="7">7</td>
+        <td class="numberBt" data-value="8">8</td>
+        <td class="numberBt" data-value="9">9</td>
+        <td class="operatorBt" data-value="*">×</td>
+      </tr>
+      <tr>
+        <td class="resultBt">=</td>
+        <td class="numberBt" data-value="0">0</td>
+        <td class="dotBt" data-value=".">.</td>
+        <td class="operatorBt" data-value="/">÷</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

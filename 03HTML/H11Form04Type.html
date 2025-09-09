@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>form태그의 하위요소가 되는 태그들</h2>
+  <h3>type="file"</h3>
+  <!-- 파일을 선택해서 서버로 전송하기 위한 속성으로 텍스트 형식이 아닌
+    바이너리(이진파일) 형식으로 전송된다. 따라서 value속성은 의미가 없으므로
+    사용하지 않는다. -->
+  기본: <input type="file" name="userfile1">
+  <br>
+  <!-- accept 속성으로 선택할 파일의 확장자를 제한할 수 있다. -->
+  accept속성추가 :
+  <input type="file" name="userfile2" accept=".gif,.jpg">
+
+  <script>
+    function textAreaInput(){
+      //경고창을 띄운다.
+      alert('버튼이 눌러졌습니다.');
+      //HTML문서 내에 intro라는 id를 가진 엘리먼트(요소)를 선택해서
+      //value를 얻어옴.
+      var a = document.getElementById('intro').value;
+      //얻어온 값을 변수에 저장한 후 콘솔에 출력한다.
+      console.log('텍스트에어리어', a);
+    }
+  </script>
+
+  <!-- textarea태그는 2줄 이상의 긴 글을 입력할때 사용한다.
+    input, select태그와는 다르게 value속성을 별도로 가지고 있지 않다.
+    태그 사이에 입력한 내용이 value가 되므로, 작성시 불필요한 줄바꿈 등은
+    하지 않아야 한다.
+    단, JavaScript에서 해당 내용에 접근하기 위해서는 value속성을 사용해야 한다. -->
+  <h3>textarea태그</h3>
+  <!-- 텍스트에어리어는 반드시 한줄로 입력하세요. 줄바꿈해서 정렬하지 않습니다. -->
+  <textarea name="intro" id="intro" cols="70" rows="5">내용은 여기에 입력됩니다.</textarea>
+  <!-- 해당버튼을 클릭하면 JavaScript로 정의한 함수를 호출한다. -->
+  <input type="button" value="내용변경" onclick="textAreaInput();">
+  
+  <!-- 
+  hidden타입의 박스는 웹브라우저에서는 노출되지 않지만 서버로 전송은 되야하는
+  경우에 사용한다. 상품이나 게시물의 일려번호 등을 주로 hidden에 저장한다. -->
+  <h3>type="hidden"</h3>
+  <form action="">
+    <input type="hidden" name="member_id" value="kosmo">
+    <input type="submit" value="hidden값 전송하기">
+  </form>
+
+</body>
+</html>

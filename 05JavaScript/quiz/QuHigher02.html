@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const users = [
+      { name: 'Alice', age: 30 },
+      { name: 'Bob', age: 25 },
+      { name: 'Charlie', age: 35 }
+    ];
+
+    document.writeln('<h2>나이가 30 이상인 새로운 배열 만들기</h2><hr>');
+
+    const thirtys = users.filter(
+      (arr) => {
+        return arr.age >= 30;
+      }
+    );
+
+    thirtys.forEach(user => {
+      document.writeln(`이름: ${user.name}, 나이: ${user.age}<br>`);
+    }
+    );
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

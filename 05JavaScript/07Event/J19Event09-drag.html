@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .dropTarget {
+        float: left; width: 200px; height: 100px; margin: 15px; 
+        padding: 10px; border: 2px solid #aaaaaa;
+    }
+    </style>
+</head>
+<body>
+    <h2>드레그 이벤트</h2>
+
+    <h3>드레그 앤 드롭</h3>
+    <script>
+    /*
+    DataTransfer객체
+    : 드래그 앤 드롭 이벤트를 위한 모든 이벤트리스너 함수는 DataTransfer객체를 
+    반환한다. 이렇게 반환된 객체는 드래그 앤 드롭 동작에 대한 정보를 가지고있다.
+
+    setData(format, data) : 매개변수 format은 포맷문자열, data는 설정값을
+        지정한다. 
+    getData(format) : 포맷문자열에 해당하는 전송 데이터를 반환한다. 
+    */
+
+    //축구공을 드레그할때 호출 
+    function myDragStart(event) {
+        //event객체의 target속성을 통해 아이디를 얻어온다. 
+        console.log(event.target.id);
+        //축구공의 아이디를 soccerBall로 지정한다. 
+        event.dataTransfer.setData("soccerBall", event.target.id);
+    }
+    function myDrag(event) {
+        document.getElementById("demo").innerHTML = "드레그 시작";
+    }
+    function myDragOver(event) {
+        event.preventDefault();
+    }
+    //양쪽의 div박스에 축구공을 놓을때 발생 
+    function myDrop(event) {
+        event.preventDefault();
+        //getData()를 통해 축구공을 가져온다. 
+        var data = event.dataTransfer.getData("soccerBall");
+        //div박스에 해당 축구공의 DOM을 append(추가) 한다. 
+        event.target.appendChild(document.getElementById(data));
+        document.getElementById("demo").innerHTML = "드레그 완료";
+    }
+    //div박스에 축구공이 들어왔을때 호출 
+    function myDragEnter(event) {
+        //이벤트객체의 클래스명을 얻어와서 비교후 일치하면 
+        if ( event.target.className == "dropTarget" ) {
+            //해당 영역의 테두리를 3px 점선으로 설정 
+            event.target.style.border = "3px dotted red";
+            document.getElementById("demo2").innerHTML = "영역으로 진입";
+        }
+    }
+    //div영역에서 축구공이 빠져나갔을때 호출 
+    function myDragLeave(event) {
+        if ( event.target.className == "dropTarget" ) {
+            //해당 영역의 테두리를 원래 상태로 되돌린다. 
+            event.target.style.border = "";
+            document.getElementById("demo2").innerHTML = "영역을 벗어남";
+        }
+    }
+    </script>
+
+    <!--   
+    HTML에서 드레그 이벤트가 발생하게 하려면 엘리먼트에 draggable=true를
+    먼저 부여해야한다. 
+    드레그&드롭 시 발생하는 이벤트
+        -drop : (필수) 드레드하던 객체를 놓는 장소에서 발생
+        -dragover : (필수) 드레그하면서 마우스가 대상 객체의 영역위에 있을때 발생
+        -dragenter : 마우스가 대상 객체위로 처음 진입시에 발생
+        -dragleave : 드레그가 끝나서 마우스가 대상 객체의 영역위를 벗어날때 발생
+        -dragstart : 사용자가 객체를 드레그 하려고 시작할때 발생
+        -drag : 대상 객체를 드레그하면서 마우스를 움직일때 발생 
+    -->
+    <div class="dropTarget" 
+        ondrop="myDrop(event)" 
+        ondragover="myDragOver(event)" 
+        ondragenter="myDragEnter(event)" 
+        ondragleave="myDragLeave(event)">
+        <img src="./images/ball.svg" ondragstart="myDragStart(event)" 
+            ondrag="myDrag(event)" draggable="true" id="targetBall">
+    </div>    
+    <div class="dropTarget" 
+        ondrop="myDrop(event)" 
+        ondragover="myDragOver(event)"
+        ondragenter="myDragEnter(event)" 
+        ondragleave="myDragLeave(event)"></div>
+    <p style="clear:both;" id="demo"></p>
+    <p style="clear:both;" id="demo2"></p>
+</body>
+</html>

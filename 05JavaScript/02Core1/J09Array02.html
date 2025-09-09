@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 크기 지정없이 배열선언(전역변수)
+    let studentArray = new Array();
+
+    let getAverage = function(){
+      // 사용자가 입력한 학생수를 얻어옴
+      let countOfStudent = document.getElementById("numOfStudent").value;
+      let total = 0;
+      for(let i=0 ; i<countOfStudent ; i++){
+        // 학생 수만큼 반복해서 점수를 입력받음.
+        studentArray[i] =
+          parseInt(prompt(i+1 + "번째 학생점수", "77"));
+        // 배열에 저장된 점수를 total에 누적해서 합산한다.
+        total += studentArray[i];
+      }
+      
+      // 평균
+      let average = total / countOfStudent;
+      // 점수와 총합, 평균을 문자열로 연결
+      let stringResult = "";
+      for(let i=0 ; i<countOfStudent ; i++){
+        stringResult += (i+1) + "번째학생의 점수: "+ studentArray[i] +"\r\n";
+      }
+      stringResult += "총점: " + total + ", 평균:" + average;
+      alert(stringResult);
+    }
+  </script>
+</head>
+<body>
+  <h2>배열을 이용한 평균 구하기</h2>
+  <table border="1">
+    <tr>
+      <td>학생수 입력: </td>
+      <!-- number타입으로 지정하여 스핀박스 -->
+      <td><input type="number" id="numOfStudent" value="1"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="button" onclick="getAverage();">
+          평균구하기
+        </button>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

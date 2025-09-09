@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const numbers = [3, 7, 2, 9, 5];
+    
+    document.writeln('<h2>숫자 배열 목록</h2><hr>');
+    numbers.forEach(
+      num => {
+        document.writeln(num);
+      }
+    );
+
+    const maxNum = numbers.reduce(
+      (pre, cur) => {
+        if(pre < cur){
+          return cur;
+        }
+        return pre;
+      }
+    );
+
+    document.writeln('<h2>가장 큰 숫자</h2><hr>');
+    document.writeln(maxNum);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

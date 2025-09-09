@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>let과 const</h2>
+  <script>
+    /*
+    변수의 선언
+    const : 상수 선언시 사용. 초기화 후 값을 변경할 수 없다.
+    let : 변수 선언시 사용. 기본적인 속성은 var와 동일하지만, 호이스팅 문제나
+      스코프(지역) 관련 문제를 해결하였다.
+    */
+    // 상수 선언 및 초기화.
+    const num = 100;
+    // 값을 변경할 수 없으므로 에러 발생됨.
+    // num = 200;
+    console.log("상수", num);
+
+    // let은 호이스팅 되지 않으므로 에러 발생. 선언 전에는 사용할 수 없다.
+    // console.log('변수 x 선언전='+ x);
+    let x = 10;
+    console.log('변수 x 선언후='+ x);
+    // 이미 선언되었으므로 재선언 시 에러발생
+    // let x = 20;
+
+    // let은 호이스팅 되지 않으므로 미리 할당 불가.
+    // console.log('변수 y 정의전='+ y);
+    y = 100;
+    // console.log('변수 y 정의후='+ y);
+    // var y = 200;
+    let y = 200;
+    console.log('변수 y 선언후='+ y)
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    console.error("출력1")
+    // 단순하게 5번 반복하여 i값 출력.
+    var i=1; // 초기값
+    while(i<=5) { // 조건식
+      console.log("i="+ i);
+      i++;
+    }
+
+    console.error("출력2")
+    // 수열의 합 출력
+    let sum = 0;
+    let j = 1;
+    while(j<=10) {
+      sum += j;
+      j++;
+    }
+    console.log("1~10까지의 합:", sum);
+  </script>
+</head>
+<body>
+  <h2>반복문 - while문</h2>
+  <script>
+    // JS의 문서객체를 이용해서 웹브라우저에 내용 출력
+    document.write("<h3>출력3 : 구구단</h3>");
+    let dan = 2;
+    while(dan<=9) {
+      let su = 1;
+      while(su<=9) {
+        document.write(dan+'*'+su+'='+(dan*su)+'&nbsp&nbsp;');
+        su++;
+      }
+      // 1단을 출력한 후 줄바꿈 처리
+      document.write('<br>');
+      dan++;
+    }
+  </script>
+
+  <h3>0과 1 패턴 출력하기</h3>
+  <script>
+    var x=1;
+    while(x<=5) {
+      var y=1;
+      while(y<=5) {
+        // x와 y가 같을때만 1을 출력.
+        if(x==y)
+          document.write("1 ");
+        else
+          document.write("0 ");
+        y++;
+      }
+      document.write("<br>");
+      x++;
+    }
+  </script>
+</body>
+</html>

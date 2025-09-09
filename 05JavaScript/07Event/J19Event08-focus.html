@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 포커스 이벤트
+    focus : 엘리먼트가 포커스를 얻어 입력할 수 있는 상태가 되었을때 발생하는 이벤트
+    blur : 포커스를 잃었을때 발생하는 이벤트 */
+    function focusNBlur(num){
+      if(num==1){
+        document.getElementById("span").innerText
+          = "focus이벤트 발생됨";
+      }
+      else if(num==2){
+        document.getElementById("span").innerText
+          = "blur이벤트 발생됨";
+      }
+    }
+    // 매개변수 flag는 포커싱여부, obj는 this를 통해 전달된 DOM요소
+    function idFocus(flag, obj){
+      if(flag==1){
+        /* 포커스가 되었을때 입력된 내용이 없으면 value를 빈값으로 만듬.
+        즉 모든 내용을 지움. */
+        if(obj.value=="아이디를 입력해주세요"){
+          obj.value = "";
+        }
+      }
+      else if(flag==2){
+        /* 포커스가 잃었을때 입력된 내용이 없으면, 아이디를 입력해주세요를 보이게 함. */
+        if(obj.value==""){
+          obj.value = "아이디를 입력해주세요";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>focus & blur 이벤트</h2>
+  <input type="text" onfocus="focusNBlur(1);" onblur="focusNBlur(2);">
+  <span id="span"></span>
+
+  <h2>focus & blur로 placeholder 흉내내기</h2>
+  <!-- focus, blur 이벤트가 발생되면 this를 통해 이벤트가 발생된 DOM요소를 인수로 전달 -->
+  아이디1 : <input type="text" value="아이디를 입력해주세요" 
+      onfocus="idFocus(1,this);" onblur="idFocus(2,this);" style="color: gray;">
+  <br>
+  <!-- HTML5 이후에는 placeholder를 통해 입력값의 힌트를 줄 수 있다. -->
+  아이디2 : <input type="text" placeholder="아이디를 입력해주세요">
+</body>
+</html>

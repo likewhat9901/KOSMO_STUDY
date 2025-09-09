@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 전역변수
+    var pTag, pSize;
+
+    // 이 문서의 로드가 완료된 후 익명함수 실행
+    window.onload = function(){
+      // 기사가 있는 p태그의 DOM 요소
+      pTag = document.getElementById("article");
+      // p태그의 폰트 크기를 읽어온 후 숫자로 변환
+      pSize = parseInt(pTag.style.fontSize);
+    }
+
+    /* js를 통해 스타일 적용하는 방법
+    1. HTML에서 스타일을 적용할 DOM요소를 얻어옴.
+    2. DOM 변수에 style을 추가하고, 뒷부분에 CSS 속성을 추가.
+    3. color는 그대로 사용하고, background-color와 같은 경우 하이픈을 제거하고
+      첫 문자를 대문자로 변경해서 사용.
+      ex. DOM변수.style.color = 'red';
+          DOM변수.style.backgroundColor = 'blue';
+    */
+    function fnArticle(flag){
+      switch(flag){
+        /* 
+        폰트크기, 마진, 패팅과 같이 숫자로 지정해야 하는 경우 pt,px,em 같은 단위를
+        반드시 추가해야 함. */
+        case "+":
+          pSize += 10;
+          pTag.style.fontSize = pSize + "px";
+          break;
+        case "-":
+          pSize -= 10;
+          pTag.style.fontSize = pSize + "px";
+          break;
+        case "R":
+          pTag.style.color = "red";
+          break;
+        case "G":
+          pTag.style.color = "green";
+          break;
+        case "B":
+          pTag.style.color = "blue";
+          break;
+        case "Bo":
+          pTag.style.fontWeight = "bold";
+          break;
+        case "No":
+          pTag.style.fontWeight = "normal";
+          break;
+        case "Ce":
+          pTag.style.textAlign = "center";
+          break;
+        case "Le":
+          pTag.style.textAlign = "left";
+          break;
+        case "B_red":
+          pTag.style.backgroundColor = "red";
+          break;
+        case "B_silver":
+          pTag.style.backgroundColor = "silver";
+          break;
+        case "B_white":
+          pTag.style.backgroundColor = "white";
+          break;
+        default:
+          pTag.style.color = "black";
+      }
+    }
+
+    // 퀴즈 풀이
+    let count=0;
+    let fontName;
+    function setFont1(){
+      fontName = document.getElementById("font");
+      switch(count%5+1){
+        case 1:
+          pTag.style.fontFamily = "Verdana";
+          fontName.textContent = "Verdana";
+          break;
+        case 2:
+          pTag.style.fontFamily = "굴림체";
+          fontName.textContent = "굴림체";
+          break;
+        case 3:
+          pTag.style.fontFamily = "휴먼옛체";
+          fontName.textContent = "휴먼옛체";
+          break;
+        case 4:
+          pTag.style.fontFamily = "궁서";
+          fontName.textContent = "궁서";
+          break;
+        case 5:
+          pTag.style.fontFamily = "Impact";
+          fontName.textContent = "Impact";
+          break;
+        default:
+          pTag.style.fontFamily = "default";
+          break;
+      }
+      count++;
+    }
+
+    // 퀴즈 답안
+    let fontToggle = 0;
+    const setFont = () => {
+      const fontArray = ["Verdana", "굴림체", "휴먼옛체", "궁서", "Impact"];
+      console.log("fontToggle", fontToggle)
+      // p태그 부분에 스타일 적용. 5로 나눈 나머지는 0~4 사이가 된다.
+      pTag.style.fontFamily = fontArray[fontToggle%5];
+
+      document.getElementById("font").textContent = ": " + fontArray[fontToggle%5];
+
+      fontToggle++;
+    }
+  </script>
+</head>
+<body>
+  <h2>자바스크립트로 CSS제어하기</h2>
+  <input type="button" value="글꼴바꾸기" onclick="setFont();">
+  <span id="font">: 기본폰트</span>
+  <fieldset>
+    <legend>신문기사</legend>
+    <button onclick="fnArticle('+');">+</button>
+    <button onclick="fnArticle('-');">-</button>
+    <button onclick="fnArticle('R');">Red</button>
+    <button onclick="fnArticle('G');">Green</button>
+    <button onclick="fnArticle('B');">Blue</button>
+    <button onclick="fnArticle('');">Black</button>
+    <button onclick="fnArticle('Bo');">볼드체</button>
+    <button onclick="fnArticle('No');">보통체</button>
+    <br>
+    <button onclick="fnArticle('Ce');">가운데정렬</button>
+    <button onclick="fnArticle('Le');">좌측정렬</button>
+    <button onclick="fnArticle('B_red');">배경색(red)</button>
+    <button onclick="fnArticle('B_silver');">배경색(silver)</button>
+    <button onclick="fnArticle('B_white');">배경색(white)</button>
+  </fieldset>
+  <p style="font-size: 12px;" id="article">
+    광물 기타 중요한 지하자원·수산자원·수력과 경제상 이용할 수 있는 자연력은 법률이 정하는 바에 의하여 일정한 기간 그 채취·개발 또는 이용을 특허할 수 있다.
+
+교육의 자주성·전문성·정치적 중립성 및 대학의 자율성은 법률이 정하는 바에 의하여 보장된다. 지방의회의 조직·권한·의원선거와 지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다.
+
+모든 국민은 인간다운 생활을 할 권리를 가진다. 모든 국민은 법률이 정하는 바에 의하여 공무담임권을 가진다. 국가는 평생교육을 진흥하여야 한다. 헌법재판소 재판관은 정당에 가입하거나 정치에 관여할 수 없다.
+
+국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.
+  </p>
+</body>
+</html>

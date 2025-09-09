@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .page{
+      display: grid;
+      grid-template-areas: 
+        "gnb gnb"
+        "lnb content";
+      grid-template-columns: 300px 1fr;
+      grid-template-rows: 64px 1fr;
+      min-height: 100vh;
+    }
+    .gnb{
+      border: 1px solid red;
+      grid-area: gnb;
+      display: flex;
+      width: 100%; height: 64px;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .gnb_left .hamburger{
+        width: 50px; height: 50px;
+        /* border: 1px solid black; */
+        background: url(../images/hb_menu.PNG) 5px 10px;
+    }
+    .gnb_left{
+      display: flex;
+      /* border: 1px solid black; */
+      line-height: 50px;
+      align-items: center;
+    }
+    .gnb_left img{
+      width: 30px; height: 30px;
+      margin: auto 5px;
+    }
+    .gnb_left span{
+      margin-left: 3px;
+      font-size: 21px;
+      color: rgba(0, 0, 0, 0.658);
+    }
+
+    .gnb_right{
+      display: flex;
+      align-items: center;
+    }
+    .gnb_right span, .gnb_right div{
+      margin: 12px;
+    }
+    .gnb_right .plus{
+      font-size: 30px;
+      color: rgba(0, 0, 0, 0.74);
+      line-height: 30px;
+    }
+    .gnb_right .dot{
+      width: 30px; height: 30px;
+      /* border: 1px solid black; */
+      background: url(../images/9dot.png) 2px 0;
+      background-size: cover;
+    }
+    .gnb_right div{
+      border: 1px solid black;
+      width: 30px; height: 30px;
+      border-radius: 15px;
+    }
+
+    .lnb{
+      border: 1px solid black;
+      grid-area: lnb;
+      display: flex;
+      flex-direction: column;
+      padding: 5px 0 5px 0;
+    }
+    .lnb a{
+      width: 90%; height: 40px;
+      /* border: 1px solid black; */
+      border-radius: 0 20px 20px 0;
+      line-height: 40px;
+      color: black;
+      text-decoration: none;
+      padding-left: 20px;
+    }
+    .lnb a:hover{
+      background-color: rgb(221, 229, 252);
+    }
+    .lnb hr{
+      width: 100%;
+      border-color: white;
+    }
+
+    .lnb_one, .lnb_two, .lnb_three{
+      display: flex;
+      flex-direction: column;
+
+    }
+
+
+    .content{
+      grid-area: content;
+      border: 1px solid blue;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    
+    <div class="gnb">
+      <div class="gnb_left">
+        <div class="hamburger"></div>
+        <img src="../images/logo_square_rounded.svg" alt="">
+        <span>클래스룸</span>
+      </div>
+      <div class="gnb_right">
+        <span class="plus">+</span>
+        <span class="dot"></span>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="lnb">
+      <div class="lnb_one">
+        <a class="panel" href="">홈</a>
+        <a class="panel" href="">Calendar</a>
+      </div>
+      <hr>
+      <div class="lnb_two">
+        <a class="panel" href="">등록한 수업</a>
+        <a class="panel" href="">미완료 과제</a>
+        <a class="panel" href=""></a>
+      </div>
+      <hr>
+      <div class="lnb_three">
+        <a class="panel" href="">보관처리된 수업</a>
+        <a class="panel" href="">설정</a>
+      </div>
+    </div>
+
+    <div class="content"></div>
+  </div>
+
+</body>
+</html>

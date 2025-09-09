@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function formValidate(){
+      /* form 태그를 배열형태로 얻어와서 사용하는 방법.
+      HTML문서에 form은 2개 이상 정의할 수 있으므로 작성한 순서대로 인덱스가 부여됨. */
+      // form태그의 DOM요소를 얻어온다.
+      var frm = document.forms[0];
+      // 입력값이 없는 경우 경고창을 띄우고 포커스를 이동한다.
+      if(frm.id.value == ""){
+        alert("아이디를 입력해주세요");
+        frm.id.focus();
+        // 리스너쪽으로 false를 반환해야 전송이 중지된다.
+        return false;
+      }
+      // 부정연산자를 통해서도 빈값을 체크할 수 있다.
+      if(!frm.pw.value){
+        alert("패스워드를 입력해주세요");
+        frm.pw.focus();
+        return false;
+      }
+      //return true; -> 생략가능
+    }
+    function jsSubmit(){
+      // form 태그의 name 속성으로 DOM요소를 얻어온다.(추천방식)
+      var f = document.loginFrm2;
+      if(f.id.value==''){
+        alert("아이디를 입력해주세요");
+        f.id.focus();
+        /* JS를 통해 폼값을 전송하는 경우에는 단순히
+        return을 통해 함수의 실행을 종료하면 됨. */
+        return;
+      }
+      if(f.pw.value==''){
+        alert("패스워드를 입력해주세요");
+        f.pw.focus();
+        return;
+      }
+      /* JS를 통해 action, method 속성을 부여.
+      이 경우 HTML에서 부여한 속성보다 우선순위가 높다. */
+      // action 속성이 빈값이면 폼값은 현재페이지로 전송.
+      f.action = "";
+      f.method = "get";
+      //여기서 폼값이 서버로 전송
+      f.submit();
+    }
+  </script>
+</head>
+<body>
+  <h2>form전송방식 - HTML을 사용하는 방법</h2>
+  <!-- submit 이벤트가 발생되면 JS 함수를 호출한다. 입력값이 없는 상태로 로그인 버튼을
+    누르면 false가 반환되어 전송은 차단된다. -->
+  <form name="loginFrm1" method="get" onsubmit="return formValidate();">
+    <!-- form의 하위태그인 input, select, textarea에 입력한 내용을 서버로 전송하기
+      위해서는 각 엘리먼트의 name 속성값을 이용하게 된다. -->
+    아이디 : <input type="text" name="id">
+    <br>
+    패스워드 : <input type="password" name="pw">
+    <br>
+    <!-- submit 타입의 버튼을 누르면 즉시 '제출' 이벤트가 발생되어, 서버로 값이 전송된다.
+      전송방식이 get이라면 '전송할URL?id=xx'와 같이 폼값이 쿼리스트링 형식으로 전송된다. -->
+    <input type="submit" value="로그인">
+  </form>
+
+  <h2>form전송방식 - Javascript를 사용하는 방법</h2>
+  <!-- JavaScript를 이용하면 method, action과 같은 속성을 모두 제어가능 -->
+  <form name="loginFrm2" method="post" action="abcd.html">
+    아이디 : <input type="text" name="id">
+    <br>
+    패스워드 : <input type="password" name="pw">
+    <br>
+    <!-- submit 기능이 없으므로 함수로 강제전송 -->
+    <input type="button" value="로그인" onclick="jsSubmit();">
+  </form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .boRed{ border: 1px solid red;}
+    .boBlue{ border: 1px solid blue;}
+    .boBlack{ border: 1px solid black;}
+    .box21{ width: 200px; height: 100px;}
+  </style>
+</head>
+<body>
+  <!-- 
+  line-height : 줄간격 설정을 위한 속성. 즉 라인사이의 간격을 띄우는데
+    블럭과 인라인은 조금 다르게 적용된다.
+    - 블럭: 컨텐츠의 영역 중 세로 영역이 늘어나서 마치 줄간격이 생기는 것처럼 보인다.
+    - 인라인: 컨텐츠의 영역은 변화가 없고, 지정된 크기만큼 줄간격이 생겨 벌어진다.
+    따라서 같은 값을 주더라도 조금 다른 것을 볼 수 있다.
+    -->
+  <style>
+    .divLine > div {
+      border: 1px solid blue;
+    }
+    .divLine > div:first-child{
+      line-height: 4em;
+    }
+  </style>
+  <h2>줄간격 - 블럭엘리먼트</h2>
+  <div class="divLine">
+    <div>블럭엘리먼트1에 줄간격 적용</div>
+    <div>블럭엘리먼트2</div>
+    <div>블럭엘리먼트3</div>
+  </div>
+  <style>
+    .inline > span{
+      border: 1px solid black;
+    }
+    .inline > span:first-child {
+      line-height: 4em;
+    }
+  </style>
+  <h2>줄간격 - 인라인엘리먼트</h2>
+  <div class="inline">
+    <span>인라인엘리먼트1</span><br>
+    <span>인라인엘리먼트2</span><br>
+    <span>인라인엘리먼트3</span>
+  </div>
+
+  <h2>배분정렬</h2>
+  <!-- 배분정렬
+    각기 다른 길이의 단어를 사용함으로써 발생되는 우측의 불규칙적인 여백을 깔끔하게 정리해준다. -->
+  <p style="text-align: justify;" class="boBlack">
+    국회는 헌법개정안이 공고된 날로부터 60일 이내에 의결하여야 하며, 국회의 의결은 재적의원 3분의 2 이상의 찬성을 얻어야 한다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다. 모든 국민은 인간다운 생활을 할 권리를 가진다. 이 헌법시행 당시에 이 헌법에 의하여 새로 설치될 기관의 권한에 속하는 직무를 행하고 있는 기관은 이 헌법에 의하여 새로운 기관이 설치될 때까지 존속하며 그 직무를 행한다.
+    <br><br>
+    지방의회의 조직·권한·의원선거와 지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다. 선거운동은 각급 선거관리위원회의 관리하에 법률이 정하는 범위안에서 하되, 균등한 기회가 보장되어야 한다. 대통령의 선거에 관한 사항은 법률로 정한다. 헌법재판소 재판관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다.
+    <br><br>
+    대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 대한민국의 국민이 되는 요건은 법률로 정한다. 대통령은 법률이 정하는 바에 의하여 훈장 기타의 영전을 수여한다. 제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야 하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다. 다만, 대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와 국회재적의원 3분의 2 이상의 찬성이 있어야 한다.
+  </p>
+
+  <h2>들여쓰기</h2>
+  <!-- 블럭엘리먼트는 가로 길이가 100%이므로 공간이 충분하여 text-indent를 통해 들여쓰기를 할 수 있다. -->
+  <div style="text-indent: 2em;" class="boBlue">
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+    블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;블럭엘리먼트&nbsp;
+  </div>
+  <!-- 인라인엘리먼트는 공간이 없으므로 부모에서 패딩을 통해 우측으로 밀어줘야 한다. -->
+  <div style="padding-left: 20px;" class="boRed">
+    <span style="text-indent: 50em;" class="boBlack">
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+      인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;인라인엘리먼트&nbsp;
+    </span>
+  </div>
+</body>
+</html>

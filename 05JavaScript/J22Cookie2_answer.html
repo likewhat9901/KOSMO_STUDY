@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 쿠키생성 : 매개변수로 전달되는 exp가 양수면 미래의 시간으로 설정되므로
+      쿠키가 생성된다. 반대로 음수라면 과거의 시간으로 설정되므로 쿠키는 삭제된다.
+      쿠키는 웹브라우저를 닫아도 즉시 삭제되지 않고 유효기간동안 유지된다. */
+    //3개의 매개변수는 순서대로 쿠키명, 쿠키값, 유효기간(날짜단위)
+    var setCookie = function (name, value, exp){
+      //유효기간 설정을 위해 Date 객체 생성
+      var date = new Date();
+      console.log("1970-01-01부터 지금까지의 초(타임스탬프)", date.getTime());
+      // 타임스탬프에 매개변수로 전달된 exp(날짜단위)와 연산하여 유효기간을 설정.
+      date.setTime(date.getTime()+ exp * 24 * 60 * 60 * 1000);
+      console.log("유효시간", date.toUTCString());
+      // 쿠키생성 : 쿠키명=쿠키값; 유효기간=xx; 적용할경로==xx;
+      document.cookie = name + '=' + value + ';expires=' + 
+          date.toUTCString() + ';path=/';
+    };
+
+    /* 쿠키읽기 : 쿠키는 ;(세미콜론)으로 구분되므로 1차 split한 후 =(이퀄)로
+      2차 split하여 쿠키값을 읽을 수 있다. */
+    var getCookie = function(name){
+      // 1차 split으로 배열 생성
+      // document.cookie는 "key1=value1; key2=value2; ..." 형식의 문자열을 반환
+      var values = document.cookie.split(";");
+      // 항목의 개수만큼 반복
+      for(var i=0 ; i<values.length ; i++){
+        // 2차 split으로 쿠키명과 값을 분리
+        var unit = values[i].trim();
+        var value = unit.split('=');
+        // 매개변수로 전달된 쿠키명과 비교
+        if(value[0]==name){
+          // 해당 쿠키값을 반환한다.
+          return unescape(value[1]);
+        }
+      }
+      return null;
+    };
+
+    // 쿠키를 만들기 위한 함수
+    function makeCookie(){
+      // 사용자가 입력한 값을 읽어온다.
+      var cName = document.getElementById('cName').value;
+      var cValue = document.getElementById('cValue').value;
+
+      // 쿠키명, 쿠키값, 유효기간은 1일로 설정하여 쿠키를 생성
+      setCookie(cName, cValue, 1);
+      alert('쿠키가 생성되었습니다.');
+      // 웹브라우저를 새로고침한다. F5키와 동일.
+      location.reload();
+      /* 쿠키가 생성되면 화면의 이동 혹은 새로고침이 되어야 브라우저가
+      생성된 쿠키를 인식할 수 있다. */
+    }
+
+    // 쿠키값을 읽기위한 함수
+    function readCookie(){
+      // 입력상자로부터 읽을 쿠키명을 가져온다.
+      var cName = document.getElementById('cName').value;
+      // 해당 이름으로 생성된 쿠키를 읽어온다.
+      var readValue = getCookie(cName);
+      if(readValue==null){
+        alert("해당이름으로 생성된 쿠키가 없습니다.");
+      }
+      else{
+        alert("쿠키값:"+ readValue);
+      }
+    }
+
+    // 쿠키 삭제하기 : 과거의 시간으로 설정하면 삭제된다.
+    function deleteCookie(){
+      var cName = document.getElementById('cName').value;
+      // 유효기간을 -1, 즉 어제의 날짜로 설정한다.
+      setCookie(cName, cValue, -1);
+      alert('쿠키가 삭제되었습니다.');
+      location.reload();
+    }
+  </script>
+</head>
+<style>
+.popupWin{
+    width: 200px;height: 250px;background-color: blueviolet;
+    color: greenyellow;font-size: 1em;text-align: center;
+    line-height: 150px;position: absolute;top: 70px;left: 50px;
+}
+</style>
+<!-- 
+        연습문제] body영역에는 <div>태그로 만든 레이어 팝업창이 존재한다. 
+            체크박스를 클릭하면 창이 닫히면서 유효기간이 하루인 쿠키를 생성하자. 
+            쿠키가 만들어지면 웹브라우저를 새로고침해도 팝업창이 뜨지 않아야한다. 
+            개발자모드에서 쿠키를 지우면 팝업창은 다시 뜨게된다.  
+--> 
+<body>
+  <script>
+  // 체크박스를 클릭했을때 호출되는 함수
+  const closeWin = () => {
+    // 유효기간이 1일인 쿠키를 생성한다. 쿠키명과 쿠키값은 문자열로 전달한다.
+    setCookie('popup', 'off', 1);
+    // 체크박스에 체크하면 즉시 팝업창은 숨김처리된다.
+    document.getElementById('popupWin').style.display = "none";
+  }
+  // 문서가 로드되면 쿠키를 읽어서 레이어 팝업창 처리.
+  window.onload = function() {
+    // 팝업창 제어를 위한 쿠키를 읽어서 변수에 저장
+    let popupWinCookie = getCookie('popup');
+    // div로 만든 팝업창의 DOM 요소를 얻어옴.
+    let popupWin = document.getElementById("popupWin");
+    // 쿠키값이 off라면 팝업을 숨김처리한다.
+    if(popupWinCookie == 'off'){
+      popupWin.style.display = "none";
+    }
+    else {
+      popupWin.style.display = "block";
+    }
+  }
+  </script>
+    <h2>쿠키로 팝업창 제어하기</h2>
+    <div class="popupWin" id="popupWin" style="display:none;">
+        오늘의 팝업창
+        <br>
+        <input type="checkbox" id="popChk" 
+            onclick="closeWin();"> 오늘하루열지않음
+    </div>
+</body>
+</html>

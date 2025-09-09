@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      display: grid;
+      /* 전체 레이아웃을 3열로 지정함. 행은 별도로 지정하지 않음. */
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .item{
+      background-color: #4caf50;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      padding: 20px;
+    }
+    /* 현재 위치부터 오른쪽으로 2칸 합침. */
+    .colMerge{
+      /* 가로 병합 */
+      grid-column: span 2; 
+    }
+    .rowMerge{
+      /* 세로 병합 */
+      grid-row: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>grid-영역합치기2(span N)</h2>
+  <div class="container">
+    <!-- 수평 방향으로 병합 -->
+    <div class="item colMerge">A</div>
+    <div class="item">B</div>
+    <div class="item rowMerge">C</div>
+    <div class="item">D</div>
+    <div class="item">E</div>
+    <div class="item">F</div>
+    <div class="item">G</div>
+  </div>
+</body>
+</html>

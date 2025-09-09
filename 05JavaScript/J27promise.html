@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Promise</h2>
+  <!-- Promise는 비동기 작업의 완료 여부와 결과를 표현하는 객체로, 복잡한 비동기 흐름을
+    보다 선형적이고 직관적인 구조로 작성할 수 있게 해준다.
+    Promise는 다음 3가지 상태를 가진다.
+    1.대기(Pending) : 요청 후 결과가 결정되지 않은 상태
+    2.이행(Fulfilled) : 작업이 성공적으로 완료된 상태(resolve)
+    3.거부(Rejected) : 작업이 실패한 상태(reject) -->
+  <script>
+    /* 첫번째 Promise 객체생성. 내부의 콜백함수에는 매개변수 resolve와 reject이
+    자동으로 전달된다. 각각 비동기 작업이 성공/실패했을때 호출된다. */
+    const myPromise1 = new Promise((resolve, reject) => {
+      // 요청한 작업의 성공여부 설정
+      const success = true; // 혹은 false
+      if(success){
+        // 작업이 성공하면 resolve를 호출한다.
+        resolve('작업 성공');
+      } else {
+        // 실패하면 reject를 호출한다.
+        reject('작업 실패');
+      }
+    });
+    // 첫번째 Promise를 실행하기 위한 함수
+    const func1 = () => {
+      myPromise1
+        .then(result => {
+          /* Promise가 요청한 작업에 성공하면 resolve함수가 호출되고
+          그 결과는 then절로 반환된다. */
+          console.log(result);
+        })
+        .catch(error => {
+          /* 요청에 실패하면 reject함수가 호출되고 그 결과는 catch절로 반환된다. */
+          console.error(error);
+        });
+    };
+
+    /* 두번째 Promise 객체는 타이머 함수를 사용해서 3초후 작업이 완료되는 형태로
+    정의되어 있다. */
+    function myPromise2() {
+      return new Promise((resolve) => {
+        setTimeout(()=> {
+          resolve('3초 후 완료된 작업');
+        }, 3000);
+      });
+    }
+    /* 실제 서버와 통신할때 발생되는 응답 지연(딜레이)을 유사하게 표현한 것으로
+    지연되는 시간만큼 대기 후 콜백 받은 데이터를 출력한다. */
+    const func2 = () => {
+      myPromise2().then(result => {
+        console.log(result);
+      });
+    };
+  </script>
+  <div>
+    <button type="button" onclick="func1();">버튼1</button>
+    <button type="button" onclick="func2();">버튼2</button>
+  </div>
+</body>
+</html>

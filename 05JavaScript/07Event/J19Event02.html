@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 이벤트 활용2
+    : window와 같은 객체에 이벤트 리스너를 부착한다. window 객체는 JS의 최상위 객체로
+    현재 HTML 문서를 실행하고 있는 웹브라우저를 가리킨다. */
+    window.onload = function(){
+      alert("해당 문서의 load가 완료되었습니다.");
+
+      /* 문서의 로드가 완료된 후 해당 코드가 실행되므로 이 경우에는 문제없이 DOM요소를
+      가져올 수 있다. */
+      var i = document.getElementById('myInput').value;
+      alert("i="+ i);
+    }
+
+    /* 
+    JS는 인터프리터 방식으로 동작하므로 해당 코드가 실행되는 시점에서 정의된 DOM요소가 없으므로
+    에러가 발생된다. */
+    // var i = document.getElementById('myInput').value;
+    // alert("i="+ i);
+  </script>
+</head>
+<body>
+  <h2>이벤트 - load 두번째</h2>
+
+  <script>
+    alert("문서가 끝나기 직전입니다.");
+  </script>
+
+  <input type="text" id="myInput" value="이벤트활용하기">
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+    /* 컨테이너를 flex로 설정하고, 주 축의 방향은 수직방향으로 설정
+    그리고 전체 높이를 해당 뷰포트의 100%로 지정(100vh) */
+    .wrapper{
+      display: flex; flex-direction: column; height: 300vh;
+    }
+    .gnb{
+      background: #333; color: white; padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+    .main{
+      /* flex를 1로 지정하면 웹브라우저의 높이에 맞춰서 늘어남.
+      0인 경우에는 컨텐츠 크기만큼만 표시.
+      내부 아이템을 가로형으로 배치할 것이므로 flex-direction은 생략 */
+      flex: 0; display: flex;
+    }
+    .lnb{
+      width: 200px; background: #eee; padding: 20px;
+    }
+    .content{
+      flex: 1; padding: 20px;
+    }
+    .board li{
+      padding: 8px; border-bottom: 1px solid #ccc;
+      list-style: none;
+    }
+    .footer{
+      background: #333; color: white; text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="gnb">상단 네비게이션</header>
+    <div class="main">
+      <aside class="lnb">좌측 메뉴</aside>
+      <section class="content">
+        <h2>게시판</h2>
+        <ul class="board">
+          <li>1. 게시글 제목</li>
+          <li>2. 게시글 제목</li>
+          <li>3. 게시글 제목</li>
+        </ul>
+      </section>
+    </div>
+    <footer class="footer">&copy; 2025 MyCompany</footer>
+  </div>
+</body>
+</html>

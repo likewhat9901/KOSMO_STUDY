@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>연산자</h2>
+  <script>
+    console.error("산술 연산자");
+    console.log("결과1=", 3 % 5 * 2 + 10 / 5); // 결과: 8 (%,*,/ 먼저 수행)
+    console.log("결과2=", 3 / 5);
+
+    console.error("비교 연산자");
+    console.log('결과1=', "가나다1">'가나다'); // 앞에서부터 한글자씩 유니코드 비교. 전부 같다면 더 긴쪽이 큼.
+    console.log('결과2=', 3>9==0); // 연산순서: 3>9 => false / false == 0 => ture (==가 느슨한 비교라서 우선순위가 작다.)
+    console.log('결과3=', (-1) ? true : false); // -1도 true
+    console.log('결과4=', (null) ? true : false);
+    console.log('결과5=', (10-10) ? true : false);
+    console.log('결과6=', ("자바스크립트") ? true : false);
+
+    console.error("논리 연산자");
+    console.log("결과=", (3>2) || 5<=10 && !(3-4)); //true
+
+    /* 전위증가, 후위증가 */
+    console.error("증감 연산자");
+    var num = 10;
+    console.log("num=", ++num);
+    console.log("<br/>num=", num++);
+    console.log("<br/>num=", num);
+
+    //좌우측을 연산한 후 결과를 좌측항으로 대입
+    console.error("복합 대입 연산자");
+    console.log("num%=5=", num%=5);
+  </script>
+</body>
+</html>

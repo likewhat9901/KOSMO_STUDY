@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /*
+    (초기값 ; 조건식 ; 증감식)과 같이 한 줄에 반복에 대한 모든 코드가 있어 반복의
+    횟수를 명시적으로 알 수 있는 반복문.
+    */
+    for(var i=1 ; i<=5 ; i++){
+      console.log("i="+ i);
+    }
+
+    // 수열의 합 출력
+    let sum = 0;
+    for(var j=1 ; j<=10 ; j++){
+      sum += j;
+    }
+    console.log("1~10까지의합:", sum);
+  </script>
+</head>
+<body>
+  <h2>반복문 - for문</h2>
+  <script>
+    document.write("<h3> 구구단 출력하기 </h3>");
+    // 단
+    for(var dan=2 ; dan <=9 ; dan++){
+      // 수
+      for(var su=1 ; su<=10 ; su++){
+        document.write(dan+'*'+su+'='+(dan*su)+'&nbsp;');
+      }
+      document.write('<br>');
+    }
+  </script>
+
+  <h3>0과 1 패턴 출력하기</h3>
+  <script>
+    for(var x=1 ; x<=5 ; x++){
+      for(var y=1 ; y<=5 ; y++){
+        if(x==y)
+          document.write("1 ");
+        else
+          document.write("0 ");
+      }
+      document.write("<br>")
+    }
+  </script>
+</body>
+</html>

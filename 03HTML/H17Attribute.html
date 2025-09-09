@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .city{
+      background-color: tomato;
+      color: white;
+      border: 2px solid black;
+      margin: 20px; /* 박스모델 바깥쪽 여백 */
+      padding: 20px; /* 안쪽 여백 */
+    }
+    #myHeader {
+      background-color: lightblue;
+      color: black;
+      padding: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<!-- 
+id속성
+  - HTML 엘리먼트의 고유ID를 지정하는데 사용
+  - 동일한 ID를 가진 엘리먼트가 2개 이상 있으면 안됨
+  - 대소문자를 구분하고 숫자로 시작할 수 없으며 공백을 포함할 수 없다.
+  - style에서는 #으로 접근
+class속성
+  - 엘리먼트 지정은 동일하지만 2개 이상 사용할 수 있음.
+  - style에서는 .으로 접근
+-->
+<body>
+  <h2 id="myHeader">id속성과 class속성</h2>
+  <div class="city">
+    <h2>서울</h2>
+    <p>대한민국의 수도</p>
+  </div>
+  <div class="city">
+    <h2>부산</h2>
+    <p>대한민국의 제2의 도시이자 제1의 항구도시</p>
+  </div>
+</body>
+</html>

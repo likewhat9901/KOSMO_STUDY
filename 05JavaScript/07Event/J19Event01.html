@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 
+    load 이벤트 : 해당 HTML 문서의 전체코드가 웹브라우저에 의해 로딩된 후 발생되는 이벤트로,
+      문서를 모두 해석한 후 실행해야 할 함수가 있을때 사용한다. */
+    function loadEventFunc(){
+      alert("해당 문서의 load가 완료되었습니다.");
+    }
+  </script>
+</head>
+<!--
+이벤트 활용1 : 특정 태그(엘리먼트)의 속성으로 이벤트 리스너를 부착하고 호출할 함수를 기술한다.
+-->
+<body onload="loadEventFunc();">
+  <h2>이벤트 - load 첫번째</h2>
+  <!-- 해당 문서를 실행하면 아래 alert()가 먼저 동작하고, 로드가 끝난 이후에 상단의 함수를
+    호출하여 두번째 alert()가 동작하게 된다. -->
+  <script>
+    alert("문서가 끝나기 직전입니다.");
+  </script>
+</body>
+</html>

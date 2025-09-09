@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 주 축(Main Axis)에서의 아이템 정렬
+    justify-content 속성을 이요하면 여러가지 형태의 정렬을 할 수 있다.
+      flex-start(default) : 왼쪽 정렬
+      center: 가운데 정렬
+      flex-end: 오른쪽 정렬
+      space-between : 아이템 사이 동일한 빈공간
+      space-around : 아이템 주변마다 동일한 빈공간
+      space-evenly : 빈 공간 마다 동일하게
+    */
+    .container{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      border: 2px solid #333; padding: 10px;
+    }
+    .item{
+      width: 60px; height: 60px; background-color: salmon;
+      margin: 5px; text-align: center; line-height: 60px;
+      font-weight: bold;
+    }
+    .space-between{
+      display: flex;
+      border: 2px solid #333; padding: 10px;
+      justify-content: space-between;
+    }
+    .space-around{
+      display: flex;
+      border: 2px solid #333; padding: 10px;
+      justify-content: space-around;
+    }
+    .space-evenly{
+      display: flex;
+      border: 2px solid #333; padding: 10px;
+      justify-content: space-evenly;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flexbox-주 축에서 정렬</h2>
+  <div class="container">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+  <h3>space-between</h3>
+  <div class="space-between">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+  <h3>space-around</h3>
+  <div class="space-around">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+  <h3>space-evenly</h3>
+  <div class="space-evenly">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+</body>
+</html>

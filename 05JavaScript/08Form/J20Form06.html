@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 배열을 포함한 객체 데이터 사용
+    var optionArr = {
+      seoul: ['강남/역삼/삼성', '신사/청담/압구정', '서초/교대/사당', '잠실/송파/강동', '을지로/명동/중구', '서울역/이태원/용산', '종로/인사동', '동대문구', '홍대/합정/마포/서대문', '여의도', '영등포역', '구로/신도림/금천', '김포공항/염창/강서', '건대입구/성수/왕십리', '성북/강북/노원/도봉'],
+      busan: ['해운대/마린시티', '벡스코/센텀시티', '송정/기장', '광안리/경성대', '부산역', '자갈치/남포동/영도', '송도/다대포', '서면/연산/범일', '동래/온천,금정구', '사상/강서/김해공항'],
+      jeju: ['제주시/제주국제공항', '서귀포시', '애월/한림/협재', '중문', '표선/성산', '함덕/김녕/세화'],
+      gyeonggi: ['가평/청평/양평', '수원/화성', '고양/파주/김포', '의정부/포천/동두천', '용인/동탄', '오산/평택', '남양주/구리/성남/분당', '이천/광주/여주/하남', '부천/광명/시흥/안산', '안양/의왕/군포'],
+      incheon: ['송도/소래포구', '인천국제공항/강화/을왕리/영종', '구읍뱃터/월미도', '주안/간석/인천시청', '청라/계양/부평']
+    }
+
+    //해당 문서로드가 다 끝나고 익명함수 실행
+    window.onload = function(){
+      /* querySelector()
+      : document객체에서 제공하는 함수로 DOM요소를 선택하는 것은
+      getElementByXX와 동일하다. 단, CSS의 선택자(Selector)를 사용해서 DOM요소를 선택한다. */
+      let sido = document.querySelector('#sido');
+      // select 태그에서 항목을 선택하면 change 이벤트가 발생됨.
+      sido.onchange = function(){
+        // 도시명의 select 태그의 DOM요소를 얻어옴.
+        var city = document.querySelector('#city');
+        // 도시명을 초기화
+        city.options.length = 0;
+        // 선택한 '시도'의 value를 얻어온 후 변수에 저장 (서울, 부산, 제주, ...)
+        var sidoValue = sido.options[sido.selectedIndex].value;
+        /* optionArr[sidoValue] => sidoValue는 키값. ex seoul, busan... */
+        console.log(sidoValue, optionArr[sidoValue]);
+        // 선택한 '시도'에 해당하는 값을 선택한 후 배열의 크기만큼 반복
+        for(let i=0 ; i<optionArr[sidoValue].length ; i++){
+          /* 반복문 내에서 option태그를 동적으로 생성 */
+          let option = document.createElement('option');
+          // value 속성값을 추가
+          option.setAttribute('value', optionArr[sidoValue][i]);
+          // option 태그 사이에 텍스트 추가
+          option.innerText = optionArr[sidoValue][i];
+          // select 태그 내부에 option 추가
+          city.append(option);
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>동적 select 박스</h2>
+  <p>
+    시/도를 선택하면 해당 도시명이 동적으로 변경됩니다.
+  </p>
+  시/도 :
+  <select id="sido">
+    <option value="">선택하세요</option>
+    <option value="seoul">서울</option>
+    <option value="busan">부산</option>
+    <option value="jeju">제주</option>
+    <option value="gyeonggi">경기</option>
+    <option value="incheon">인천</option>
+  </select>
+  &nbsp;&nbsp;&nbsp;
+  도시명 :
+  <select id="city"></select>
+</body>
+</html>

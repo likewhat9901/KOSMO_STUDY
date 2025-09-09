@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    /* border-image 속성 : 엘리먼트에 일반 테두리 대신 이미지를 통해 테두리 적용 */
+    #borderimg1{
+      /* transparent 속성으로 테두리 투명하게 설정 */
+      border: 10px solid transparent;
+      padding: 20px;
+      /* 개별속성을 통해 적용. 이미지경로, 반복, 슬라이스 순으로 설정한다.*/
+      border-image-source: url(images/border.png);
+      /* 반복속성값: stretch repeat round space */
+      border-image-repeat: repeat;
+      border-image-slice: 20;
+
+      /* 통합속성을 통해 적용 : 이미지경로, 반복, 슬라이스를 순서없이 부여하면 적용된다. */
+      border-image: url(images/border.png) 10 round;
+      border-image: url(images/border.png) 20 round;
+      border-image: url(images/border.png) 30 round;
+      border-image: url(images/border.png) 10 stretch;
+      border-image: url(images/border.png) 20 stretch;
+      border-image: url(images/border.png) 30 stretch;
+    }
+  </style>
+  <p id="borderimg1">border-image: url(border.png) 30 round;</p>
+</body>
+</html>

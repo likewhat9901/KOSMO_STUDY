@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>this, this.form, this.value 사용하기</h2>
+  <script>
+    //로그인1을 눌렀을때 호출
+    function formValidate1(param1, param2, param3) {
+      // document 객체를 통해 form의 DOM요소를 얻어옴
+      let frm = document.loginFrm;
+      /* 매개변수 param1과 frm은 서로 동일한 DOM요소이다. */
+      (frm==param1) ? console.log("frm과 param1은 같다.")
+          : console.log("frm과 param1은 다르다");
+      /* input태그에서 this를 통해 전달된 값이므로 '로그인1' 버튼을 가리킨다. */
+      console.warn("param2:", param2.type, param2.value);
+      /* '로그인1' 버튼의 value를 출력한다. */
+      console.error("param3", param3);
+
+      // 아이디의 빈값 검증
+      if(!param1.id.value){
+        alert("아이디를 입력하세요");
+        frm.id.focus();
+        return;
+      }
+    }
+    //로그인2 눌렀을때
+    function formValidate2(args) {
+      let frm = document.loginFrm;
+      (args==frm) ? console.log("args와 frm은 같다.")
+          : console.log("args와 frm은 다르다");
+
+      if(args.id.value==""){
+        alert("아이디를 입력하세요");
+        frm.id.focus();
+        return false;
+      }
+    }
+  </script>
+
+  <!-- form 자신의 DOM을 가리키는 키워드로 this를 사용 -->
+  <form name="loginFrm" onsubmit="return formValidate2(this);">
+    아이디 : <input type="text" name="id">
+    <br>
+    <!-- this.form : input 태그의 상위태그인 form을 가리킨다.
+      this : input 태그 자신을 가리킨다.
+      this.value : input 태그의 value 속성값을 가리킨다. 즉 사용자가 입력한 값. -->
+    <input type="button" value="로그인1"
+        onclick="formValidate1(this.form, this, this.value);">
+    <input type="submit" value="로그인2">
+  </form>
+</body>
+</html>

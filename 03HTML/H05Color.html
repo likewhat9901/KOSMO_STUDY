@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>색깔 지정 방법</h2>
+  <h3>RGB</h3>
+  <!-- 
+  RGB : Red, Green, Blue 즉 빛의 3원색을 통해 색깔을 표현한다.
+    하나의 색은 0~255까지 256가지 단계로 설정할 수 있다.
+    모든 빛이 합쳐지면 흰색이 되고, 모든 빛이 없어지면 검은색이 된다. -->
+  <div style="background-color: rgb(255, 0, 0);">rgb(255, 0 , 0)</div>
+  <div style="background-color: rgb(0, 255, 0);">rgb(0, 255, 0)</div>
+  <div style="background-color: rgb(0, 0, 255);">rgb(0, 0, 255)</div>
+  <div style="background-color: rgb(255, 255, 0);">rgb(255, 255, 0);</div>
+  <div style="background-color: rgb(0, 255, 255);">rgb(0, 255, 255)</div>
+  <div style="background-color: rgb(255, 0, 255);">rgb(255, 0, 255)</div>
+  
+  <!-- 
+  HEX : RGB의 색깔을 16진수로 표현한다.
+    16진수는 1,2,....9,A,B....F까지 존재하고 이를 조합하여 표현한다.
+    형식은 앞에 #를 붙이고 2자리씩 끊어서 R,G,B를 표현한다.
+    FF는 가장 높은 255를 의미한다.
+    -->
+  <h3 style="clear: both;">HEX</h3>
+  <div style="background-color: #ff0000;">#ff0000</div>
+  <div style="background-color: #00ff00;">#00ff00</div>
+  <div style="background-color: #0000ff;">#0000ff</div>
+  <div style="background-color: #ffff00;">#ffff00</div>
+  <div style="background-color: #00ffff;">#00ffff</div>
+  <div style="background-color: #ff00ff;">#ff00ff</div>
+
+  <!-- 
+  HSL : 색조, 채도, 밝기로 색깔을 표현
+    H(Hue) : 색조로 0~360까지의 색깔을 표현
+      0은 빨간색, 120은 녹색, 240은 파란색
+    S(Saturation) : 채도로 백분율을 표현
+      0%은 회색, 100%는 전체색상
+    L(Lightness) : 밝기로 백분율을 표현
+      0%는 검은색, 100%는 흰색
+  -->
+  <h3 style="clear: both;">HSL</h3>
+  <div style="background-color: hsl(0, 100%, 50%);">0</div>
+  <div style="background-color: hsl(120, 100%, 50%);">120</div>
+  <div style="background-color: hsl(240, 100%, 50%);">240</div>
+  <div style="background-color: hsl(60, 100%, 50%);">60</div>
+  <div style="background-color: hsl(180, 100%, 50%);">180</div>
+  <div style="background-color: hsl(300, 100%, 50%);">300</div>
+
+</body>
+</html>

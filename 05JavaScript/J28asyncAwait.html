@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Async / Await</h2>
+  <!-- aync/await는 Promise를 더욱 쉽고 효과적으로 다루기 위한
+    문법적설탕(syntactic sugar)이다. 복잡한 then()절과 catch()로 이어지는 문법 대신,
+    마치 동기 코드를 작성하듯 비동기 작업을 순서대로 기술할 수 있도록 해준다. -->
+  <script>
+    // 로그인 요청 : 서버로 아이디를 보내 로그인을 요청한다.
+    function requestLogin(userid) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log(`${userid} 로그인 완료`);
+          resolve(userid);
+        }, 1000); // 1초 걸린다는 가정
+      });
+    }
+    
+    // 회원정보조회 : 로그인 성공 후 해당 사용자의 회원정보를 조회한다.
+    function getUserInfo(userid) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log(`${userid}의 사용자 정보 조회 완료`);
+          /* 요청에 성공한 경우 객체 반환. es6에서는 Key와 Value가 동일하면 하나만
+          기술하면 된다. */
+          resolve({userid, name: '성유겸'});
+        }, 1000);
+      });
+    }
+    /* 환영메세지 출력 : 조회된 회원정보를 객체형식으로 받은 후 메세지 출력 */
+    function welcomeHome(responseInfo){
+      return new Promise((resolve) => {
+        setTimeout(()=> {
+          // 객체의 Key를 통해 값을 출력한다.
+          console.log(`아이디: ${responseInfo.userid}`);
+          console.log(`${responseInfo.name}님, 환영합니다!`);
+          resolve();
+        }, 1000);
+      });
+    }
+
+    // async로 선언한 함수 내에서만 await를 사용할 수 있다.
+    async function processMain() {
+      try {
+        /* 각 1초씩 걸리는 요청을 순차적으로 호출한다.
+        await는 하나의 요청이 끝날때까지 대기했다가 콜백데이터가 있으면
+        그 다음 작업을 진행하겠다는 의미로 사용. 만약 async~await가 없으면
+        응답이 오기 전에 다음함수를 호출하므로 결과가 정상적으로 출력되지 않는다. */
+        const my_id = await requestLogin('gyeoms');
+        const my_info = await getUserInfo(my_id);
+        await welcomeHome(my_info);
+      } catch (error) {
+        console.error('에러 발생:', error);
+      }
+    }
+  </script>
+  <div>
+    <button type="button" onclick="processMain();">로그인하기</button>
+  </div>
+</body>
+</html>

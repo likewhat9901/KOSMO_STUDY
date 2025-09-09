@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* fieldset 하위의 div태그를 선택해서 크기와 정렬을 공통적으로
+    지정한다. */
+    fieldset div{
+      width: 100px; height: 100px;
+      text-align: center; line-height: 100px;
+    }
+    .div1{ background-color: red;}
+    .div2{ background-color: blue;}
+    .div3{ background-color: green;}
+  </style>
+</head>
+<body>
+  <h2>display VS Visibility 속성</h2>
+  <!-- visibility 속성은 hidden일때 엘리먼트를 숨김처리한다.
+    이때 영역은 그대로 유지된다.
+    - hidden : 숨김
+    - visible :default 값으로 보임 처리 
+  -->
+  <script>
+    function visibilityTest(){
+      console.log("클릭되나요?")
+      /* 해당 문서 내에서 id로 지정된 엘리먼트를 JS로 가져온다. CSS의
+      Selector와 동일한 역할을 한다. */ 
+      var a = document.getElementById("viBox");
+      // 해당 box가 hidden상태이면 visible을 부여한다.
+      if(a.style.visibility=='hidden'){
+        a.style.visibility = "visible";
+      }else{
+        a.style.visibility = "hidden";
+      }
+    }
+  </script>
+  <fieldset>
+    <legend>Visibility속성</legend>
+    <div class="div1">left</div>
+    <!-- 인라인 스타일로 태그에 직접 CSS 속성을 부여한다. -->
+    <div class="div2" id="viBox" style="visibility:hidden;">
+      center
+    </div>
+    <!-- 해당 엘리먼트에 click이벤트가 발생되면 JS함수를 호출한다.
+      cursor속성은 마우스 커서의 모양을 설정한다. -->
+    <div class="div3" onclick="visibilityTest()"
+      style="cursor: pointer;">
+      right(Click)
+    </div>
+  </fieldset>
+
+  <script>
+    function displayTest(){
+      console.log("클릭되나요?")
+      var a = document.getElementById("disBox");
+      if(a.style.display=='none'){
+        a.style.display = "block";
+      }else{
+        a.style.display = "none";
+      }
+    }
+  </script>
+  <!-- 
+    display속성은 none일때 엘리멘트를 숨김처리하고, 동시에 영역까지 삭제한다.
+    따라서 약간의 애니메이션 효과가 생긴다.
+    - none : 엘리먼트 및 영역까지 숨김 처리
+    - block : 보임처리. 또한 엘리먼트의 속성을 블럭엘리먼트로 변경한다.
+  -->
+  <fieldset>
+    <legend>Display속성</legend>
+    <div class="div1">left</div>
+    <div class="div2" id="disBox" style="display: none;">
+      center
+    </div>
+    <div class="div3" onclick="displayTest()"
+      style="cursor: pointer;">
+      right(Click)
+    </div>
+  </fieldset>
+  <!-- 
+  display 속성과 동일하게 엘리먼트와 영역을 동시에 제거한다. -->
+  <fieldset>
+    <legend>HTML5의 hidden 속성</legend>
+    <div class="div1">left</div>
+    <div class="div2" hidden> center </div>
+    <div class="div3"> right </div>
+  </fieldset>
+</body>
+</html>

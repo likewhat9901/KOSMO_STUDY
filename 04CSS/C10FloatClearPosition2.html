@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1{background-color: red;}
+    .box2{background-color: green;}
+    .box3{background-color: blue;}
+    .w100{width: 100px;}
+    .h100{height: 100px;}
+  </style>
+</head>
+<body>
+  <h2>position 기본 속성</h2>
+
+  <!-- static 속성값은 엘리먼트의 디폴트 값으로 기본위치를 변경할 수 없다.
+    따라서 left 속성을 부여했지만 기존위치를 그대로 유지하게 된다. -->
+  <fieldset>
+    <legend>static</legend>
+    <!-- class 속성을 2개 이상 사용할 때는 아래와 같이 스페이스로
+      구분하면 된다. -->
+    <div class="box1 w100 h100"
+      style="position: static; left: 100px; top: 0px;">
+      static  
+    </div>
+  </fieldset>
+
+  <!-- relative 속성값은 부모 엘리먼트 혹은 다른 엘리먼트와의 상대적인 위치값을
+    가진다. 여기에서는 부모 엘리먼트를 기준으로 좌에서 100px만큼 위치가 이동된다. -->
+  <fieldset>
+    <legend>relative</legend>
+    <div class="box2 w100 h100"
+      style="position: relative; left: 100px; top: 0px;">
+      relative  
+    </div>
+  </fieldset>
+
+  <!-- absolute 속성값은 부모 엘리먼트 중 position속성이 relative, absolute인
+    부모가 있으면 그 부모가 기준이 되고, static 속성이면 웹브라우저가 기준이 된다..
+    따라서 fieldset 속성을 static으로 변경하면 box3은 페이지 상단으로 이동한다.. -->
+  <fieldset style="position: relative;">
+    <legend>absolute</legend>
+    <div class="box3 w100 h100"
+      style="position: absolute; left: 100px; top: 0px;">
+      absolute  
+    </div>
+  </fieldset>
+  <p style="height: 100px;"></p>
+  
+  <h2>배치</h2>
+  <!-- static인 경우에는 위치값을 임의로 조정할 수 없다. 모든 엘리먼트의 position
+    속성이 static이므로 left, top 속성을 부여해도 위치는 변하지 않는다. -->
+  <fieldset style="position: static;">
+    <legend>position: static</legend>
+    <div class="box1 w100 h100"
+      style="position: static; left: 0px; top: 0px;">
+      box1(0,0)  
+    </div>
+    <div class="box2 w100 h100"
+    style="position: static; left: 50px; top: 50px;">
+    box2(50,50)  
+    </div>
+    <div class="box3 w100 h100"
+    style="position: static; left: 100px; top: 100px;">
+    box3(100,100)  
+    </div>
+  </fieldset>
+
+  <!-- relative인 경우는 앞서 배치된 엘리먼트의 위치에 상대적인 위치를
+    가지게 되므로 div2의 경우 div1을 기준으로 위치를 설정하게 된다.
+    left, top 속성값은 양수, 음수로 지정할 수 있다. -->
+  <fieldset style="position: relative;">
+    <legend>position: relative</legend>
+    <div class="box1 w100 h100"
+      style="position: relative; left: 0px; top: 0px;">
+      box1(0,0)  
+    </div>
+    <div class="box2 w100 h100"
+    style="position: relative; left: 50px; top: -50px;">
+    box2(50,-50)  
+    </div>
+    <div class="box3 w100 h100"
+    style="position: relative; left: 100px; top: -100px;">
+    box3(100,-100)  
+    </div>
+  </fieldset>
+
+  <!-- absolute는 앞에 배치된 엘리먼트의 영향없이 항상 절대적인 위치값을
+    가지게 된다. 따라서 3개의 박스에 같은 위치값을 부여하면 모든 박스가 겹쳐진다.
+    이와같이 박스가 겹쳐지는 경우, 우선순위 부여를 위해 z-index를 사용한다.
+    1~9999까지 사용할 수 있고, 숫자가 클수록 높은 우선순위를 가진다. -->
+  <fieldset style="position: absolute;">
+    <legend>position: absolute</legend>
+    <div class="box1 w100 h100"
+      style="position: absolute; left: 0px; top: 0px;
+      z-index: 9999;">
+      box1(0,0)  
+    </div>
+    <div class="box2 w100 h100"
+    style="position: absolute; left: 50px; top: 50px;
+      z-index: 5000;">
+      box2(50,50)  
+    </div>
+    <div class="box3 w100 h100"
+    style="position: absolute; left: 100px; top: 100px;
+      z-index: 1;">
+      box3(100,100)
+    </div>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function seasonFunc(){
+      // 선택한 '월'을 얻어옴
+      let m = document.getElementById("month").value;
+      // 출력을 위한 p태그의 DOM을 얻어옴
+      let p = document.getElementById("show");
+
+      // switch문에서는 주로 산술식(값)을 사용해서 분기
+      switch(parseInt(m)){
+        // 2개 이상의 case는 다음과 같이 작성
+        case 3: case 4: case 5:
+          // p태그 부분에 텍스트가 삽입된다.
+          p.innerText = m + "월은 봄입니다.";
+          break;
+        case 6: case 7: case 8: case 9:
+          p.innerText = m + "월은 여름입니다.";
+          break;
+        case 10:
+          p.innerText = m + "월은 가을입니다.";
+          break;
+        case 11: case 12: case 1: case 2:
+          p.innerText = m + "월은 겨울입니다.";
+          // 보통 마지막의 break는 생략이 가능하다.
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>조건문 - switch문</h2>
+  1년 중 가장 좋아하는 월은?
+  <!-- range타입의 입력상자를 사용해서 월 선택 -->
+  <input type="range" id="month" min="1" max="12" step="1" onchange="rangeshow();">
+  <span id="monthStr"></span>
+  &nbsp;&nbsp;&nbsp;
+  <input type="button" value="어떤계절??" onclick="seasonFunc();">
+  <p id="show"></p>
+
+  <script>
+    document.getElementById('monthStr').innerText = 
+      document.getElementById('month').value;
+
+    function rangeshow(){
+      let mo = document.getElementById('month').value;
+      document.getElementById('monthStr').innerText = mo;
+    }
+  </script>
+</body>
+</html>

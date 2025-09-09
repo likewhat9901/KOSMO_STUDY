@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /*
+    escape() : 한글과 같이 2byte로 표현되는 유니코드를 UTF-8로 인코딩할때 사용.
+      인코딩 없이 전송시 깨짐 현상이 발생될 수 있다.
+      영문이나 숫자는 1byte인 아스키코드로 표현되므로 인코딩의 대상이 되지 않는다.
+    unescape() : 인코딩 된 값을 디코딩할 때 사용한다.
+    */
+    document.write("<h3>escape()/unescape()함수</h3>");
+    var escapeStr = window.escape("안녕 Hello 1234");
+    document.write("인코딩:"+escapeStr+"<br/>");
+    document.write("디코딩:"+ unescape("%uC548%uB155%20Hello%201234") + "<br>");
+
+    /* 
+    eval() : 문자열로 주어진 코드를 실제 JavaScript 코드로 인식하여 실행해주는 함수.
+      연산식이 주어지면 연산의 결과를 반환해준다. */
+    document.write("<h3>eval()함수</h3>");
+    // 웹브라우저에 alert()가 문자열 그대로 출력된다.
+    document.write("alert('나는 alert함수다');");
+    // eval() 함수로 전달되면 실제 코드처럼 실행된다.
+    eval("alert('나는 alert함수다. eval()안에 있다.');");
+    // 일반 문자열로 출력
+    document.write("<br>1+2+3<br>");
+    // eval() 함수에 전달하면 실제 연산이 되어 6이 출력됨.
+    document.write(eval("1+2+3"));
+    /* 
+    이와 같이 한글로 시작되면 숫자로 인식할 수 없어 에러가 발생한다.
+    이 경우 실행이 중지되므로 주석처리해야 아래쪽 코드가 실행된다. */
+    // document.write(eval("일+2+3"));
+
+    /* isNaN() : is Not a Number
+      즉 숫자가 아닌 경우에 true를 반환한다. */
+    document.write("<h3>isNaN()함수</h3>");
+    isNaN("12A") ? document.write("숫자형식아님") : document.write("숫자형식임");
+    isNaN("12") ? document.write("<br>숫자형식아님") : document.write("<br>숫자형식임");
+
+    /* 
+    parseInt() : 문자열에서 숫자부분만 반환해주는 함수. 단 숫자가 아닌 문자로
+      시작되는 경우에는 NaN이 반환된다. 숫자로 시작하고 문자가 포함된 경우에는 문자
+      앞부분까지를 숫자로 변환해준다. */
+    document.write("<h3>parseInt()함수</h3>");
+    document.write("12A를 숫자로 변환:"+ parseInt("12A"));
+    document.write("<br>A12를 숫자로 변환:"+ parseInt("A12"));
+    document.write("<br>12A34를 숫자로 변환:"+ parseInt("12A34"));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

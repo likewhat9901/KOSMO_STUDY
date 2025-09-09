@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>table 태그</h2>
+  <h3>table 태그의 속성을 이용한 테이블 디자인</h3>
+  <!-- table>tr*2>td*3 -->
+  <!-- 
+  table 태그의 HTML 속성
+    border : 테이블의 테두리 두께
+    cellpadding : 셀과 컨텐츠 사이의 간격
+    cellspacing : 셀과 셀 사이의 간격
+    bgcolor : 테이블의 배경색. table, tr, td 도 -->
+  <table border="10" cellpadding = "10" cellspacing = "5"
+    bgcolor="yellow" width = '300'>
+    <tr>
+      <td bgcolor="#ff0000">가(R)</td>
+      <td bgcolor="#00ff00">나(G)</td>
+      <td bgcolor="#0000ff">다(B)</td>
+    </tr>
+    <tr>
+      <td>라</td>
+      <td>마</td>
+      <td bgcolor="#ffffff">
+        <img src="./images/apple.png" alt="사과">
+      </td>
+    </tr>
+  </table>
+  
+  <h3>CSS 속성을 이용한 테이블 디자인</h3>
+  <!-- 
+  CSS 속성을 통해 부여한 테이블
+    border : 기존과 동일
+    padding : cellpadding과 동일
+    border-spacing : cellspacing과 동일
+    background-color : bgcolor와 동일
+  -->
+  <table style="border-spacing: 0px; background-color: rgb(255, 162, 0); 
+    width: 300px;">
+    <tr>
+      <td style="padding: 5px; border: 1px solid black;">가</td>
+      <td style="padding: 5px; border: 1px solid blue;">나</td>
+      <td style="padding: 5px; border: 1px solid red;">다</td>
+    </tr>
+    <tr>
+      <td style="padding: 5px; border: 1px solid green;">라</td>
+      <td style="padding: 5px; border: 1px solid purple;">마</td>
+      <td style="padding: 5px; border: 1px solid skyblue;">
+        <img src="./images/banana.png" alt="바나나">
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

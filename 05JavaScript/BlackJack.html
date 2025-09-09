@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0; padding: 0;
+    }
+    
+    /* 게임 이름 */
+    h1{
+      text-align: center;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      box-shadow: 5px 5px 5px black ;
+      padding: 5px 0; margin-top: 1.5vh;
+    }
+
+    /* 게임판 */
+    section{
+      border: 1px solid red;
+      /* display: grid; */
+      width: 100%; height: 80vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), 
+          url(./images/blackjack_table.jpeg);
+      background-size: contain;
+    }
+
+    /* 위아래, card 설정 */
+    .play{
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      padding-top: 2.5vh;
+      width: 100%; height: 20vh;
+    }
+    .card{
+      border: 1px solid black;
+      border-radius: 1vw;
+      width: 12.2vw; height: 16vh;
+      margin: auto 1.5vw;
+      box-sizing: border-box;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    /* 가운데 */
+    .deck{
+      border: 1px solid blue;
+      width: 100%; height: 25vh;
+      display: flex; position: relative;
+      justify-content: center;
+    }
+    .deck .card{
+      background-image: url(./images/back_card.gif);
+      background-position: center;
+    }
+    .rule{
+      border: 1px solid yellow;
+      position: absolute;
+      top: 1.5vh; right: 2vw;
+      width: 25vw; height: 20vh;
+      background-color: white;
+      border-radius: 1vw;
+      padding: 1vw;
+      font-size: 0.9rem;
+    }
+
+    /* 맨 밑 */
+    .control{
+      border: 1px solid yellow;
+      width: 100%; height: 9vh;
+      display: flex; 
+      justify-content: center; align-items: center;
+      gap: 5vw;
+      position: relative;
+    }
+    .button{
+      width: 12vw; height: 4vh;
+      font-size: 1.6vw; font-weight: bold; line-height: 1.6vw;
+      cursor: pointer; overflow: hidden;
+      border-radius: 1vw;
+    }
+    .button.gameStart{
+      position: absolute;
+      top: 2.5vh; left: 2vw;
+    }
+    .money{
+      position: absolute;
+      top: 0.5vh; right: 3vw;
+      text-align: left;
+      justify-items: end;
+      font-size: 1.6vw; line-height: 3vh; 
+    }
+    .show{
+      width: 18vw; height: 3vh; padding: 0.1rem 0.1rem 0.1rem 1rem;
+      background-color: white;
+      border-radius: 0.5vw;
+    }
+    .bet{
+      margin-bottom: 1vh;
+    }
+    .bet input{
+      width: 9vw;
+      margin-left: 0.5rem;
+    }
+
+    #deposit{
+      margin-left: 0.5rem;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>블랙잭 게임</h1>
+  <section>
+    <div class="play computer">
+      <div class="card" id="c_first">카드1</div>
+      <div class="card" id="c_second">카드2</div>
+      <div class="card" id="c_third">카드3</div>
+      <div class="card" id="c_fourth">카드4</div>
+    </div>
+    <div class="deck">
+      <div class="card">카드덱</div>
+      <p class="rule">
+        <strong>게임 규칙</strong><br>
+        - 목표: 21점을 넘지 않고 딜러보다 높은 점수 얻기<br>
+        - A: 1점 또는 11점<br>
+        - J/Q/K: 10점<br>
+      </p>
+    </div>
+    <div class="play user">
+      <div class="card">카드1</div>
+      <div class="card">카드2</div>
+      <div class="card">카드3</div>
+      <div class="card">카드4</div>
+    </div>
+    <div class="control">
+      <button type="button" class="button gameStart" onclick="shuffle();">게임시작</button>
+      <button type="button" class="button double">더블다운</button>
+      <button type="button" class="button hit">히트(한장더)</button>
+      <button type="button" class="button stand">스탠드(Stop)</button>
+      <div class="money">
+        <div class="show bet">베팅금액: <input type="text" name="" id=""></div>
+        <div class="show myBudget">남은금액 : <span id="deposit">60,000</span></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const cardArr = ["one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"]
+
+    function shuffle(){
+      let card = document.getElementsByClassName("card");
+      for(let i=0 ; )
+      card[0].style.backgroundImage = "url('./images/three.gif')";
+
+    }
+  </script>
+</body>
+</html>

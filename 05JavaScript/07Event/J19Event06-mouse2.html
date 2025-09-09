@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>마우스 이벤트</h2>
+  <!-- mouseover : 특정 엘리먼트에 마우스를 올렸을때 발생하는 이벤트
+    mouseout : 영역에서 빠져나왔을때 발생하는 이벤트 -->
+  <h3>mouseover / mouseout 이벤트</h3>
+  <table style="border-spacing: 1px; width: 400px; background-color: gray;">
+    <tr style="background-color: yellow;">
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+    </tr>
+    <!-- HTML 자체적으로 DOM요소를 선택할때는 this를 통해 설정할 수 있다. -->
+    <tr style="background-color: gray;"
+        onmouseover="this.style.backgroundColor='green';"
+        onmouseout="this.style.backgroundColor='gray';">
+      <td>1</td>
+      <td>어벤져스</td>
+      <td>페이즈1</td>
+    </tr>
+    <tr style="background-color: white;"
+        onmouseover="this.style.backgroundColor='green';"
+        onmouseout="this.style.backgroundColor='white';">
+      <td>2</td>
+      <td>어벤져스2-울트론의 시대</td>
+      <td>페이즈2</td>
+    </tr>
+    <tr style="background-color: gray;"
+        onmouseover="this.style.backgroundColor='green';"
+        onmouseout="this.style.backgroundColor='gray';">
+      <td>3</td>
+      <td>어벤져스3-인피니티워</td>
+      <td>페이즈3</td>
+    </tr>
+    <tr style="background-color: white;"
+        onmouseover="this.style.backgroundColor='green';"
+        onmouseout="this.style.backgroundColor='white';">
+      <td>4</td>
+      <td>어벤져스4-엔드게임</td>
+      <td>페이즈4</td>
+    </tr>
+  </table>
+
+  <!-- mousedown : 마우스를 클릭했을때 발생하는 이벤트
+    mouseup : 클릭 후 땠을 때  발생하는 이벤트 -->
+  <h3 id="title">mousedown/mouseup 이벤트</h3>
+  <script>
+    function fnScale(flag){
+      // id속성으로 DOM요소를 가져온다.
+      var title = document.getElementById("title");
+      // div태그 중 첫번째 요소를 가져온다.
+      var div = document.getElementsByTagName("div")[0];
+      if(flag==1){
+        // 1이면 마우스다운 이벤트
+        title.innerHTML = "<big>mousedown 이벤트 발생</big>";
+        // 배경색 녹색으로 변경
+        div.style.backgroundColor = "green";
+        console.log("현재크기", div.style.width, div.style.height);
+        /* div상자의 크기를 얻어와서 number 타입으로 변환 후 2를 곱해준다.
+        즉, 크기를 2배로 증가시킨다. DOM을 통해 읽어온 값은 string이므로 연산을 위해서는
+        number타입으로 변환해야 함. */
+        div.style.width = parseInt(div.style.width)*2 + "px";
+        div.style.height = parseInt(div.style.height)*2 + "px";
+      }
+      else if(flag ==2){
+        title.innerHTML = "mouseup 이벤트 발생";
+        div.style.backgroundColor = "red";
+        div.style.width = "100px";
+        div.style.height = "100px";
+      }
+    }
+  </script>
+
+  <div onmousedown="fnScale(1);" onmouseup="fnScale(2);"
+      style="background-color: red; width: 100px; height: 100px;">
+    여기를 클릭해보세요.
+  </div>
+
+  <h3>mousedown이벤트</h3>
+  <script>
+    // 전역변수 생성
+    var timer, count=1, divObj;
+    function setTimer(obj){
+      /* div태그에서 this를 통해 전달한 DOM요소를 매개변수로 받은 후 전역변수에 할당한다. */
+      divObj = obj;
+      /* 0.3초에 한번씩 moveObj 함수를 호출한다. 이때 setInterval 함수가 반환한 참조값을
+      timer 변수에 저장한다. */
+      timer = setInterval("moveObj()", 300);
+    }
+    function moveObj(){
+      console.log("나 호출됨?");
+      /* 
+      이 함수가 3번 호출되면 타이머 변수를 이용새허 중지시킨다. */
+      if(count%3==0){
+        clearInterval(timer);
+      }
+      // 전역변수를 증가시키므로 초기화되지 않고 계속 증가만 된다.
+      count++;
+      /* div 상자의 left 속성값을 얻어온 후 50씩 증가시킨다. left 속성값이 증가하면
+      좌측여백이 생겨 상자가 오른쪽으로 이동하는 것처럼 보이게 된다. */
+      var left = parseInt(divObj.style.left);
+      divObj.style.left = (left + 50) + "px"; 
+    }
+  </script>
+  <div onmousedown="setTimer(this);" style="left: 0; top: 0;
+      position: relative; width: 100px; height: 100px; background-color: blue;">
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* location 객체 : a 태그와 동일하게 페이지 이동을 위해 사용한다.
+    형식] 타겟명.location.href = '이동할 페이지의 url 혹은 경로';
+      단, 타겟명이 없을때는 현재페이지에서 이동한다.
+    */
+    function fnLogin(){
+      // 아이디, 패스워드 입력상자에 입력한 값을 읽어온다.
+      var id = document.getElementById("user_id").value;
+      var pw = document.getElementById("user_pw").value;
+      // 정보가 일치하는지 확인 후 각 페이지로 이동한다.
+      if(id=="Kim" && pw=="1234"){
+        // 일치하여 로그인에 성공하면 01페이지로 이동
+        window.location.href= "./pages/history01.html";
+      }else{
+        // 실패하면 02페이지로 이동한다.
+        location.href="./pages/history02.html";
+      }
+      /* JavaScript에서 window는 최상위 객체이므로 생략 가능하다. 그래서 대부분의 경우
+      기술하지 않는다. */
+    }
+
+    /* 타겟을 지정할 때는 location 앞에 타겟명을 기술한다. iframe 태그의 name 속성에 부여한
+    값으로 지정하였다. */
+    function fnLoginIframe(){
+      frmArea.location.href = "./pages/history01.html";
+    }
+  </script>
+</head>
+<body>
+  <h2>로그인 화면</h2>
+  아이디 : <input type="text" id="user_id">
+  <br>
+  패스워드 : <input type="text" id="user_pw">
+  <br>
+  <input type="button" value="로그인" onclick="fnLogin();">
+  <br>
+  <input type="button" value="로그인[iframe]" onclick="fnLoginIframe();">
+  <hr>
+
+  <iframe src="" frameborder="1" name="frmArea" width="300" height="200"></iframe>
+</body>
+</html>

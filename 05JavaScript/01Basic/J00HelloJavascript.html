@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>처음 만들어보는 JavaScript</h2>
+  <script>
+    // 변수 선언시 var 사용. (이외: let(변수), const(상수))
+    var number;
+    // 변수 선언 후 초기값 할당 안하면, undefined이 된다.
+    console.log("number="+number);
+
+    // 따라서 undefined를 통해 조건문 생성 가능
+    if(number==undefined){
+      console.log("타입이 정의되지 않았습니다.");
+    }else{
+      console.log("타입이 정의되었습니다.");
+    }
+
+    // 변수에 정수할당하면, number타입의 변수가 된다.
+    number = 10;
+
+    console.log('number', number);
+    if(number==undefined){
+      console.log("타입이 정의되지 않음 ㅜㅜ");
+    } else {
+      // 앞에서 정수 10을 할당했으므로 값은 10, 자료형 타입은 number.
+      console.log("타입이 정의됨^^", typeof(number));
+    }
+  </script>
+</body>
+</html>

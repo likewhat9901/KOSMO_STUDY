@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>form태그의 하위요소가 되는 태그들</h2>
+  <h3>type="checkbox"</h3>
+  <!-- fieldset 하위의 legend 태그 : 주로 설문의 항목이나 시험문제 등을
+  표현할 때 사용하는 태그로 Block Element이다. -->
+  <!-- 
+  input 태그의 checkbox, radio 속성이 부여되는 경우에는 반드시 value 속성값을
+  미리 입력해 놓아야 한다. 해당 속성은 단순히 선택만 가능하고 값을 입력하는
+  기능은 없기 때문이다.
+  또한 하나의 그룹으로 만들기 위해 동일한 name속성값을 가진다. 그리고 선택한
+  항목의 value만 서버로 전송된다.  -->
+  <fieldset>
+    <legend>먹고싶은거 다 고르세요</legend>
+    <form action="">
+      <!-- 체크박스의 경우 미리 value가 입력된 상태이므로 값의 유무는 중요하지 않고, 선택이 된 상태인지가
+        중요하다. 미리 체크를 해두려면 checked 속성을 사용한다. -->
+      <input type="checkbox" name="china" value="1">
+      짜장면<img src="./images/jajang.png" alt="">
+      <input type="checkbox" name="china" value="2" checked>
+      짬뽕<img src="./images/jjambbong.png" alt="">
+      <input type="checkbox" name="china" value="3">
+      탕수육<img src="./images/tangsuyuk.png" alt="">
+      <input type="submit" value="전송하기">
+    </form>
+  </fieldset>
+
+  <h3>type="radio"</h3>
+  <!-- radio는 checkbox와 기본적인 속성은 동일하지만 여러 항목 중 딱 한개만 선택할 수 있는 특징이 있다. -->
+  <fieldset>
+    <legend>먹고싶은거 하나만 고르세요</legend>
+    <form action="">
+      <input type="radio" name="chinaFood" value="1">
+      짜장면<img src="./images/jajang.png" alt="">
+      <input type="radio" name="chinaFood" value="2" checked>
+      짬뽕<img src="./images/jjambbong.png" alt="">
+      <input type="radio" name="chinaFood" value="3">
+      탕수육<img src="./images/tangsuyuk.png" alt="">
+      <input type="submit" value="전송하기">
+    </form>
+  </fieldset>
+
+  <!-- 
+  select태그 : 상위태그인 select태그에 하위태그인 option을 가지고 있다.
+    multiple 옵션 유무에 따라 checkbox와 radio의 2가지 특징을 모두 가질 수 있다.
+  -->
+  <h3>select태그 - 하나만 선택</h3>
+  <fieldset>
+    <legend>당신의 최종학력은 무엇인가요?</legend>
+    <form action="">
+      <!-- select태그에서 미리 항목을 선택하고 싶다면 selected 속성을 부여하면 된다. -->
+      <select name="grade" id="">
+        <option value="ele">초등학교</option>
+        <option value="mid">중학교</option>
+        <option value="high" selected>고등학교</option>
+        <option value="uni">대학교</option>
+      </select>
+      <input type="submit" value="전송하기">
+    </form>
+  </fieldset>
+
+  <h3>select태그 - 여러개선택</h3>
+  <fieldset>
+    <legend>당신이 좋아하는 걸그룹은?(다중선택가능)</legend>
+    <form action="">
+      <!-- multiple 속성을 부여하면 checkbox와 같이 2개 이상의 항목을 선택할 수 있다.
+        ctrl키나 shift키 혹은 드레그를 통해 선택할 수 있다. 
+        select 태그에서 size속성은 노출할 항목의 개수를 정하는 것으로 세로로 늘어난다.
+      -->
+      <select name="girlGroup" multiple size="5">
+        <option value="T">트와이스</option>
+        <option value="M">모모랜드</option>
+        <option value="R">레드벨벳</option>
+        <option value="G">여자친구</option>
+        <option value="B">블랙핑크</option>
+      </select>
+      <input type="submit" value="전송하기">
+    </form>
+  </fieldset>
+
+</body>
+
+</html>

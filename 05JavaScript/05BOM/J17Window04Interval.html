@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 타이머 작동확인을 위한 함수
+    function fnOnce(){
+      alert("5초후 딱 한번만 실행됨");
+    }
+    function fnContinue(){
+      alert("3초마다 매번 실행됨");
+    }
+
+    // 타이머를 제어하기 위한 전역변수 선언
+    var timerOnce, timerMode;
+
+    function fnCallAfter(flag){
+      /* 타이머 관련 함수를 사용할때는 내부에서 다른 함수를 호출할때 반드시
+      "함수명()"과 같이 문자열 형태로 기술해야 한다. 시간은 1/1000 단위를 사용한다. */
+      if(flag=="T"){
+        // 5초 이후 함수 호출
+        timerOnce = window.setTimeout(fnOnce, 5000);
+      }
+      else{
+        // 3초마다 함수 호출
+        timerMode = window.setInterval("fnContinue()", 3000);
+      }
+    }
+
+    /* 
+    각 타이머 함수의 실행을 중지하고 싶을때는 참조변수를 사용하여 clearXX() 계열의 함수를
+    호출하면 된다. */
+    function fnCallBreak(flag){
+      if(flag==1){
+        clearTimeout(timerOnce);
+      }
+      else{
+        clearInterval(timerMode);
+      }
+    }
+
+    /* Date 내장객체를 통해 현재시간을 얻어온 후 문자열로 구성한다.
+    span 태그의 innerHTML 속성으로 시간을 화면에 표시한다. */
+    function displayTime(){
+      var date = new Date();
+      var displayClock = document.getElementById("clock");
+      displayClock.innerHTML = date.getHours() + "시 "+
+            date.getMinutes() + "분 "+
+            date.getSeconds() + "초";
+    }
+
+    /* 1초에 한번씩 지속적으로 함수를 호출하여 디지털 시계를 구현한다.
+    지속적으로 현재시간을 가져오므로 시간이 흘러가는 것처럼 보이게 된다. */
+    function displayTimeCall(){
+      // 형식1 : 외부에 정의한 함수를 호출
+      // setInterval("displayTime()", 1000);
+
+      // 형식2 : 타이머 함수 내부에 콜백함수를 직접 정의
+      setInterval(() => {
+        let date = new Date();
+        let displayClock = document.getElementById("clock");
+        displayClock.innerHTML = date.getHours() + "시 "+
+              date.getMinutes() + "분 "+
+              date.getSeconds() + "초";
+      }, 1000);
+    }
+  </script>
+</head>
+<body>
+  <h2>setInterval(), setTimeout() 함수</h2>
+
+  <h3>일정 시간 후 함수실행</h3>
+  <input type="button" value="5초후함수실행" onclick="fnCallAfter('T');">
+  <input type="button" value="함수호출중지" onclick="fnCallBreak(1);">
+  
+  <h3>일정 시간마다 함수실행</h3>
+  <input type="button" value="3초마다함수실행" onclick="fnCallAfter('I');">
+  <input type="button" value="함수호출중지" onclick="fnCallBreak(2);">
+
+  <h3>간단한 디지털 시계 구현하기</h3>
+  <span id="clock" style="color: red; font-size: 1.8em; font-weight: bold;"></span>
+  <button type="button" onclick="displayTimeCall();">
+    디지털시계
+  </button>
+  <br><br><br>
+
+
+  <style>
+    #clock2 {
+      width: 600px; height: 600px;
+      border: 5px solid pink;
+      border-radius: 50%;
+      position: relative;
+      background-image: url(./images/jammie1.png);
+      background-size: cover;
+      background-position: 0 -15px;
+    }
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: bottom;
+      background-color: black;
+    }
+    .hour   { height: 170px; width: 8px; background-color: yellow; border-radius: 4px;}
+    .minute { height: 220px; width: 6px; background-color: black; border-radius: 3px;}
+    .second { height: 250px; width: 4px; background: red; border-radius: 2px;}
+
+    .time{
+      position: absolute; 
+      font-size: 56px; font-weight: 900;
+      font-family: 'Gill Sans'; color: violet;
+      line-height: 56px;
+    }
+    .one {
+      top: 2%; right: 25%;
+    }
+    .two {
+      top: 17%; right: 11%;
+    }
+    .three {
+      top: 36%; right: 6%;
+    }
+    .four {
+      top: 55%; right: 11%;
+    }
+    .five {
+      top: 69%; right: 25%;
+    }
+    .six {
+      top: 76%; left: 48%;
+    }
+    .seven {
+      top: 69%; left: 26%;
+    }
+    .eight {
+      top: 55%; left: 13%;
+    }
+    .nine {
+      top: 36%; left: 7%;
+    }
+    .ten {
+      top: 17%; left: 11%;
+    }
+    .eleven {
+      top: 2%; left: 23%;
+    }
+    .twelve {
+      top: -5%; left: 44%;
+    }
+
+  </style>
+
+  <div id="clock2">
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+
+    <p class="time one">1</p>
+    <p class="time two">2</p>
+    <p class="time three">3</p>
+    <p class="time four">4</p>
+    <p class="time five">5</p>
+    <p class="time six">6</p>
+    <p class="time seven">7</p>
+    <p class="time eight">8</p>
+    <p class="time nine">9</p>
+    <p class="time ten">10</p>
+    <p class="time eleven">11</p>
+    <p class="time twelve">12</p>
+  </div>
+  <input type="file" name="" id="bgInput" onchange="backImg();">
+  <br><br><br><br><br>
+
+  <script>
+    function updateClock(){
+      const now = new Date();
+      const hour = now.getHours() % 12;
+      const minute = now.getMinutes();
+      const second = now.getSeconds();
+
+      document.getElementById("hour").style.transform = 
+        `rotate(${hour * 30 + minute *0.5}deg)`;
+      document.getElementById("minute").style.transform =
+        `rotate(${minute * 6 + second * 0.1}deg)`;
+      document.getElementById("second").style.transform =
+        `rotate(${second * 6}deg)`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function backImg(){
+      const bgInput = document.getElementById("bgInput");
+      const file = bgInput.files[0];
+      const clock = document.getElementById("clock2");
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          clock.style.backgroundImage = `url(${e.target.result})`;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+  </script>
+</body>
+</html>

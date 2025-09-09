@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* 오디오 객체 생성 */
+    var audio = new Audio("./media/My_Love.mp3");
+    window.onload = function() {
+      // 문서 로드시 DOM 요소에 이벤트 리스너 부착
+      var currentSpan = document.getElementById("current_time");
+      var totalSpan = document.getElementById("total_time");
+      var progress = document.getElementById("progress");
+
+      audio.addEventListener("timeupdate", function(){
+        // 전체 재생시간과 현재 재생시간 표시
+        totalSpan.innerHTML = audio.duration;
+        currentSpan.innerHTML = audio.currentTime;
+        progress.max = audio.duration;
+        progress.value = audio.currentTime;
+      });
+    }
+    function play(){
+      audio.play();
+    }
+    function stop(){
+      audio.pause();
+    }
+  </script>
+</head>
+<body>
+  <h2>javascript를 이용한 커스텀 오디오 만들기</h2>
+  <div>
+    <!-- 프로그래스 바 -->
+    <progress value="0" id="progress"></progress>
+  </div>
+  <div>
+    <!-- 재생, 중지 버튼 -->
+    <input type="button" value="PLAY" onclick="play()">
+    <input type="button" value="STOP" onclick="stop()"><br>
+    <!-- 재생 시간 표시 -->
+    <span id="current_time"></span>
+    /
+    <span id="total_time"></span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const day = prompt("월화수목금토일 중에 입력하세요.");
+
+    document.writeln("<h2>월화수목금토일</h2><hr>");
+
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const index = week.indexOf(day);
+    
+    if(0 < index && index < 6){
+      document.writeln(`${day}는 출근`);
+    }
+    else if(0 == index || index == 6){
+      document.writeln(`${day}는 휴일`);
+    }
+    else{
+      document.writeln(`잘못된 입력입니다.`);
+    }
+  </script>
+</head>
+<body>
+  <script>
+    const day2 = prompt("월화수목금토일 중에 입력하세요.");
+
+    document.writeln("<h2>월화수목금토일</h2><hr>");
+
+    switch(day2){
+      case "월": case "화": case "수": case "목": case "금":
+        document.writeln(`${day2}는 출근`);
+        break;
+      case "토": case "일":
+        document.writeln(`${day2}는 휴일`);
+        break;
+      default:
+        document.writeln(`잘못된 입력`);
+        break;
+    }
+  </script>
+</body>
+</html>

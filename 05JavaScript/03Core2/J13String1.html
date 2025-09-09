@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>JS의 Core객체 - string</h2>
+  <script>
+    /* 문자열 선언시 더블 혹은 싱글쿼테이션 모두 사용할 수 있다.
+    즉 문자와 문자열의 차이가 없다. */
+    var str1 = "Hello Javascript";
+    var str2 = '안녕 자바스크립트';
+    var str3 = new String("Hi 자바스크립트");
+
+    // 문자열 길이 반환
+    console.log("str1의 길이:", str1.length);
+
+    /* 
+    인수로 주어진 인덱스의 문자 하나를 반환. '아이디검증'과 같은 기능에 활용. */
+    console.error("charAt()");
+    console.log(str1.charAt(1));
+
+    // 문자열 잘라내기1 : 인덱스 3부터 7 앞부분까지 잘라낸다.
+    console.error("substring()");
+    console.log("Academy".substring(3,7));
+
+    // 문자열 잘라내기2 : 인덱스 3부터 4byte를 잘라냄.
+    console.error("substr()");
+    console.log('Academy'.substr(3,4));
+
+    // 아스키코드 반환 : 인덱스에 해당하는 문자의 아스키코드를 반환한다.
+    console.error("charCodeAt()");
+    console.log('Academy'.charCodeAt(1));
+
+    // 아스키코드를 문자로 변경
+    console.error("String.fromCharCode()");
+    console.log(String.fromCharCode(67));
+    console.log(String.fromCharCode(99));
+
+    /* 문자열은 별도의 변환없이 배열처럼 인덱스로 접근할 수 있다. */
+    console.error("문자열을 배열처럼 사용하기");
+    for (var i = 0; i < str2.length; i++) {
+      console.log("str2[" + i + "]=" + str2[i] + "<br/>");
+    }
+  </script>
+
+  <h4>퀴즈</h4>
+  <script>
+    /*
+      퀴즈]나이를 매개변수로 받아 아래와같은 결과를 반환하는 함수를
+      정의하시오. 만약 나이가 숫자형식이 아니면 false, 숫자형식이면 
+      true를 반환한다. 반환받은 결과를 이용하여 '숫자형식입니다.' 
+      혹은 '숫자형식이아닙니다'라는 문자열을 출력하는 프로그램을 
+      작성하시오
+    */ 
+    function isNumber(param) {
+      // 매개변수로 전달된 문자열의 길이로 반복
+      for(let i = 0 ; i < param.length ; i++){
+        console.log(param[i]);
+        // 숫자는 아스키코드 48~57 사이.
+        if((param[i].charCodeAt(0)>=48 && 
+          param[i].charCodeAt(0) <=57)){
+          /* 조건에 부정연산자를 붙였으므로 숫자가 아닌 경우 true가 되어 false를
+          반환. 즉 문자열에 숫자가 아닌 문자가 하나라도 있으면 즉시 false 반환하고
+          종료한다. */
+          return false;
+        }
+      }
+      // 모든 문자를 검사한 후 문제 없으면 true 반환.
+      return true;
+    }
+    console.error("퀴즈 > 숫자형식찾기");
+    //숫자형식
+    var isNum1 = isNumber(100);
+    (isNum1 == true) ? console.log("숫자형식") : console.log("숫자형식 아님");
+    //숫자형식 아님
+    var isNum2 = isNumber("100A");
+    (isNum2 == true) ? console.log("숫자형식") : console.log("숫자형식 아님");
+  </script>
+</body>
+</html>

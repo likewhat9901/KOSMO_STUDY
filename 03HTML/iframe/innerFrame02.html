@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 해당페이지에서는 _parent를 타겟으로 걸면 한단계 상위인 부모페이지에서
+    _top 을 사용하면 최상위 부모페이지에서 링크가 이동된다.
+    또한 프레임을 이름(name)을 사용할 수도 있다.
+    만약 name속성으로 target을 찾을 수 없을 경우에는 새탭에서 열리게 된다.
+  -->
+  <h2>innerFrame02 페이지</h2>
+
+  <a href="http://daum.net" target="_self">_self
+  <br>
+  <a href="http://daum.net" target="_parent">_parent
+  <br>
+  <a href="http://daum.net" target="_top">_top
+  <br>
+  <a href="http://daum.net" target="topWin">topWin
+  <br>
+
+</body>
+</html>

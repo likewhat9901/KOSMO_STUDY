@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    #navlist{
+      position: relative;
+    }
+    #navlist li{
+      margin: 0; padding: 0;
+      list-style: none;
+      position: absolute;
+      top: 0;
+    }
+    /* a태그는 인라인 속성이므로 block으로 변경하고 높이를 추가해야 한다. */
+    #navlist li, #navlist a{
+      height: 44px;
+      display: block;
+    }
+    /* background의 image 속성과 position 속성을 통해 삽입되는 이미지의 위치를
+    조절하여 특정 부분만 출력한다. */
+    #home{
+      left: 0px;
+      width: 46px;
+      background: url(images/img_navsprites_hover.gif) 0 0;
+    }
+    /* 마우스 오버시 이미지를 위로 당겨올리기 위해 음수로 설정
+      위치값 : 좌우(+:이미지 우측이동) / 상하(+:이미지 밑으로 이동)
+      좌측상단을 기준으로 + 시, 우측하단으로 이동함. */
+    #home a:hover{
+      background: url(images/img_navsprites_hover.gif) 0 -45px;
+    }
+    #prev{
+      left: 65px;
+      width: 43px;
+      background: url(images/img_navsprites_hover.gif) -47px 0;
+    }
+    #prev a:hover{
+      background: url(images/img_navsprites_hover.gif) -47px -45px;
+    }
+    #next{
+      left: 129px;
+      width: 43px;
+      background: url(images/img_navsprites_hover.gif) -91px 0;
+    }
+    #next a:hover{
+      background: url(images/img_navsprites_hover.gif) -91px -45px;
+    }
+  </style>
+  <ul id="navlist">
+    <li id="home"><a href="#"></a></li>
+    <li id="prev"><a href="#"></a></li>
+    <li id="next"><a href="#"></a></li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>폼 이벤트</h2>
+
+  <h3>select 태그에서 option 선택</h3>
+
+  <script>
+    /* change이벤트
+    : select에서 option을 선택할 때 발생되는 이벤트
+      input에서도 발생되지만 주로 select 태그에서 사용된다. */
+    function myChange(obj){
+      //매개변수 obj는 this를 통해 전달된 select태그의 DOM이 저장된다.
+      /* 
+      select태그에서 사용할 수 있는 JS속성
+      selectedIndex : select 하위의 option태그는 2개 이상의 항목을 가질 수 있으므로
+        인덱스를 통해 접근할 수 있다. 해당 속성은 선택한 option의 인덱스를 반환한다. 0부터 시작.
+      options : select 하위의 option에 접근할 수 있는 속성으로 배열처럼 사용할 수 있다.
+        length를 통해 개수를 확인할 수 있다.
+
+      option 태그의 value를 가져오는 방법
+      1. DOM요소.value
+      2. DOM요소.options[인덱스].value
+      태그 사이의 text를 가져올때도 동일한 방법을 사용한다.
+      */
+      let txt = '';
+      txt += '<br>인덱스:'+ obj.selectedIndex;
+      txt += '<br>option의 개수:'+ obj.options.length;
+      txt += '<br>선택항목의 text:'+ obj[obj.selectedIndex].text;
+      txt += '<br>선택항목의 value:'+ obj.value;
+      document.getElementById("selectItem").innerHTML = txt;
+    }
+  </script>
+  <!-- 이벤트 리스너에서 함수를 호출할때 사용하는 this는 해당 select태그의 
+    DOM을 가리킨다. 즉 select 태그 자체를 인수로 전달한다. -->
+  <select id="fruit" onchange="myChange(this);" size="5">
+    <option value="apple">사과</option>
+    <option value="orange">오렌지</option>
+    <option value="mango" selected>망고</option>
+    <option value="banana">바나나</option>
+    <option value="guaba">구아바</option>
+  </select>
+  <div id="selectItem"></div>
+  <h3>텍스트 선택</h3>
+  <!-- select 이벤트 : 엘리먼트의 텍스트를 drag해서 선택하면 발생된다. -->
+  <script>
+    function mySelect(){
+      alert("텍스트를 선택하셨습니다.");
+    }
+  </script>
+
+  입력상자의 텍스트를 마우스로 선택해보세요. <br>
+  <input type="text" size="30" value="독도는 우리땅 대마도는 너네땅" onselect="mySelect()">
+
+  <h3>텍스트 입력</h3>
+  <!-- input 이벤트 : <input> 입력상자에 텍스트를 입력했을때 발생한다. -->
+  <script>
+    function myInput(){
+      // 텍스트가 입력되는 순간 입력된 값을 DOM을 통해 읽어온다.
+      var txt = document.getElementById("myInput").value;
+      // 읽은 값을 실시간으로 삽입한다.
+      document.getElementById("inputText").innerHTML = "작성내용:" + txt;
+    }
+  </script>
+
+  텍스트를 입력하는 순간 이벤트가 발생합니다. <br>
+  <input type="text" size="30" id="myInput" oninput="myInput()">
+  <div id="inputText"></div>
+
+  <h3>submit / reset 이벤트</h3>
+
+  <script>
+    function fnSubmit(){
+      /* form태그 하위의 input 태그에 접근할때는 name 속성을 통해 접근하여
+      DOM을 얻어오는 것이 좋다. form이 submit(제출)될때 name속성에 입력한 값을 저장해서
+      전달하기 때문이다. */
+      var txtObj = document.subForm.txt; //js에서 html form(name=subForm) 요소 안의 input(name=txt)값을 참조하는 방법
+      
+      /* 기존에 사용했던 getElementXXX 계열의 함수를 통해서도 DOM에 접근할 수 있다.
+      하지만 form 태그에서는 name속성을 통해 접근하는 방식을 훨씬 더 많이 사용하므로 추천하지 않는다. */
+      // var txtObj = document.getElementById("idTxt");
+
+      // input에 입력된 값이 있는지 확인
+      if(txtObj.value == ""){
+        // 빈값이면 경고창을 띄우고
+        alert("텍스트를 입력하세요");
+        // 값을 입력하도록 포커스를 이동
+        txtObj.focus();
+        // submit 이벤트 리스너로 false를 반환. => submit되어 action으로 넘어가는 것을 차단.
+        return false;
+        // 리스너가 false를 반환받으면 '전송(제출)'은 중단된다.
+      }
+      /* 값이 입력된 상태라면 폼값을 전송한다. 이때 아래와 같이 true를 반환해줄 필요는 없다.
+      false가 아니면 묵시적으로 true로 간주하기 때문. */
+      // return true;
+    }
+    function fnReset(){
+      alert("reset 이벤트가 발생되어 초기상태가 됩니다.")
+    }
+  </script>
+
+  <form name="subForm" action="http://tjoeun.co.kr"
+    onsubmit="return fnSubmit();" onreset="fnReset()">
+    텍스트를 미입력 혹은 입력한 상태로 버튼을 눌러보세요 <br>
+    <input type="text" name="txt" id="idTxt" value="">
+    <br>
+    <input type="reset" value="리셋">
+    <input type="submit" value="서브밋(전송)">
+  </form>
+</body>
+</html>

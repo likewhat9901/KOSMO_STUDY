@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  form태그 : 클라이언트가 입력한 값을 서버로 전송할 때 사용하는 태그로
+  하위태그로는 input, select, textarea, button이 있다.
+  주요속성
+    name : 폼의 이름을 설정. 한페이지에 2개 이상 존재할 경우 구분하는 용도로 사용된다.
+      또한 JavaScript에서 접근하기 위한 용도로도 사용된다.
+    action : 클라이언트가 입력한 값을 전송할 서버의 경로를 지정한다. http를 사용한 절대경로나
+      로컬경로를 지정할 수 있다.
+    method : 전송방식 설정. get / post
+    target : <a> 태그와 동일하게 폼값을 전송할 프레임의 위치를 설정한다.
+  -->
+  <h2>form태그로 데이터 전송하기</h2>
+  <h3>GET방식</h3>
+  <form action="http://itempage3.auction.co.kr/DetailView.aspx" method="get">
+    아이디: <input type="text" name="itemno" value="C546139005">
+    <br>
+    패스워드: <input type="password" name="user_pwd">
+    <br>
+    <input type="submit" value="전송">
+  </form>
+
+  <!-- 
+  GET방식 : 주소표시줄 뒤에 전송할 값을 쿼리스트링으로 변환하여 서버로 전송한다.
+    전송되는 모든 정보가 노출되므로 보안적으로 문제가 없는 정보들에 대해서만 사용하는 것이 좋다.
+  POST방식 : 전송되는 값이 노출되지 않는다. 또한 파일, 텍스트 등 모든 값을 전송할 수 있고 
+    용량에도 제한이 없다. -->
+
+  <h3>POST방식</h3>
+  <!-- 
+  폼값을 post방식으로 전송한다. 단 현재는 웹서버가 세팅되지 않았으므로
+  직접 확인할 수는 없는 상태이다.
+  대신 action에 지정한 경로로 입력한 값이 숨겨진 상태로 전송되는 것까지만
+  확인해볼 수 있다. -->
+  <form action="./form/request_form.html" method="post">
+    아이디: <input type="text" name="user_id">
+    <br>
+    패스워드: <input type="password" name="user_pwd">
+    <br>
+    <input type="submit" value="전송">
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>JS의 Core객체 - string</h2> 
+  <Script>
+    /*
+      퀴즈] 아래 이메일 주소에서 @와 .사이에 있는값만
+      추출하여 출력하는 프로그램을 작성하시오.
+      xxx@yyy.co.kr 이라면 yyy만 출력되어야 한다.
+    */
+    var emailArray = ["kim@naver.com", "sung@hanmail.net",
+        "park@ikosmo.co.kr"];
+    console.log("<h2>연습문제>도메인 추출하기</h2>");
+    //익명함수로 정의함
+    var getDomainStr = function(emailArr){
+      // 방법1 : indexOf()를 사용하는 방법
+      console.warn("방법1: indexOf()를 사용하는 방법");
+      for(let i=0 ; i < emailArr.length ; i++){
+        // @의 위치를 찾은 후 1을 더해줌.
+        const startIndex = emailArr[i].indexOf("@")+1;
+        // .의 위치를 찾음.
+        const lastIndex = emailArr[i].indexOf(".");
+        // 앞에서 찾은 인덱스를 통해 문자열을 잘라낸다.
+        const resultStr1 = emailArr[i].substring(startIndex, lastIndex);
+        
+        console.log("방법1 결과:", resultStr1);
+      }
+      // 방법2 : split()을 사용하는 방법
+      console.warn("방법2: split()을 사용하는 방법");
+      for(let i=0 ; i<emailArr.length ; i++){
+        // 이메일을 @으로 1차 split한다.
+        const firstArr = emailArr[i].split("@");
+        // console.log(at);
+        // 1차 결과의 1번 인덱스의 도메인을 2차 split한다.
+        const secondArr = firstArr[1].split(".");
+
+        const resultStr2 = secondArr[0];
+        console.log("방법2 결과:", resultStr2);
+      }
+    }
+
+    getDomainStr(emailArray);
+  </Script>
+</body>
+</html>

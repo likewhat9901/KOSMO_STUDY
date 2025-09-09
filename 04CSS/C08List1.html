@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #topmenu li{
+      /* li태그는 기본 속성이 block이지만, display속성을 통해 inline으로
+      변경할 수 있다. 그러면 세로형에서 가로형 배치가 되고, 이때 불릿도 제거된다. */
+      display: inline;
+      /* 박스 우측만 테두리 설정 */
+      border-right: 2px solid gray;
+      /* 우측 패딩을 설정. 구분선과의 간격 지정 */
+      padding-right: 7px;
+    }
+    /* 마지막 메뉴의 구분선은 필요없으므로 테두리 제거. */
+    #topmenu li:last-child{
+      border: none;
+    }
+    /* a태그로 링크가 걸린 텍스트는 꾸밈없이 검은색으로 설정 */
+    #topmenu li a{
+      text-decoration: none; color: black;
+    }
+    #topmenu li a:hover{
+      text-decoration: underline; color: silver;
+    }
+    .sport {
+      border: 5px solid blue;
+      /* 블릿의 모양을 설정 : 알파벳 대문자 */
+      list-style-type: upper-alpha;
+      /* 블릿의 위치를 설정 : inside, outside가 있다. 아래는 li영역의 안쪽으로
+      배치한다. outside는 디폴트이므로 생략할 수 있다.*/
+      list-style-position: inside;
+    }
+    .sport li {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <h2>li 태그로 메뉴 구현</h2>
+  <fieldset>
+    <legend>Top메뉴</legend>
+    <ul id="topmenu">
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">회원가입</a></li>
+      <li><a href="#">로그인</a></li>
+      <li><a href="#">장바구니</a></li>
+      <li><a href="#">고객센터</a></li>
+    </ul>
+  </fieldset>
+
+  <h2>블릿 위치 변경</h2>
+  <fieldset>
+    <legend>당신이 가장 좋아하는 스포츠는?</legend>
+    123
+    <ul class="sport">
+      <li>축구</li>
+      <li>야구</li>
+      <li>배구</li>
+      <li>농구</li>
+      <li>핸드볼</li>
+    </ul>
+  </fieldset>
+</body>
+</html>

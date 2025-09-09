@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border: 1px solid black;
+    }
+    td{
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    #computer, #player{
+      width: 300px; height: 300px;
+      background-image: url(../images/start.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80%;
+    }
+    #result{
+      color: red; font-size: 30px;
+    }
+  </style>
+  <script>
+    window.onload = function(){
+      const computer = document.querySelector("#computer");
+      const player = document.querySelector("#player");
+      const result = document.querySelector("#result");
+      let player_num, computer_num;
+
+      const select = document.querySelectorAll(".select");
+      select.forEach(btn=>{
+        btn.addEventListener("click", function(){
+          clearInterval(interval);
+          player_num = btn.value;
+          switch(player_num){
+            case "1":
+              player.style.backgroundImage = "url('../images/scissors.jpg')";
+              break;
+            case "2":
+              player.style.backgroundImage = "url('../images/rock.jpg')";
+              break;
+            case "3":
+              player.style.backgroundImage = "url('../images/paper.jpg')";
+              break;
+          };
+          console.log("나",player_num);
+
+          computer_num = Math.floor(Math.random()*3+1);
+          if(computer_num == 1){
+            computer.style.backgroundImage = "url('../images/scissors.jpg')";
+          } else if (computer_num == 2) {
+            computer.style.backgroundImage = "url('../images/rock.jpg')";
+          } else{
+            computer.style.backgroundImage = "url('../images/paper.jpg')";
+          }
+          console.log("컴퓨터",computer_num);
+
+          game_result();
+        });
+      });
+
+      const game_result = function(){
+        const temp = player_num-computer_num;
+        if(temp==0){
+          console.log("비겼습니다.");
+          result.textContent = "비겼습니다~";
+        } else if (temp==1 || temp ==-2){
+          console.log("이겼습니다.");
+          result.textContent = "이겼습니다!";
+        } else {
+          console.log("졌습니다.");
+          result.textContent = "졌습니다ㅠㅠ";
+        }
+      };
+
+      const game_start = document.querySelector("#game_start");
+      let interval;
+      let shuffle=0;
+      game_start.addEventListener("click", function(){
+        interval = setInterval(()=>{
+          shuffle = shuffle%3+1;
+          console.log(shuffle);
+          if(shuffle == 1){
+            player.style.backgroundImage = "url('../images/paper.jpg')";
+            computer.style.backgroundImage = "url('../images/scissors.jpg')";
+          } else if (shuffle == 2) {
+            player.style.backgroundImage = "url('../images/scissors.jpg')";
+            computer.style.backgroundImage = "url('../images/rock.jpg')";
+          } else{
+            player.style.backgroundImage = "url('../images/rock.jpg')";
+            computer.style.backgroundImage = "url('../images/paper.jpg')";
+          }
+        }, 100);
+        result.textContent = "결과출력";
+      });
+
+      const game_pause = document.querySelector("#game_pause");
+      game_pause.addEventListener("click", ()=>{
+        clearInterval(interval);
+      });
+
+      const game_reset = document.querySelector("#game_reset");
+      game_reset.addEventListener("click", ()=>{
+        player.style.backgroundImage = "url('../images/start.png')";
+        computer.style.backgroundImage = "url('../images/start.png')";
+        result.textContent = "결과출력";
+      });
+    };
+
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>컴퓨터</td>
+      <td>나</td>
+    </tr>
+    <tr>
+      <td id="computer"></td>
+      <td id="player"></td>
+    </tr>
+    <tr>
+      <td colspan="2" id="result">결과출력</td>
+    </tr>
+  </table>
+  <button type="button" class="select" value="1">가위</button>
+  <button type="button" class="select" value="2">바위</button>
+  <button type="button" class="select" value="3">보</button>
+  <br><br>
+  <button type="button" id="game_start">시작하기</button>
+  <button type="button" id="game_pause">중지하기</button>
+  <button type="button" id="game_reset">다시시작</button>
+</body>
+</html>

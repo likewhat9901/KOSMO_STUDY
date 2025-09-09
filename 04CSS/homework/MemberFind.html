@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div, header, main, section{
+      box-sizing: border-box;
+    }
+
+    .container{
+      width: 800px; height: 350px;
+    }
+    main{
+      width: 100%; height: 310px;
+      border-top: 5px solid gray;
+      border-left: 5px solid gray;
+      border-right: 5px solid whitesmoke;
+      border-bottom: 5px solid whitesmoke;
+    }
+    section{
+      width: 100%; height: 100%;
+      justify-items: center;
+      border-top: 5px solid whitesmoke;
+      border-left: 5px solid whitesmoke;
+      border-right: 5px solid gray;
+      border-bottom: 5px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <style>
+      main{
+        display: none;
+      }
+      #find_id:checked ~ #content1, #find_pw:checked ~ #content2{
+        display: block;
+      }
+      #find_id, #find_pw{
+        margin: 15px 10px;
+        position: relative;
+        top: 4px;
+      }
+      label{
+        margin-right: 20px;
+      }
+    </style>
+    <input type="radio" name="find" id="find_id" checked><label for="find_id">아이디 찾기</label>
+    <input type="radio" name="find" id="find_pw"><label for="find_pw">비밀번호 찾기</label>
+
+    <main id="content1">
+      <section>
+        <style>
+          table{
+            margin-top: 30px;
+            padding: 5px;
+            border-spacing: 15px;
+          }
+          table td:first-child::before{
+            content: "❱";
+            color: red;
+            margin-right: 10px;
+          }
+        </style>
+        <table>
+          <style>
+            input{
+              height: 20px;
+              line-height: 20px;
+            }
+            .name input[type="text"]{
+              width: 300px;
+            }
+            .tel input[type="number"]{
+              width: 50px;
+            }
+            .tel select{
+              width: 100px; height: 25px;
+              line-height: 25px;
+            }
+          </style>
+          <tr class="name">
+            <td>이름(대표자명)</td>
+            <td><input type="text" name="" id=""></td>
+          </tr>
+          <tr class="tel">
+            <td>
+              <select name="" id="">
+                <option value="">휴대전화</option>
+              </select>
+            </td>
+            <td>
+              <input type="number" name="" id=""> -
+              <input type="number" name="" id=""> -
+              <input type="number" name="" id="">
+            </td>
+          </tr>
+        </table>
+        <style>
+          #content1 hr{
+            width: 450px;
+            border-top: 1px dashed gray;
+            margin-top: -5px;
+          }
+          #content1 p{
+            margin-top: 70px;
+            color: gray;
+            font-size: 15px;
+          }
+        </style>
+        <hr>
+        <p>
+          아이디를 찾기 위해서 이름과 휴대번호 혹은 이메일을 입력하세요.
+        </p>
+      </section>
+    </main>
+
+
+    <main id="content2">
+      <section>
+        <style>
+          .input_id input[type="text"]{
+            width: 300px;
+          }
+          .email select{
+              width: 100px; height: 25px;
+              line-height: 25px;
+            }
+          .email input[type="text"]{
+            width: 100px;
+          }
+        </style>
+        <table>
+          <tr class="input_id">
+            <td>아이디</td>
+            <td><input type="text" name="" id=""></td>
+          </tr>
+          <tr class="name">
+            <td>이름(대표자명)</td>
+            <td><input type="text" name="" id=""></td>
+          </tr>
+          <tr class="email">
+            <td>
+              <select name="" id="">
+                <option value="">이메일</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="" id=""> @ 
+              <input type="text" name="" id="">
+              <select name="" id="">
+                <option value="">직접입력</option>
+                <option value="">naver.com</option>
+                <option value="">gmail.co.kr</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <style>
+          #content2 hr{
+            width: 450px;
+            border-top: 1px dashed gray;
+            margin-top: -5px;
+          }
+          #content2 p{
+            margin-top: 50px;
+            color: gray;
+            font-size: 15px;
+          }
+        </style>
+        <hr>
+        <p>
+          비밀번호를 찾기 위해서 아이디, 이름과 휴대번호 혹은 이메일을 입력하세요.
+        </p>
+      </section>
+    </main>
+    
+  </div>
+</body>
+</html>

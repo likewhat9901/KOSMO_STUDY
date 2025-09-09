@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>배열</h2>
+  <script>
+    // 배열 출력용 함수 정의
+    function printArr(arr){
+      // 매개변수로 전달된 배열의 크기만큼 반복
+      for(var i=0 ; i<arr.length ; i++){
+        // 각 인덱스, 타입, 값 출력
+        console.log("자료형:" + typeof(arr[i])
+          + ", [" + i + "]: " + arr[i]);
+      }
+    }
+
+    console.error("배열1")
+    // Array 객체로 크기를 지정하여 배열 생성.
+    // 자료형이 Array가 아님. 그냥 객체로 생성한 것 뿐.
+    var array = new Array(5);
+    // JS 배열에는 모든 타입의 값을 저장할 수 있다.
+    array[0] = 100; // number 타입
+    array[1] = '자바스크립트'; // string 타입
+    array[2] = new Date(); // object 타입
+    array[3] = 3.14; // number 타입
+    array[4] = false; // boolean 타입
+    printArr(array);
+
+    console.error("배열2");
+    /* 배열 리터럴을 사용하여 정의. 대괄호로 선언 후 초기값을 지정.
+    요소의 개수에 의해 크기가 자동으로 결정된다. 
+    가장 간단한 방법. */
+    var initNoNew = [1, "Javascript", true, 10.1];
+    printArr(initNoNew);
+
+    console.error("배열3");
+
+    /* 
+    크기를 지정하지 않은 상태로 배열 정의. 이 경우 마지막 요소에 의해
+    크기가 결정. 인덱스를 건너뛰면 undefined로 자동 저장된다. */
+    var nosize = new Array();
+    nosize[0] = 100;
+    nosize[3] = 'Javascript';
+    printArr(nosize);
+  </script>
+</body>
+</html>

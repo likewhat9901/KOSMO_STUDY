@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    /* open(): 광고나 공지사항을 게시할 팝업창을열때 사용하는 함수
+      -형식]
+        window.open(팝업창의 경로, 창의이름, 속성);
+        - 창의 이름을 지정하지 않으면 동일한 창이 여러개 띄워질 수 있다.
+        - 창의 이름이 동일하면 하나의 창에 여러 경로의 파일을 추가할 수 있다.
+    */
+    function findZipcode(){
+      // 창의 이름인 'Zip'을 ''로 하면 버튼을 누를때마다 새로운 팝업창이 띄워진다.
+      window.open("./pages/zipcode.html", "Zip",
+        "width=600, height=400, left=100, top=200, location=no, toolbar=no,"
+        + "menubar=no, scrollbars=yes, resizable=no");
+    }
+    /* location, toolbar, menubar, resizable 속성들은 익스플로러에서만 적용되므로
+    현재는 사용되지 않는다. */
+  </script>
+</head>
+<body>
+  <h2>팝업창 제어하기</h2>
+  <h3>여기는 부모창임</h3>
+  <fieldset>
+    <legend>우편번호검색하기</legend>
+    <table>
+      <tr>
+        <td>우편번호</td>
+        <td>
+          <input type="text" id="zipcode" size="5">
+          <button onclick="findZipcode();">
+            우편번호찾기
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>기본주소</td>
+        <td>
+          <input type="text" id="addr1" size="30">
+        </td>
+      </tr>
+      <tr>
+        <td>상세주소</td>
+        <td>
+          <input type="text" id="addr2" size="40">
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <script>
+    //팝업창의 참조값을 저장하기 위한 전역변수
+    var winObj1;
+
+    function popFirst(){
+      /* 팝업창을 열고, 참조값을 전역변수에 저장한다. 이 값을 통해 팝업창을
+      제어할 수 있다. */
+      winObj1 = window.open("./pages/popup01.html", "pop1",
+        "width=500, height=400, left=0, top=0");
+    }
+    function popClose(){
+      alert("팝업창1을 닫습니다.");
+      /* self 대신 팝업창의 참조변수를 사용하면 부모창에서 제어할 수 있다. */
+      winObj1.close();
+    }
+  </script>
+
+  <h2>부모창에서 팝업창 제어하기</h2>
+  <p style="text-align: center;">
+    <button onclick="popFirst();">첫번째 팝업창 열기</button>
+    <button onclick="popClose();">첫번째 팝업창 닫기</button>
+  </p>
+</body>
+</html>

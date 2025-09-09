@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const words = ['hello', 'world', 'javascript', 'typescript'];
+
+    document.writeln('<h2>문자열 배열 목록</h2><hr>');
+    words.forEach(
+      arr => {
+        document.writeln(arr+'<br>');
+      }
+    );
+
+    const newWords = words.map(
+      value => {
+        return value.charAt(0);
+      }
+    );
+
+    document.writeln('<h2>각 요소의 첫 글자만 추출</h2><hr>');
+    newWords.forEach(
+      arr => {
+        document.writeln(arr+'<br>');
+      }
+    );
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

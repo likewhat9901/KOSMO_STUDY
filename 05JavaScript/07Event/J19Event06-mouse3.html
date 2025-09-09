@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+퀴즈] 아래 트럼프 이미지에 마우스를 
+	오버했을때 2.jpg로 교체한다. ⇒ mouseoverFunc()
+	아웃했을때 1.jpg로 교체한다. ⇒ mouseoutFunc()
+
+	다운했을때 이미지크기를 2배로 늘린다. ⇒ mousedownFunc()
+	업했을때 이미지크기를 원래대로 돌린다. ⇒ mouseupFunc()
+
+오버와 아웃은 <img> 태그에 이벤트 리스너가 부착되어 있다. 
+다운과 업은 getElementById()와 addEventListener()를 이용해서 구현한다. 
+  -->
+  <script>
+    let imgObj;
+    function mouseoverFunc(obj){
+      imgObj = obj;
+      imgObj.src = "./images/2.jpg";
+    }
+    function mouseoutFunc(obj){
+      imgObj = obj;
+      imgObj.src = "./images/1.jpg";
+    }
+  </script>
+
+  <h3>이미지에 마우스 이벤트 적용하기</h3>
+  <img id="img" src="./images/1.jpg" alt="하트" style="width:225px;height:313px;" 
+    onmouseover="mouseoverFunc(this);" onmouseout="mouseoutFunc(this);"/>
+
+  <script>
+    const img = document.getElementById("img");
+
+    img.addEventListener("mousedown", function(){
+        img.style.width = parseInt(img.style.width)*2 + "px";
+        img.style.height = parseInt(img.style.height)*2 + "px";
+        console.log("마우스 클릭");
+      });
+
+    img.addEventListener("mouseup", function(){
+      img.style.width = parseInt(img.style.width)/2 + "px";
+      img.style.height = parseInt(img.style.height)/2 + "px";
+      console.log("마우스 뗌");
+    });
+  </script>
+</body>
+</html>
